@@ -510,9 +510,10 @@
           <p>This can happen with very specific combinations of hard rules (for example, gluten-free + vegan + nut-free + halal all in one household). When Sofra can't find a perfect match, it won't silently give you something wrong. Instead it shows a transparent message explaining which rule it couldn't satisfy, and offers you three choices:</p>
           <ul>
             <li><strong>Try a different day</strong> — more flexibility on timing or cooking style may unlock more options</li>
-            <li><strong>Relax one rule temporarily</strong> — Sofra shows which rule is the bottleneck and lets you override it for just that meal</li>
-            <li><strong>Use Pantry Mode</strong> — cook something from what's already at home, bypassing the constraint</li>
+            <li><strong>Loosen a soft preference</strong> — Sofra shows which soft preference (like cuisine type or cooking time) is limiting options and lets you adjust it for just that meal. <strong>Hard rules — allergies, medical restrictions, and religious requirements — are never relaxed, no matter what.</strong></li>
+            <li><strong>Use Pantry Mode</strong> — cook something from what's already at home</li>
           </ul>
+          <div class="warning"><strong>Hard rules are absolute.</strong> Allergy, medical, and religious dietary rules will never be overridden by Sofra — not even if no other meal is available. Sofra will generate an AI recipe that meets every hard rule before it would ever suggest skipping one.</div>
           <p>In practice this is rare — the recipe library covers most combinations. AI-generated recipes exist specifically to fill gaps when the library can't.</p>
         </div>
       </div>
@@ -547,13 +548,13 @@
           <span class="article-toggle">+</span>
         </div>
         <div class="article-a">
-          <p>Sofra uses three recipe sources, and each one is clearly labelled in the recipe view:</p>
+          <p>Sofra uses two recipe sources at launch, and each one is clearly labelled in the recipe view:</p>
           <ul>
             <li><strong>Curated library:</strong> Recipes written, tested, and reviewed by the Sofra team. These go through a full quality check before being added. This is the foundation of the library — around 3,000 recipes at launch, covering a wide range of cuisines and dietary needs.</li>
-            <li><strong>Community recipes:</strong> Recipes published by other Sofra users. Once published, they're immediately available for other families to discover and try. Community recipes that receive consistently high ratings and "Made It" reports from real households can be promoted into the curated library over time. They're tagged with the author's name (e.g. "Community recipe by @username").</li>
-            <li><strong>AI-generated recipes:</strong> For households with very specific dietary combinations (e.g. gluten-free + halal + dairy-free + nut allergy), the curated and community pools may not cover every situation. In those cases, Sofra generates a recipe tailored to your exact constraints. These are clearly marked and reviewed by users over time — see "What happens when I report a recipe problem?" below.</li>
+            <li><strong>AI-generated recipes:</strong> For households with very specific dietary combinations (e.g. gluten-free + halal + dairy-free + nut allergy), the curated library may not cover every situation. In those cases, Sofra generates a recipe tailored to your exact constraints. These are clearly marked and reviewed by users over time — see "What happens when I report a recipe problem?" below.</li>
           </ul>
           <p>You can also add your own private recipes that only your household can see — tap <strong>+ Add Recipe</strong> in the My Recipes section. See "Can I add my own recipes?" below for details.</p>
+          <p style="color:#888;font-size:13px;">📌 <em>Community recipe browsing — where you can discover and share recipes with other Sofra families — is coming in a future update.</em></p>
         </div>
       </div>
 
@@ -565,7 +566,8 @@
         <div class="article-a">
           <p>Yes. Tap the <strong>+ Add Recipe</strong> button in the My Recipes section. You can enter a recipe manually — title, ingredients, and step-by-step instructions.</p>
           <p>Once saved, your recipe becomes available for Sofra to include in your weekly plan. You can also mark it as a household favourite so it appears more often.</p>
-          <p>You can optionally publish your recipe to the Community so other Sofra users can discover it. It goes through an automated safety check and is usually live within a few minutes.</p>
+          <p>You can share any recipe with someone by sending them a link — they can view it and add it to their own Sofra. This is the best way to pass recipes to friends or family.</p>
+          <p style="color:#888;font-size:13px;">📌 <em>Publishing recipes to a public community feed is coming in a future update.</em></p>
         </div>
       </div>
 
@@ -664,8 +666,9 @@
           <span class="article-toggle">+</span>
         </div>
         <div class="article-a">
-          <p>Pantry Mode is for those days when you don't want to shop — you just want to cook with what you already have at home.</p>
-          <p>Activate it by tapping <strong>"Cook from pantry"</strong> on any day in your plan. Sofra asks you to confirm what's in your fridge and cupboards (takes about 30 seconds), then suggests a meal built entirely from those ingredients — no trip to the store needed.</p>
+          <p>Pantry Mode is for those days when you don't want to shop — you want to cook with what you already have, or as close to it as possible.</p>
+          <p>Activate it by tapping <strong>"Cook from pantry"</strong> on any day in your plan. Sofra asks you to confirm what's in your fridge and cupboards (takes about 30 seconds), then finds the best meal that matches what you have. Rather than only showing meals you can make with zero shopping, Sofra also highlights meals that are just <strong>one ingredient away</strong> — so you get genuinely good options, not just whatever happens to be in the back of the cupboard.</p>
+          <p>Each option clearly shows what you already have and what the one extra item would be, so you can decide at a glance whether it's worth a quick trip or not.</p>
           <div class="tip"><strong>Tip:</strong> Pantry Mode is especially useful at the end of the week when you're trying to use up ingredients before they expire.</div>
         </div>
       </div>
@@ -747,6 +750,65 @@
           <p><strong>Hard rules</strong> are absolute — Sofra will never suggest a meal that breaks them. Use these for allergies, religious dietary requirements, and medical restrictions. Examples: nut allergy, halal only, coeliac (gluten-free), dairy allergy.</p>
           <p><strong>Soft rules</strong> are strong preferences — Sofra respects them as much as possible, but there may be rare cases where the constraint can't be met for the whole household. Use these for dislikes or things you'd rather avoid but wouldn't cause harm. Examples: "Prefer not to eat liver", "Avoid very spicy food", "No more than 2 fish dishes per week".</p>
           <div class="warning"><strong>Important:</strong> Never use a soft rule for a genuine allergy or medical restriction. Always set those as hard rules. Soft rules can occasionally be overridden by the planning engine when no better options exist.</div>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="article-q" onclick="toggle(this)">
+          Hard vs soft rules — real examples
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-a">
+          <p>Not sure which type to use? Here's a quick guide:</p>
+          <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:8px 12px;background:#111;color:#4ade80;border-bottom:1px solid #2a2a2a;">Set as a Hard rule</th>
+                <th style="text-align:left;padding:8px 12px;background:#111;color:#aaa;border-bottom:1px solid #2a2a2a;">Set as a Soft rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #1a1a1a;">
+                <td style="padding:8px 12px;color:#fff;">Nut allergy (anaphylaxis risk)</td>
+                <td style="padding:8px 12px;color:#aaa;">Prefer to avoid nuts</td>
+              </tr>
+              <tr style="border-bottom:1px solid #1a1a1a;">
+                <td style="padding:8px 12px;color:#fff;">Halal or Kosher</td>
+                <td style="padding:8px 12px;color:#aaa;">Prefer less red meat</td>
+              </tr>
+              <tr style="border-bottom:1px solid #1a1a1a;">
+                <td style="padding:8px 12px;color:#fff;">Coeliac disease (strict gluten-free)</td>
+                <td style="padding:8px 12px;color:#aaa;">Prefer gluten-light meals</td>
+              </tr>
+              <tr style="border-bottom:1px solid #1a1a1a;">
+                <td style="padding:8px 12px;color:#fff;">Type 1 diabetes (low sugar)</td>
+                <td style="padding:8px 12px;color:#aaa;">Trying to reduce sugar</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 12px;color:#fff;">Vegetarian / vegan (committed)</td>
+                <td style="padding:8px 12px;color:#aaa;">Prefer fewer meat dishes</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="tip" style="margin-top:12px;"><strong>Simple test:</strong> If eating this ingredient would cause real harm or go against a sincere religious belief — it's a hard rule. If you'd just rather not but it wouldn't ruin your week — it's a soft rule.</div>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="article-q" onclick="toggle(this)">
+          How does Sofra get better over time?
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-a">
+          <p>When you first start, Sofra knows your household rules and preferences — but nothing about what you actually enjoy eating. In the first couple of weeks, you'll see a wider range of meals as Sofra figures out what fits your family.</p>
+          <p>Three signals help it learn quickly:</p>
+          <ul>
+            <li><strong>"Made It"</strong> — when you tap this after cooking, Sofra marks the meal as a household success. It will suggest similar meals more often.</li>
+            <li><strong>Swap</strong> — when you swap a meal, Sofra notes what you moved away from. It won't repeat that pattern as readily.</li>
+            <li><strong>Recipe reports</strong> — if you flag a step as wrong while cooking, that feeds into the quality of the recipe itself over time.</li>
+          </ul>
+          <p>After about two weeks of normal use, most families notice the plans feeling noticeably more "theirs." You don't need to do anything extra — just use the app and the signals happen naturally.</p>
+          <div class="tip"><strong>Tip:</strong> The fastest way to train Sofra is to tap "Made It" whenever you actually cook a meal — even if it was just okay. It takes one tap and makes a real difference.</div>
         </div>
       </div>
 
@@ -945,7 +1007,7 @@
           <ul>
             <li>Your account and all associated data is permanently deleted within 30 days</li>
             <li>Your household setup, plan history, saved recipes, and ratings are removed</li>
-            <li>Any recipes you published to the Community will be anonymised (they won't be deleted from the community, but they'll no longer be linked to your account)</li>
+            <li>Any recipes you shared via link will continue to work for anyone who received the link, but they won't be linked to your account</li>
           </ul>
           <div class="warning"><strong>This cannot be undone.</strong> If you're just taking a break, you can instead deactivate notifications and simply not open the app — your data will be kept safely until you return.</div>
         </div>

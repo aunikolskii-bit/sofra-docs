@@ -176,10 +176,10 @@
         <div class="hub-desc">User starts cooking — step-by-step mode with timers.</div>
         <div class="hub-steps">→ Scenario 08</div>
       </div>
-      <div class="hub-card">
+      <div class="hub-card" style="border-color:#7c3aed44;background:#1a0f2a88;">
         <div class="hub-icon">🏠🏠</div>
-        <div class="hub-name">Split household</div>
-        <div class="hub-desc">Co-parent syncs child profile across two separate homes.</div>
+        <div class="hub-name">Split household <span style="font-size:9px;background:#7c3aed;color:#fff;padding:2px 6px;border-radius:8px;font-weight:800;text-transform:uppercase;vertical-align:middle;letter-spacing:1px;">Phase 2</span></div>
+        <div class="hub-desc">Co-parent syncs child profile across two separate homes. Requires Premium household sync.</div>
         <div class="hub-steps">→ Scenario 09</div>
       </div>
       <div class="hub-card">
@@ -188,10 +188,10 @@
         <div class="hub-desc">School or work lunch needs a lunchbox meal, not a cooked one.</div>
         <div class="hub-steps">→ Scenario 10</div>
       </div>
-      <div class="hub-card">
+      <div class="hub-card" style="border-color:#7c3aed44;background:#1a0f2a88;">
         <div class="hub-icon">🌍</div>
-        <div class="hub-name">Community</div>
-        <div class="hub-desc">Browsing, saving, and publishing community recipes.</div>
+        <div class="hub-name">Community <span style="font-size:9px;background:#7c3aed;color:#fff;padding:2px 6px;border-radius:8px;font-weight:800;text-transform:uppercase;vertical-align:middle;letter-spacing:1px;">Phase 2</span></div>
+        <div class="hub-desc">Browsing, saving, and publishing community recipes. MVP = share by link only.</div>
         <div class="hub-steps">→ Scenario 11</div>
       </div>
       <div class="hub-card">
@@ -267,11 +267,11 @@
             <div class="branch">
               <div class="branch-item">
                 <div class="branch-label branch-yes">Yes</div>
-                <div class="node node-action">Share via WhatsApp / copy / print</div>
+                <div class="node node-action">System share sheet<div class="node-desc">OS-native share panel — WhatsApp, email, copy, print, etc. Works on all devices and regions.</div></div>
               </div>
               <div class="branch-item">
                 <div class="branch-label branch-skip">Not now</div>
-                <div class="node node-end-good">Home screen<div class="node-desc">Onboarding complete. Notification permission asked.</div></div>
+                <div class="node node-end-good">Home screen<div class="node-desc">Onboarding complete. No permission prompts at this point — notifications only requested when user enables a specific notification type in Settings.</div></div>
               </div>
             </div>
           </div>
@@ -777,7 +777,8 @@
   <!-- SCENARIO 09 -->
   <div class="section" id="s09">
     <div class="section-tag">Scenario 09</div>
-    <div class="section-title">🏠🏠 Split household — co-parenting</div>
+    <div class="section-title">🏠🏠 Split household — co-parenting <span style="font-size:13px;font-weight:700;color:#c084fc;background:#1a0f2a;border:1px solid #7c3aed40;border-radius:8px;padding:3px 10px;margin-left:10px;vertical-align:middle;">Phase 2 — Premium</span></div>
+    <div style="background:#1a0f2a;border:1px solid #7c3aed55;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:#c4b5fd;line-height:1.6;">⚠️ <strong style="color:#fff;">Phase 2 / Premium only.</strong> Real-time sync across two households requires the Premium household sync feature. Not available in MVP. Shown here as a reference design for future development.</div>
     <div class="section-sub">Trigger: Family has shared custody. Child spends alternate days at two separate homes. Both parents need the child's dietary restrictions respected independently.</div>
 
     <div class="scenario">
@@ -1014,7 +1015,7 @@
                 <div class="branch-label branch-alt">Sends to someone else</div>
                 <div class="node node-action">Taps Share</div>
                 <div class="arrow-down"></div>
-                <div class="node node-screen">Share options<div class="node-desc">WhatsApp, Telegram, copy text, print-ready PDF</div></div>
+                <div class="node node-screen">System share sheet<div class="node-desc">OS-native share panel — WhatsApp, copy text, email, print-ready PDF, and whatever other apps the user has installed.</div></div>
                 <div class="arrow-down"></div>
                 <div class="node node-end-good">List shared ✓</div>
               </div>

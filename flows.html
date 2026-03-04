@@ -85,6 +85,28 @@
   .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #9ca3af; }
   .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  /* STORYBOARD */
+  .storyboard { border-top: 1px dashed #1e1e28; margin-top: 22px; padding-top: 18px; }
+  .storyboard-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4A7C59; margin-bottom: 14px; }
+  .sb-row { display: flex; align-items: flex-start; gap: 0; overflow-x: auto; padding-bottom: 10px; flex-wrap: nowrap; }
+  .sb-step { display: flex; flex-direction: column; align-items: center; gap: 5px; flex-shrink: 0; }
+  .sb-arrow { font-size: 14px; color: #374151; align-self: center; padding-top: 72px; flex-shrink: 0; margin: 0 3px; }
+  .sb-arrow-down { font-size: 12px; color: #374151; text-align: center; padding: 3px 0; }
+  .sb-branch { display: flex; gap: 6px; align-items: flex-start; }
+  .sb-branch-col { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .sb-tag { font-size: 7px; font-weight: 700; padding: 1px 4px; border-radius: 3px; white-space: nowrap; }
+  .sb-yes { background:#0f2a1a; color:#4ade80; }
+  .sb-no { background:#2a1010; color:#f87171; }
+  .sb-alt { background:#1a1a2e; color:#93c5fd; }
+  .sb-skip { background:#1e1e22; color:#9ca3af; }
+  .phone { width:88px; height:155px; background:#050507; border-radius:13px; border:2px solid #252530; padding:5px 5px 4px; display:flex; flex-direction:column; box-shadow:0 3px 10px #00000090; flex-shrink:0; }
+  .ph-bar { height:7px; display:flex; justify-content:flex-end; align-items:center; gap:2px; margin-bottom:2px; padding-right:2px; flex-shrink:0; }
+  .ph-dot { width:3px; height:3px; border-radius:50%; background:#2a2a35; }
+  .ph-screen { flex:1; border-radius:4px; background:#0f0f13; overflow:hidden; position:relative; display:flex; flex-direction:column; }
+  .ph-lbl { font-size:8px; font-weight:600; color:#6B7280; text-align:center; max-width:88px; line-height:1.25; margin-top:3px; }
+  .ph-step { font-size:7px; font-weight:800; color:#E8553D80; text-align:center; }
+
 </style>
 </head>
 <body>
@@ -278,6 +300,84 @@
 
         </div>
       </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="height:35%;background:#13131a;display:flex;align-items:center;justify-content:center;"><div style="font-size:15px;font-weight:900;color:#E8553D;">Sofra</div></div><div style="padding:4px 5px;font-size:6px;color:#6B7280;line-height:1.3;">Plan meals your family will love 🌿</div><div style="margin:0 5px;padding:4px;background:#E8553D;border-radius:5px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Get started</div></div>
+            </div>
+            <div class="ph-lbl">Welcome screen</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">2</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:4px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Who's eating? 👨‍👩‍👧</div><div style="padding:3px 5px;display:flex;gap:3px;"><div style="width:22px;height:22px;border-radius:50%;background:#E8553D20;border:1px solid #E8553D;display:flex;align-items:center;justify-content:center;font-size:9px;">👨</div><div style="width:22px;height:22px;border-radius:50%;background:#E8553D20;border:1px solid #E8553D;display:flex;align-items:center;justify-content:center;font-size:9px;">👩</div><div style="width:22px;height:22px;border-radius:50%;background:#1e1e22;border:1px dashed #374151;display:flex;align-items:center;justify-content:center;font-size:8px;color:#6B7280;">+</div></div><div style="padding:2px 5px 1px;font-size:5.5px;color:#6B7280;">Culture / religion</div><div style="padding:0 5px;display:flex;gap:2px;flex-wrap:wrap;"><div style="background:#1e1a2e;border:1px solid #c084fc40;border-radius:2px;padding:1px 3px;font-size:5px;color:#c084fc;">Halal</div><div style="background:#1a1a2e;border:1px solid #1e1e2e;border-radius:2px;padding:1px 3px;font-size:5px;color:#374151;">Kosher</div></div><div style="margin:3px 5px;padding:3px;background:#13131a;border-radius:3px;font-size:5.5px;color:#9ca3af;">🕐 How much time today?</div><div style="margin:0 5px;padding:4px;background:#E8553D;border-radius:4px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Show my plan →</div></div>
+            </div>
+            <div class="ph-lbl">Quick setup</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">3</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px;"><div style="font-size:20px;animation:spin 2s linear infinite;">🌿</div><div style="font-size:6px;color:#4A7C59;text-align:center;line-height:1.5;">Building your<br>family's plan…</div><div style="display:flex;gap:3px;margin-top:4px;"><div style="width:4px;height:4px;border-radius:50%;background:#4A7C59;"></div><div style="width:4px;height:4px;border-radius:50%;background:#4A7C5960;"></div><div style="width:4px;height:4px;border-radius:50%;background:#4A7C5930;"></div></div></div></div>
+            </div>
+            <div class="ph-lbl">Generating plan…</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">4</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">This week</div><div style="padding:2px 4px;display:flex;flex-direction:column;gap:1.5px;font-size:5px;"><div style="color:#9ca3af;font-weight:700;">MON</div><div style="background:#13131a;border-radius:2px;padding:2px 3px;color:#e5e7eb;">B: Oat porridge · L: Chicken salad · D: Beef stir-fry</div><div style="color:#9ca3af;font-weight:700;margin-top:1px;">TUE</div><div style="background:#13131a;border-radius:2px;padding:2px 3px;color:#e5e7eb;">B: Toast &amp; eggs · L: Soup · D: Pasta bake</div><div style="color:#9ca3af;font-weight:700;margin-top:1px;">WED</div><div style="background:#13131a;border-radius:2px;padding:2px 3px;color:#e5e7eb;">B: Yoghurt · L: Wrap · D: Fish &amp; rice</div></div></div>
+            </div>
+            <div class="ph-lbl">First plan shown</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-yes">✓ Looks good</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Plan confirmed</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Plan confirmed</div>
+          </div><div class="sb-arrow-down">↓</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Grocery list 🛒</div><div style="padding:2px 4px;display:flex;flex-direction:column;gap:2px;font-size:5.5px;"><div style="color:#E8553D;font-weight:700;">🥩 Meat (3)</div><div style="padding-left:5px;color:#9ca3af;">Chicken breast · Beef mince · Salmon</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥬 Produce (6)</div><div style="padding-left:5px;color:#9ca3af;">Broccoli · Tomatoes · Onions…</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥛 Dairy (4)</div><div style="padding-left:5px;color:#9ca3af;">Milk · Yoghurt · Cheese…</div></div></div>
+            </div>
+            <div class="ph-lbl">Grocery list</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">↺ Swap a meal</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;position:relative;"><div style="position:absolute;bottom:0;left:0;right:0;background:#1a1a22;border-radius:6px 6px 0 0;padding:5px;"><div style="font-size:6px;font-weight:700;color:#fff;margin-bottom:4px;">Swap dinner:</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;margin-bottom:2px;">🍗 Grilled chicken &amp; veg — 30 min</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;margin-bottom:2px;">🐟 Salmon &amp; rice — 25 min</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;">🥗 Lentil soup — 40 min</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Swap sheet</div>
+          </div><div class="sb-arrow-down">↓</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Swap confirmed ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Confirmed</div>
+          </div></div></div></div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-yes">Share</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;position:relative;"><div style="position:absolute;bottom:0;left:0;right:0;background:#1a1a22;border-radius:6px 6px 0 0;padding:5px;"><div style="font-size:6px;font-weight:700;color:#fff;margin-bottom:3px;">Share list</div><div style="display:flex;gap:5px;justify-content:center;margin-bottom:3px;"><div style="display:flex;flex-direction:column;align-items:center;gap:1px;"><div style="width:16px;height:16px;border-radius:4px;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:8px;">💬</div><div style="font-size:4.5px;color:#9ca3af;">WhatsApp</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:1px;"><div style="width:16px;height:16px;border-radius:4px;background:#374151;display:flex;align-items:center;justify-content:center;font-size:8px;">📋</div><div style="font-size:4.5px;color:#9ca3af;">Copy</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:1px;"><div style="width:16px;height:16px;border-radius:4px;background:#374151;display:flex;align-items:center;justify-content:center;font-size:8px;">🖨️</div><div style="font-size:4.5px;color:#9ca3af;">Print</div></div></div></div></div></div>
+            </div>
+            <div class="ph-lbl">Share sheet</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-skip">Not now</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px;"><div style="font-size:12px;">🏠</div><div style="font-size:6px;font-weight:700;color:#e5e7eb;text-align:center;">Home</div><div style="font-size:5.5px;color:#4ade80;text-align:center;">Your plan is ready</div><div style="font-size:5px;color:#6B7280;text-align:center;margin-top:2px;">No prompts. No interruptions.</div></div></div>
+            </div>
+            <div class="ph-lbl">Home screen</div>
+          </div></div></div></div>
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -343,6 +443,63 @@
                 <div class="node node-end-neutral">User returns later</div>
               </div>
             </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Today · Mon</div><div style="padding:2px 4px;display:flex;gap:2px;font-size:5px;color:#6B7280;"><span style="color:#E8553D;font-weight:700;">Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div><div style="padding:1px 4px;display:flex;flex-direction:column;gap:2px;"><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #60a5fa;">🌅 Oat porridge</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #fbbf24;">🌞 Chicken salad</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #E8553D;">🌙 Beef stir-fry</div></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0a0a10;padding:4px;display:flex;justify-content:space-around;font-size:7px;"><span style="color:#E8553D;">📅</span><span style="color:#555;">🛒</span><span style="color:#555;">🍳</span><span style="color:#555;">⋯</span></div></div>
+            </div>
+            <div class="ph-lbl">Day view</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-alt">View meal</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="background:#13131a;height:35px;display:flex;align-items:flex-end;padding:3px 5px;"><div style="font-size:6.5px;font-weight:700;color:#fff;">Chicken Stir-fry</div></div><div style="padding:3px 5px;"><div style="font-size:5.5px;color:#9ca3af;margin-bottom:2px;">30 min · 4 servings</div><div style="font-size:5.5px;color:#e5e7eb;margin-bottom:3px;font-weight:700;">Ingredients</div><div style="font-size:5px;color:#9ca3af;line-height:1.5;">• 400g chicken breast<br>• 2 tbsp soy sauce<br>• Mixed veg…</div></div><div style="margin:0 5px;padding:4px;background:#E8553D;border-radius:4px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Start cooking →</div></div>
+            </div>
+            <div class="ph-lbl">Recipe detail</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">Swap</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;position:relative;"><div style="position:absolute;bottom:0;left:0;right:0;background:#1a1a22;border-radius:6px 6px 0 0;padding:5px;"><div style="font-size:6px;font-weight:700;color:#fff;margin-bottom:4px;">Swap dinner:</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;margin-bottom:2px;">🍗 Grilled chicken &amp; veg — 30 min</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;margin-bottom:2px;">🐟 Salmon &amp; rice — 25 min</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;">🥗 Lentil soup — 40 min</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Swap sheet</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-skip">Just views</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px;"><div style="font-size:12px;">🏠</div><div style="font-size:6px;font-weight:700;color:#e5e7eb;text-align:center;">Home</div><div style="font-size:5.5px;color:#4ade80;text-align:center;">Your plan is ready</div><div style="font-size:5px;color:#6B7280;text-align:center;margin-top:2px;">No prompts. No interruptions.</div></div></div>
+            </div>
+            <div class="ph-lbl">Closes app</div>
+          </div></div></div></div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">3</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;background:#0d0d0f;display:flex;flex-direction:column;"><div style="background:#13131a;padding:4px 5px;font-size:6px;color:#6B7280;">Step 1 of 6</div><div style="flex:1;padding:4px 5px;"><div style="font-size:6px;color:#e5e7eb;line-height:1.4;margin-bottom:4px;">Heat oil in pan over medium heat. Add onions and cook for 3–4 min until golden.</div><div style="background:#1a2a1e;border-radius:4px;padding:4px;text-align:center;"><div style="font-size:12px;font-weight:700;color:#4ade80;">15:00</div><div style="font-size:5px;color:#4A7C59;">Timer running</div></div></div><div style="padding:3px 5px;"><div style="background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Next step →</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Cook mode</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">4</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:6px;"><div style="font-size:11px;">🎉</div><div style="font-size:6px;font-weight:700;color:#fff;text-align:center;">All done!</div><div style="width:100%;display:flex;flex-direction:column;gap:2px;margin-top:2px;"><div style="background:#0f2a1a;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#4ade80;">👍 Loved it</div><div style="background:#2a1010;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#f87171;">👎 Not for us</div><div style="background:#2a2210;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#fbbf24;">★ Favourite</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Rate meal</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">5</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Day complete ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Day complete</div>
           </div>
 
         </div>
@@ -419,6 +576,56 @@
 
         </div>
       </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Today · Mon</div><div style="padding:2px 4px;display:flex;gap:2px;font-size:5px;color:#6B7280;"><span style="color:#E8553D;font-weight:700;">Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div><div style="padding:1px 4px;display:flex;flex-direction:column;gap:2px;"><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #60a5fa;">🌅 Oat porridge</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #fbbf24;">🌞 Chicken salad</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #E8553D;">🌙 Beef stir-fry</div></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0a0a10;padding:4px;display:flex;justify-content:space-around;font-size:7px;"><span style="color:#E8553D;">📅</span><span style="color:#555;">🛒</span><span style="color:#555;">🍳</span><span style="color:#555;">⋯</span></div></div>
+            </div>
+            <div class="ph-lbl">Day view</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">2</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;gap:3px;"><div style="font-size:6px;font-weight:700;color:#fff;margin-bottom:2px;">Ordering out?</div><div style="background:#13131a;border-radius:4px;padding:4px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><div style="font-size:9px;">🍽️</div>Just dinner</div><div style="background:#13131a;border-radius:4px;padding:4px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><div style="font-size:9px;">📅</div>Whole day</div></div></div>
+            </div>
+            <div class="ph-lbl">Override options</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-alt">Just dinner</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Dinner cleared ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Single slot</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">Whole day</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Day cleared ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">All slots</div>
+          </div></div></div></div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">4</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:6px;gap:3px;"><div style="font-size:11px;text-align:center;">💡</div><div style="font-size:6px;font-weight:700;color:#fff;text-align:center;line-height:1.3;">Fridays look like takeout nights</div><div style="font-size:5.5px;color:#9ca3af;text-align:center;line-height:1.3;margin-top:1px;">Stop planning Friday dinner?</div><div style="display:flex;gap:3px;margin-top:4px;"><div style="flex:1;background:#0f2a1a;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#4ade80;">Yes</div><div style="flex:1;background:#2a1010;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#f87171;">No</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Pattern detected</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">5</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Fridays auto-cleared ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Rule saved</div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -477,6 +684,56 @@
               </div>
             </div>
           </div>
+
+        </div>
+      </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Today · Mon</div><div style="padding:2px 4px;display:flex;gap:2px;font-size:5px;color:#6B7280;"><span style="color:#E8553D;font-weight:700;">Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div><div style="padding:1px 4px;display:flex;flex-direction:column;gap:2px;"><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #60a5fa;">🌅 Oat porridge</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #fbbf24;">🌞 Chicken salad</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #E8553D;">🌙 Beef stir-fry</div></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0a0a10;padding:4px;display:flex;justify-content:space-around;font-size:7px;"><span style="color:#E8553D;">📅</span><span style="color:#555;">🛒</span><span style="color:#555;">🍳</span><span style="color:#555;">⋯</span></div></div>
+            </div>
+            <div class="ph-lbl">Day view</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">2</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;gap:3px;"><div style="font-size:6.5px;font-weight:700;color:#fff;">Guests coming?</div><div style="font-size:5.5px;color:#9ca3af;">How many extra people?</div><div style="background:#13131a;border-radius:3px;padding:3px;display:flex;justify-content:space-between;font-size:7px;color:#e5e7eb;"><span>−</span><span style="color:#E8553D;font-weight:700;">3</span><span>+</span></div><div style="font-size:5.5px;color:#9ca3af;margin-top:2px;">Any dietary needs?</div><div style="background:#1e1a2e;border:1px solid #c084fc40;border-radius:3px;padding:2px 4px;font-size:5.5px;color:#c084fc;">Vegetarian ✓</div><div style="margin-top:4px;background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Rescale plan</div></div></div>
+            </div>
+            <div class="ph-lbl">Guest setup</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-yes">Meal scales well</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Dinner · Guest mode</div><div style="padding:3px 5px;"><div style="background:#0f2a1a;border-radius:4px;padding:4px;"><div style="font-size:6px;font-weight:700;color:#fff;">Lamb tagine</div><div style="font-size:5.5px;color:#4ade80;">Serves 7 · ✓ Vegetarian side</div></div><div style="font-size:5.5px;color:#9ca3af;margin-top:3px;">Quantities scaled × 1.75</div><div style="font-size:5.5px;color:#4ade80;margin-top:2px;">Grocery list updated ✓</div></div></div>
+            </div>
+            <div class="ph-lbl">Updated meal card</div>
+          </div><div class="sb-arrow-down">↓</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Plan ready ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Confirmed</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-no">Needs swap</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;position:relative;"><div style="position:absolute;bottom:0;left:0;right:0;background:#1a1a22;border-radius:6px 6px 0 0;padding:5px;"><div style="font-size:6px;font-weight:700;color:#fff;margin-bottom:4px;">Swap dinner:</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;margin-bottom:2px;">🍗 Grilled chicken &amp; veg — 30 min</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;margin-bottom:2px;">🐟 Salmon &amp; rice — 25 min</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;">🥗 Lentil soup — 40 min</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Alt suggestions</div>
+          </div><div class="sb-arrow-down">↓</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">New meal locked ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Confirmed</div>
+          </div></div></div></div>
 
         </div>
       </div>
@@ -540,6 +797,56 @@
 
         </div>
       </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:6px;"><div style="font-size:11px;">🎉</div><div style="font-size:6px;font-weight:700;color:#fff;text-align:center;">All done!</div><div style="width:100%;display:flex;flex-direction:column;gap:2px;margin-top:2px;"><div style="background:#0f2a1a;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#4ade80;">👍 Loved it</div><div style="background:#2a1010;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#f87171;">👎 Not for us</div><div style="background:#2a2210;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#fbbf24;">★ Favourite</div></div></div></div>
+            </div>
+            <div class="ph-lbl">After cooking</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">2</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;gap:3px;"><div style="font-size:6.5px;font-weight:700;color:#fff;">Save leftovers?</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;">Beef stir-fry</div><div style="font-size:5.5px;color:#9ca3af;">How many portions?</div><div style="background:#13131a;border-radius:3px;padding:3px;display:flex;justify-content:space-between;font-size:7px;color:#e5e7eb;"><span>−</span><span style="color:#4ade80;font-weight:700;">2</span><span>+</span></div><div style="margin-top:4px;background:#4A7C59;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Save</div></div></div>
+            </div>
+            <div class="ph-lbl">Log leftovers</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-yes">Covers full meal</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Tomorrow · Lunch</div><div style="padding:3px 5px;"><div style="background:#0f1a2e;border-radius:4px;padding:4px;border-left:2px solid #60a5fa;"><div style="font-size:6px;font-weight:700;color:#60a5fa;">♻ Leftover</div><div style="font-size:5.5px;color:#e5e7eb;">Yesterday's beef stir-fry</div><div style="font-size:5px;color:#6B7280;">Reheat only · 5 min</div></div><div style="font-size:5.5px;color:#4ade80;margin-top:3px;">Grocery list: 2 items removed ✓</div></div></div>
+            </div>
+            <div class="ph-lbl">Leftover in plan</div>
+          </div><div class="sb-arrow-down">↓</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Grocery list 🛒</div><div style="padding:2px 4px;display:flex;flex-direction:column;gap:2px;font-size:5.5px;"><div style="color:#E8553D;font-weight:700;">🥩 Meat (3)</div><div style="padding-left:5px;color:#9ca3af;">Chicken breast · Beef mince · Salmon</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥬 Produce (6)</div><div style="padding-left:5px;color:#9ca3af;">Broccoli · Tomatoes · Onions…</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥛 Dairy (4)</div><div style="padding-left:5px;color:#9ca3af;">Milk · Yoghurt · Cheese…</div></div></div>
+            </div>
+            <div class="ph-lbl">Grocery updated</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">Partial</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Hybrid meal ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Side added</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-no">Not enough</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#fbbf24;text-align:center;">Snack option only</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Snack shown</div>
+          </div></div></div></div>
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -591,6 +898,49 @@
             <div class="arrow-down"></div>
             <div class="node node-end-good">User prepared early ✓<div class="node-desc">No last-minute scramble</div></div>
           </div>
+
+        </div>
+      </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Today · Mon</div><div style="margin:3px 4px;background:#1a1500;border:1px solid #fbbf2440;border-radius:5px;padding:5px;"><div style="font-size:8px;">🌙</div><div style="font-size:6px;font-weight:700;color:#fbbf24;">Eid Al-Fitr in 5 days</div><div style="font-size:5.5px;color:#9ca3af;margin-top:1px;">How would you like to plan?</div><div style="display:flex;gap:2px;margin-top:3px;"><div style="background:#fbbf2420;border-radius:2px;padding:1px 3px;font-size:5px;color:#fbbf24;">Whole week</div><div style="background:#1e1e22;border-radius:2px;padding:1px 3px;font-size:5px;color:#9ca3af;">Just day</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Occasion banner</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-yes">Whole week</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">This week</div><div style="padding:2px 4px;display:flex;flex-direction:column;gap:1.5px;font-size:5px;"><div style="color:#9ca3af;font-weight:700;">MON</div><div style="background:#13131a;border-radius:2px;padding:2px 3px;color:#e5e7eb;">B: Oat porridge · L: Chicken salad · D: Beef stir-fry</div><div style="color:#9ca3af;font-weight:700;margin-top:1px;">TUE</div><div style="background:#13131a;border-radius:2px;padding:2px 3px;color:#e5e7eb;">B: Toast &amp; eggs · L: Soup · D: Pasta bake</div><div style="color:#9ca3af;font-weight:700;margin-top:1px;">WED</div><div style="background:#13131a;border-radius:2px;padding:2px 3px;color:#e5e7eb;">B: Yoghurt · L: Wrap · D: Fish &amp; rice</div></div></div>
+            </div>
+            <div class="ph-lbl">Full week plan</div>
+          </div><div class="sb-arrow-down">↓</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Grocery list 🛒</div><div style="padding:2px 4px;display:flex;flex-direction:column;gap:2px;font-size:5.5px;"><div style="color:#E8553D;font-weight:700;">🥩 Meat (3)</div><div style="padding-left:5px;color:#9ca3af;">Chicken breast · Beef mince · Salmon</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥬 Produce (6)</div><div style="padding-left:5px;color:#9ca3af;">Broccoli · Tomatoes · Onions…</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥛 Dairy (4)</div><div style="padding-left:5px;color:#9ca3af;">Milk · Yoghurt · Cheese…</div></div></div>
+            </div>
+            <div class="ph-lbl">Specialty list</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">Just the day</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Eid day updated ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Single day</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-skip">Skip</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px;"><div style="font-size:12px;">🏠</div><div style="font-size:6px;font-weight:700;color:#e5e7eb;text-align:center;">Home</div><div style="font-size:5.5px;color:#4ade80;text-align:center;">Your plan is ready</div><div style="font-size:5px;color:#6B7280;text-align:center;margin-top:2px;">No prompts. No interruptions.</div></div></div>
+            </div>
+            <div class="ph-lbl">Dismissed</div>
+          </div></div></div></div>
 
         </div>
       </div>
@@ -695,6 +1045,63 @@
 
         </div>
       </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;gap:3px;"><div style="font-size:6.5px;font-weight:700;color:#fff;margin-bottom:2px;">Add a recipe</div><div style="background:#13131a;border-radius:4px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><span>✍️</span> Type or paste</div><div style="background:#13131a;border-radius:4px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><span>🔗</span> Paste a link</div><div style="background:#13131a;border-radius:4px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><span>📷</span> Take photo</div><div style="background:#13131a;border-radius:4px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><span>🎬</span> Video link</div></div></div>
+            </div>
+            <div class="ph-lbl">Choose method</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-alt">✍️ Type</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;"><div style="font-size:6.5px;font-weight:700;color:#fff;margin-bottom:3px;">Review recipe</div><div style="background:#13131a;border-radius:3px;padding:3px;margin-bottom:2px;"><div style="font-size:6px;color:#e5e7eb;font-weight:600;">Grandma's pilaf</div><div style="font-size:5px;color:#9ca3af;">45 min · 6 servings · Auto-tagged: dinner, rice</div></div><div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:3px;"><div style="background:#1e1a2e;border-radius:2px;padding:1px 3px;font-size:5px;color:#c084fc;">Halal ✓</div><div style="background:#1a2a1e;border-radius:2px;padding:1px 3px;font-size:5px;color:#4ade80;">No conflicts</div></div><div style="background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Save to My Recipes ✓</div></div></div>
+            </div>
+            <div class="ph-lbl">AI parses</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">🔗 Link</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;"><div style="font-size:6.5px;font-weight:700;color:#fff;margin-bottom:3px;">Review recipe</div><div style="background:#13131a;border-radius:3px;padding:3px;margin-bottom:2px;"><div style="font-size:6px;color:#e5e7eb;font-weight:600;">Grandma's pilaf</div><div style="font-size:5px;color:#9ca3af;">45 min · 6 servings · Auto-tagged: dinner, rice</div></div><div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:3px;"><div style="background:#1e1a2e;border-radius:2px;padding:1px 3px;font-size:5px;color:#c084fc;">Halal ✓</div><div style="background:#1a2a1e;border-radius:2px;padding:1px 3px;font-size:5px;color:#4ade80;">No conflicts</div></div><div style="background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Save to My Recipes ✓</div></div></div>
+            </div>
+            <div class="ph-lbl">Extracted</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">📷 Photo</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;"><div style="font-size:6.5px;font-weight:700;color:#fff;margin-bottom:3px;">Review recipe</div><div style="background:#13131a;border-radius:3px;padding:3px;margin-bottom:2px;"><div style="font-size:6px;color:#e5e7eb;font-weight:600;">Grandma's pilaf</div><div style="font-size:5px;color:#9ca3af;">45 min · 6 servings · Auto-tagged: dinner, rice</div></div><div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:3px;"><div style="background:#1e1a2e;border-radius:2px;padding:1px 3px;font-size:5px;color:#c084fc;">Halal ✓</div><div style="background:#1a2a1e;border-radius:2px;padding:1px 3px;font-size:5px;color:#4ade80;">No conflicts</div></div><div style="background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Save to My Recipes ✓</div></div></div>
+            </div>
+            <div class="ph-lbl">OCR → AI</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">🎬 Video</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;"><div style="font-size:6.5px;font-weight:700;color:#fff;margin-bottom:3px;">Review recipe</div><div style="background:#13131a;border-radius:3px;padding:3px;margin-bottom:2px;"><div style="font-size:6px;color:#e5e7eb;font-weight:600;">Grandma's pilaf</div><div style="font-size:5px;color:#9ca3af;">45 min · 6 servings · Auto-tagged: dinner, rice</div></div><div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:3px;"><div style="background:#1e1a2e;border-radius:2px;padding:1px 3px;font-size:5px;color:#c084fc;">Halal ✓</div><div style="background:#1a2a1e;border-radius:2px;padding:1px 3px;font-size:5px;color:#4ade80;">No conflicts</div></div><div style="background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Save to My Recipes ✓</div></div></div>
+            </div>
+            <div class="ph-lbl">Caption parsed</div>
+          </div></div></div></div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">3</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;"><div style="font-size:6.5px;font-weight:700;color:#fff;margin-bottom:3px;">Review recipe</div><div style="background:#13131a;border-radius:3px;padding:3px;margin-bottom:2px;"><div style="font-size:6px;color:#e5e7eb;font-weight:600;">Grandma's pilaf</div><div style="font-size:5px;color:#9ca3af;">45 min · 6 servings · Auto-tagged: dinner, rice</div></div><div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:3px;"><div style="background:#1e1a2e;border-radius:2px;padding:1px 3px;font-size:5px;color:#c084fc;">Halal ✓</div><div style="background:#1a2a1e;border-radius:2px;padding:1px 3px;font-size:5px;color:#4ade80;">No conflicts</div></div><div style="background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Save to My Recipes ✓</div></div></div>
+            </div>
+            <div class="ph-lbl">Review &amp; save</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">4</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Saved to My Recipes ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Saved</div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -771,6 +1178,63 @@
 
         </div>
       </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="background:#13131a;height:35px;display:flex;align-items:flex-end;padding:3px 5px;"><div style="font-size:6.5px;font-weight:700;color:#fff;">Chicken Stir-fry</div></div><div style="padding:3px 5px;"><div style="font-size:5.5px;color:#9ca3af;margin-bottom:2px;">30 min · 4 servings</div><div style="font-size:5.5px;color:#e5e7eb;margin-bottom:3px;font-weight:700;">Ingredients</div><div style="font-size:5px;color:#9ca3af;line-height:1.5;">• 400g chicken breast<br>• 2 tbsp soy sauce<br>• Mixed veg…</div></div><div style="margin:0 5px;padding:4px;background:#E8553D;border-radius:4px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Start cooking →</div></div>
+            </div>
+            <div class="ph-lbl">Recipe detail</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">2</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;background:#0d0d0f;display:flex;flex-direction:column;"><div style="background:#13131a;padding:4px 5px;font-size:6px;color:#6B7280;">Step 1 of 7</div><div style="flex:1;padding:4px 5px;"><div style="font-size:6px;color:#e5e7eb;line-height:1.4;margin-bottom:4px;">Heat oil in pan over medium heat. Add onions and cook for 3–4 min until golden.</div><div style="background:#1a2a1e;border-radius:4px;padding:4px;text-align:center;"><div style="font-size:12px;font-weight:700;color:#4ade80;">15:00</div><div style="font-size:5px;color:#4A7C59;">Timer running</div></div></div><div style="padding:3px 5px;"><div style="background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Next step →</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Cook mode · step 1</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">3</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;background:#0d0d0f;display:flex;flex-direction:column;"><div style="background:#13131a;padding:4px 5px;font-size:6px;color:#6B7280;">Step 4 of 7</div><div style="flex:1;padding:4px 5px;"><div style="font-size:6px;color:#e5e7eb;line-height:1.4;margin-bottom:4px;">Heat oil in pan over medium heat. Add onions and cook for 3–4 min until golden.</div><div style="background:#1a2a1e;border-radius:4px;padding:4px;text-align:center;"><div style="font-size:12px;font-weight:700;color:#4ade80;">15:00</div><div style="font-size:5px;color:#4A7C59;">Timer running</div></div></div><div style="padding:3px 5px;"><div style="background:#E8553D;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Next step →</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Step 4 · timer</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">4</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#fbbf24;text-align:center;">All done! 🎉</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Final step</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">5</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:6px;"><div style="font-size:11px;">🎉</div><div style="font-size:6px;font-weight:700;color:#fff;text-align:center;">All done!</div><div style="width:100%;display:flex;flex-direction:column;gap:2px;margin-top:2px;"><div style="background:#0f2a1a;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#4ade80;">👍 Loved it</div><div style="background:#2a1010;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#f87171;">👎 Not for us</div><div style="background:#2a2210;border-radius:3px;padding:3px;text-align:center;font-size:6px;color:#fbbf24;">★ Favourite</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Rate meal</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-yes">Leftovers?</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;gap:3px;"><div style="font-size:6.5px;font-weight:700;color:#fff;">Save leftovers?</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;">Beef stir-fry</div><div style="font-size:5.5px;color:#9ca3af;">How many portions?</div><div style="background:#13131a;border-radius:3px;padding:3px;display:flex;justify-content:space-between;font-size:7px;color:#e5e7eb;"><span>−</span><span style="color:#4ade80;font-weight:700;">2</span><span>+</span></div><div style="margin-top:4px;background:#4A7C59;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Save</div></div></div>
+            </div>
+            <div class="ph-lbl">Log leftovers</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-no">No</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px;"><div style="font-size:12px;">🏠</div><div style="font-size:6px;font-weight:700;color:#e5e7eb;text-align:center;">Home</div><div style="font-size:5.5px;color:#4ade80;text-align:center;">Your plan is ready</div><div style="font-size:5px;color:#6B7280;text-align:center;margin-top:2px;">No prompts. No interruptions.</div></div></div>
+            </div>
+            <div class="ph-lbl">Back to plan</div>
+          </div></div></div></div>
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -824,6 +1288,49 @@
             <div class="node node-system">Privacy enforced<div class="node-desc">Parent A never sees Parent B's meal plan or household data. Only child Hard Rules are shared.</div></div>
             <div class="arrow-down"></div>
             <div class="node node-end-good">Both homes protected ✓<div class="node-desc">Mila's allergies respected everywhere, always</div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">ℹ</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px;"><div style="background:#1a0f2a;border:1px solid #7c3aed40;border-radius:6px;padding:6px;text-align:center;"><div style="font-size:8px;color:#c084fc;font-weight:700;margin-bottom:2px;">Phase 2 — Premium</div><div style="font-size:5.5px;color:#9ca3af;line-height:1.4;">This feature requires household sync — coming after launch</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Phase 2 · Premium</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Today · Mon</div><div style="padding:2px 4px;display:flex;gap:2px;font-size:5px;color:#6B7280;"><span style="color:#E8553D;font-weight:700;">Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div><div style="padding:1px 4px;display:flex;flex-direction:column;gap:2px;"><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #60a5fa;">🌅 Oat porridge</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #fbbf24;">🌞 Chicken salad</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #E8553D;">🌙 Beef stir-fry</div></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0a0a10;padding:4px;display:flex;justify-content:space-around;font-size:7px;"><span style="color:#E8553D;">📅</span><span style="color:#555;">🛒</span><span style="color:#555;">🍳</span><span style="color:#555;">⋯</span></div></div>
+            </div>
+            <div class="ph-lbl">Parent A setup</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">2</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;gap:3px;"><div style="font-size:6.5px;font-weight:700;color:#fff;">Share profile</div><div style="font-size:5.5px;color:#9ca3af;">Send Mila's profile to co-parent</div><div style="background:#1e1a2e;border:1px solid #c084fc40;border-radius:4px;padding:5px;text-align:center;margin-top:3px;"><div style="font-size:8px;font-weight:800;color:#c084fc;letter-spacing:1px;">KID-7X9P-MILA</div><div style="font-size:5px;color:#6B7280;margin-top:2px;">Expires in 7 days</div></div><div style="margin-top:4px;background:#c084fc;border-radius:4px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#0a0a0c;">Copy code</div></div></div>
+            </div>
+            <div class="ph-lbl">Share code</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">3</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#c084fc;text-align:center;">Mila synced</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Parent B receives</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">4</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Both homes ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Ongoing sync</div>
           </div>
 
         </div>
@@ -887,6 +1394,35 @@
             </div>
             <div style="margin-top:16px;"></div>
             <div class="node node-end-good">All packed lunches ready in plan ✓<div class="node-desc">Morning prep time estimated. Reminder sent night before.</div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Today · Mon</div><div style="padding:2px 4px;display:flex;gap:2px;font-size:5px;color:#6B7280;"><span style="color:#E8553D;font-weight:700;">Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div><div style="padding:1px 4px;display:flex;flex-direction:column;gap:2px;"><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #60a5fa;">🌅 Oat porridge</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #fbbf24;">🌞 Chicken salad</div><div style="background:#13131a;border-radius:4px;padding:3px 4px;font-size:5.5px;color:#e5e7eb;border-left:2px solid #E8553D;">🌙 Beef stir-fry</div></div><div style="position:absolute;bottom:0;left:0;right:0;background:#0a0a10;padding:4px;display:flex;justify-content:space-around;font-size:7px;"><span style="color:#E8553D;">📅</span><span style="color:#555;">🛒</span><span style="color:#555;">🍳</span><span style="color:#555;">⋯</span></div></div>
+            </div>
+            <div class="ph-lbl">Day view</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">2</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Layla · Tuesday</div><div style="padding:3px 5px;"><div style="background:#13131a;border-radius:4px;padding:3px;margin-bottom:2px;border-left:2px solid #fbbf24;"><div style="font-size:6px;color:#fbbf24;font-weight:700;">🎒 Packed lunch</div><div style="font-size:5.5px;color:#e5e7eb;">Chicken wrap · nut-free</div></div><div style="background:#13131a;border-radius:4px;padding:3px;border-left:2px solid #E8553D;"><div style="font-size:6px;color:#E8553D;font-weight:700;">🌙 Dinner</div><div style="font-size:5.5px;color:#e5e7eb;">Pasta bake</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Lunchbox in plan</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">3</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Grocery list 🛒</div><div style="padding:2px 4px;display:flex;flex-direction:column;gap:2px;font-size:5.5px;"><div style="color:#E8553D;font-weight:700;">🥩 Meat (3)</div><div style="padding-left:5px;color:#9ca3af;">Chicken breast · Beef mince · Salmon</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥬 Produce (6)</div><div style="padding-left:5px;color:#9ca3af;">Broccoli · Tomatoes · Onions…</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥛 Dairy (4)</div><div style="padding-left:5px;color:#9ca3af;">Milk · Yoghurt · Cheese…</div></div></div>
+            </div>
+            <div class="ph-lbl">Grocery · packed lunches</div>
           </div>
 
         </div>
@@ -982,6 +1518,56 @@
 
         </div>
       </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">ℹ</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px;"><div style="background:#1a0f2a;border:1px solid #7c3aed40;border-radius:6px;padding:6px;text-align:center;"><div style="font-size:8px;color:#c084fc;font-weight:700;margin-bottom:2px;">Phase 2 — Premium</div><div style="font-size:5.5px;color:#9ca3af;line-height:1.4;">This feature requires household sync — coming after launch</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Phase 2 · Community</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Community 🌍</div><div style="padding:2px 4px;display:flex;flex-direction:column;gap:2px;"><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;gap:3px;align-items:center;"><div style="width:18px;height:18px;border-radius:3px;background:#1a2a1e;flex-shrink:0;"></div><div><div style="color:#fff;font-weight:600;">Lamb plov</div><div style="color:#6B7280;">★4.8 · Halal ✓</div></div></div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;gap:3px;align-items:center;"><div style="width:18px;height:18px;border-radius:3px;background:#1a1a2a;flex-shrink:0;"></div><div><div style="color:#fff;font-weight:600;">Shakshuka</div><div style="color:#6B7280;">★4.6 · Vegetarian</div></div></div></div></div>
+            </div>
+            <div class="ph-lbl">Community feed</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step">
+            <div class="ph-step">2</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="background:#13131a;height:35px;display:flex;align-items:flex-end;padding:3px 5px;"><div style="font-size:6.5px;font-weight:700;color:#fff;">Chicken Stir-fry</div></div><div style="padding:3px 5px;"><div style="font-size:5.5px;color:#9ca3af;margin-bottom:2px;">30 min · 4 servings</div><div style="font-size:5.5px;color:#e5e7eb;margin-bottom:3px;font-weight:700;">Ingredients</div><div style="font-size:5px;color:#9ca3af;line-height:1.5;">• 400g chicken breast<br>• 2 tbsp soy sauce<br>• Mixed veg…</div></div><div style="margin:0 5px;padding:4px;background:#E8553D;border-radius:4px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Start cooking →</div></div>
+            </div>
+            <div class="ph-lbl">Recipe detail</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-yes">Save to My Recipes</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Saved ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Saved</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">Publish your recipe</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;padding:5px;gap:3px;"><div style="font-size:6.5px;font-weight:700;color:#fff;">Publish recipe</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;">Grandma's Lamb Plov</div><div style="font-size:5.5px;color:#9ca3af;margin-top:2px;">By publishing you agree to community terms</div><div style="display:flex;gap:2px;margin-top:3px;"><div style="flex:1;background:#1e1e22;border-radius:3px;padding:3px;text-align:center;font-size:5.5px;color:#9ca3af;">Cancel</div><div style="flex:2;background:#E8553D;border-radius:3px;padding:3px;text-align:center;font-size:6px;font-weight:800;color:#fff;">Publish →</div></div></div></div>
+            </div>
+            <div class="ph-lbl">Publish screen</div>
+          </div><div class="sb-arrow-down">↓</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Published ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Published</div>
+          </div></div></div></div>
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1063,6 +1649,49 @@
               </div>
             </div>
           </div>
+
+        </div>
+      </div>
+
+      <div class="storyboard">
+        <div class="storyboard-label">↳ Screen walkthrough</div>
+        <div class="sb-row">
+          <div class="sb-step">
+            <div class="ph-step">1</div>
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">Grocery list 🛒</div><div style="padding:2px 4px;display:flex;flex-direction:column;gap:2px;font-size:5.5px;"><div style="color:#E8553D;font-weight:700;">🥩 Meat (3)</div><div style="padding-left:5px;color:#9ca3af;">Chicken breast · Beef mince · Salmon</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥬 Produce (6)</div><div style="padding-left:5px;color:#9ca3af;">Broccoli · Tomatoes · Onions…</div><div style="color:#E8553D;font-weight:700;margin-top:1px;">🥛 Dairy (4)</div><div style="padding-left:5px;color:#9ca3af;">Milk · Yoghurt · Cheese…</div></div></div>
+            </div>
+            <div class="ph-lbl">Grocery list</div>
+          </div><div class="sb-arrow">→</div><div class="sb-step"><div class="sb-branch"><div class="sb-branch-col"><div class="sb-tag sb-alt">Shop in person</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="padding:3px 5px 2px;font-size:7px;font-weight:700;color:#fff;background:#13131a;">🛒 Shop Mode</div><div style="padding:2px 4px 1px;font-size:5.5px;color:#4ade80;">8 of 13 items left</div><div style="padding:0 4px;display:flex;flex-direction:column;gap:2px;"><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><div style="width:8px;height:8px;border-radius:2px;background:#E8553D;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:5px;color:#fff;">✓</div>Chicken breast</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><div style="width:8px;height:8px;border-radius:2px;border:1px solid #374151;flex-shrink:0;"></div>Broccoli</div><div style="background:#13131a;border-radius:3px;padding:3px;font-size:5.5px;color:#e5e7eb;display:flex;align-items:center;gap:3px;"><div style="width:8px;height:8px;border-radius:2px;border:1px solid #374151;flex-shrink:0;"></div>Yoghurt</div></div></div>
+            </div>
+            <div class="ph-lbl">Shop mode</div>
+          </div><div class="sb-arrow-down">↓</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#4ade80;text-align:center;">Shopping done ✓</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Done</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-alt">Share list</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;position:relative;"><div style="position:absolute;bottom:0;left:0;right:0;background:#1a1a22;border-radius:6px 6px 0 0;padding:5px;"><div style="font-size:6px;font-weight:700;color:#fff;margin-bottom:3px;">Share list</div><div style="display:flex;gap:5px;justify-content:center;margin-bottom:3px;"><div style="display:flex;flex-direction:column;align-items:center;gap:1px;"><div style="width:16px;height:16px;border-radius:4px;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:8px;">💬</div><div style="font-size:4.5px;color:#9ca3af;">WhatsApp</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:1px;"><div style="width:16px;height:16px;border-radius:4px;background:#374151;display:flex;align-items:center;justify-content:center;font-size:8px;">📋</div><div style="font-size:4.5px;color:#9ca3af;">Copy</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:1px;"><div style="width:16px;height:16px;border-radius:4px;background:#374151;display:flex;align-items:center;justify-content:center;font-size:8px;">🖨️</div><div style="font-size:4.5px;color:#9ca3af;">Print</div></div></div></div></div></div>
+            </div>
+            <div class="ph-lbl">Share sheet</div>
+          </div></div><div class="sb-branch-col"><div class="sb-tag sb-skip">Delivery</div><div class="sb-step">
+            
+            <div class="phone">
+              <div class="ph-bar"><div class="ph-dot"></div><div class="ph-dot"></div><div class="ph-dot"></div></div>
+              <div class="ph-screen"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;"><div style="font-size:14px;">✓</div><div style="font-size:6px;font-weight:700;color:#fbbf24;text-align:center;">Coming soon · Phase 2</div><div style="font-size:5px;color:#6B7280;text-align:center;">Grocery list updated automatically</div></div></div>
+            </div>
+            <div class="ph-lbl">Phase 2</div>
+          </div></div></div></div>
 
         </div>
       </div>

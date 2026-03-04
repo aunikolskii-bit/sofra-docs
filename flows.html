@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Flows — Intelligent Family Meal Planner</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f11; color: #e5e7eb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.5; }
+
+  /* NAV */
+  .nav { position: sticky; top: 0; z-index: 100; background: #0f0f11ee; backdrop-filter: blur(10px); border-bottom: 1px solid #1e1e22; padding: 12px 24px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .nav-title { font-size: 13px; font-weight: 800; color: #E8553D; margin-right: 10px; white-space: nowrap; }
+  .nav a { font-size: 11px; font-weight: 600; color: #6B7280; text-decoration: none; padding: 5px 10px; border-radius: 20px; border: 1px solid #2a2a2e; white-space: nowrap; transition: all 0.15s; }
+  .nav a:hover { color: #E8553D; border-color: #E8553D40; }
+
+  /* LAYOUT */
+  .page { max-width: 1400px; margin: 0 auto; padding: 48px 32px; }
+  .page-title { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  .page-sub { font-size: 16px; color: #6B7280; margin-bottom: 56px; }
+
+  /* SECTION */
+  .section { margin-bottom: 72px; scroll-margin-top: 80px; }
+  .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #E8553D; margin-bottom: 8px; }
+  .section-title { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .section-sub { font-size: 14px; color: #6B7280; margin-bottom: 28px; max-width: 700px; }
+
+  /* FLOW DIAGRAM */
+  .flow { display: flex; flex-direction: column; gap: 0; }
+  .flow-row { display: flex; align-items: flex-start; gap: 0; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 8px; }
+  .flow-col { display: flex; flex-direction: column; align-items: center; gap: 0; }
+
+  /* NODES */
+  .node { border-radius: 12px; padding: 10px 14px; font-size: 12px; font-weight: 600; text-align: center; min-width: 130px; max-width: 160px; flex-shrink: 0; line-height: 1.4; position: relative; }
+  .node-entry { background: #E8553D20; border: 2px solid #E8553D; color: #E8553D; }
+  .node-screen { background: #1e1a2e; border: 1px solid #c084fc50; color: #e5e7eb; }
+  .node-action { background: #1a2a1e; border: 1px solid #4A7C5950; color: #d1fae5; }
+  .node-system { background: #1a1a2e; border: 1px solid #60a5fa50; color: #bfdbfe; }
+  .node-decision { background: #2a2210; border: 2px dashed #F4A261; color: #F4A261; }
+  .node-end-good { background: #0f2a1a; border: 2px solid #4A7C59; color: #86efac; }
+  .node-end-neutral { background: #1e1e22; border: 1px solid #374151; color: #9ca3af; }
+  .node-end-warn { background: #2a1010; border: 1px solid #ef444450; color: #fca5a5; }
+  .node-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.6; margin-bottom: 3px; }
+  .node-desc { font-size: 10px; font-weight: 400; color: #9ca3af; margin-top: 4px; line-height: 1.3; }
+
+  /* ARROWS */
+  .arrow-right { display: flex; align-items: center; padding: 0 4px; flex-shrink: 0; margin-top: 28px; }
+  .arrow-right::after { content: '→'; font-size: 18px; color: #374151; }
+  .arrow-down { display: flex; justify-content: center; padding: 3px 0; }
+  .arrow-down::after { content: '↓'; font-size: 14px; color: #374151; }
+  .arrow-label { font-size: 10px; color: #6B7280; text-align: center; font-weight: 600; padding: 2px 8px; background: #1a1a1e; border-radius: 8px; margin: 2px auto; }
+
+  /* BRANCH */
+  .branch { display: flex; gap: 16px; margin-top: 4px; }
+  .branch-item { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 130px; }
+  .branch-label { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-bottom: 4px; }
+  .branch-yes { background: #0f2a1a; color: #4ade80; }
+  .branch-no { background: #2a1010; color: #f87171; }
+  .branch-alt { background: #1a1a2e; color: #93c5fd; }
+  .branch-skip { background: #1e1e22; color: #9ca3af; }
+
+  /* SCENARIO CARD */
+  .scenario { background: #13131a; border: 1px solid #1e1e28; border-radius: 20px; padding: 28px 32px; margin-bottom: 20px; overflow-x: auto; }
+  .scenario-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .scenario-num { font-size: 28px; font-weight: 900; color: #E8553D; min-width: 48px; }
+  .scenario-name { font-size: 18px; font-weight: 800; color: #fff; }
+  .scenario-trigger { font-size: 12px; color: #6B7280; margin-top: 2px; }
+
+  /* MASTER MAP */
+  .master-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .hub-card { background: #13131a; border: 1px solid #1e1e28; border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color 0.2s; }
+  .hub-card:hover { border-color: #E8553D60; }
+  .hub-icon { font-size: 24px; margin-bottom: 8px; }
+  .hub-name { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .hub-desc { font-size: 12px; color: #6B7280; line-height: 1.4; }
+  .hub-steps { font-size: 11px; color: #4A7C59; margin-top: 6px; font-weight: 600; }
+
+  /* SCREEN BADGE */
+  .screen-badge { display: inline-block; background: #c084fc20; border: 1px solid #c084fc40; color: #c084fc; font-size: 10px; font-weight: 700; border-radius: 6px; padding: 2px 6px; margin-bottom: 4px; }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1px solid #1e1e22; margin: 48px 0; }
+
+  /* LEGEND */
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #9ca3af; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-title">User Flows</div>
+  <a href="#master">Master Map</a>
+  <a href="#s01">01 First open</a>
+  <a href="#s02">02 Daily check-in</a>
+  <a href="#s03">03 Ordering out</a>
+  <a href="#s04">04 Guests coming</a>
+  <a href="#s05">05 Leftovers</a>
+  <a href="#s06">06 Cultural occasion</a>
+  <a href="#s07">07 Adding a recipe</a>
+  <a href="#s08">08 Cook Mode</a>
+  <a href="#s09">09 Split household</a>
+  <a href="#s10">10 Packed lunch</a>
+  <a href="#s11">11 Community</a>
+  <a href="#s12">12 Grocery list</a>
+</div>
+
+<div class="page">
+
+  <div class="page-title">Every User Journey</div>
+  <div class="page-sub">Master overview + detailed flow for every scenario — from first app open to the most complex real-life situations.</div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#E8553D;"></div> Entry point / trigger</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#c084fc50;border:1px solid #c084fc;"></div> App screen</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4A7C5950;border:1px solid #4A7C59;"></div> User action</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#60a5fa50;border:1px solid #60a5fa;"></div> System does this automatically</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#F4A26150;border:2px dashed #F4A261;"></div> Decision point</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#0f2a1a;border:2px solid #4A7C59;"></div> Successful end state</div>
+  </div>
+
+  <!-- MASTER MAP -->
+  <div class="section" id="master">
+    <div class="section-tag">Overview</div>
+    <div class="section-title">Master Scenario Map</div>
+    <div class="section-sub">Every entry point into the app and the scenario it triggers. Each card links to its detailed flow below.</div>
+
+    <div class="master-hub">
+      <div class="hub-card">
+        <div class="hub-icon">🌱</div>
+        <div class="hub-name">First time open</div>
+        <div class="hub-desc">App installed for the first time. No profile, no data.</div>
+        <div class="hub-steps">→ Scenario 01</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">☀️</div>
+        <div class="hub-name">Daily check-in</div>
+        <div class="hub-desc">Returning user opens app in the morning to see today's plan.</div>
+        <div class="hub-steps">→ Scenario 02</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🛵</div>
+        <div class="hub-name">Ordering out tonight</div>
+        <div class="hub-desc">User taps to skip cooking for the evening. One-tap override.</div>
+        <div class="hub-steps">→ Scenario 03</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">👥</div>
+        <div class="hub-name">Guests coming</div>
+        <div class="hub-desc">User says guests are joining — plan and grocery list rescale.</div>
+        <div class="hub-steps">→ Scenario 04</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🥘</div>
+        <div class="hub-name">Leftover day</div>
+        <div class="hub-desc">Leftovers in the fridge — system suggests using them up first.</div>
+        <div class="hub-steps">→ Scenario 05</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🕌</div>
+        <div class="hub-name">Cultural occasion</div>
+        <div class="hub-desc">Eid, Orthodox Christmas, Nowruz — system detects and adapts.</div>
+        <div class="hub-steps">→ Scenario 06</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">📖</div>
+        <div class="hub-name">Adding a recipe</div>
+        <div class="hub-desc">User saves a recipe from memory, photo, link, or video.</div>
+        <div class="hub-steps">→ Scenario 07</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🍳</div>
+        <div class="hub-name">Cook Mode</div>
+        <div class="hub-desc">User starts cooking — step-by-step mode with timers.</div>
+        <div class="hub-steps">→ Scenario 08</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🏠🏠</div>
+        <div class="hub-name">Split household</div>
+        <div class="hub-desc">Co-parent syncs child profile across two separate homes.</div>
+        <div class="hub-steps">→ Scenario 09</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🎒</div>
+        <div class="hub-name">Packed lunch day</div>
+        <div class="hub-desc">School or work lunch needs a lunchbox meal, not a cooked one.</div>
+        <div class="hub-steps">→ Scenario 10</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🌍</div>
+        <div class="hub-name">Community</div>
+        <div class="hub-desc">Browsing, saving, and publishing community recipes.</div>
+        <div class="hub-steps">→ Scenario 11</div>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🛒</div>
+        <div class="hub-name">Grocery list</div>
+        <div class="hub-desc">Opening and using the shopping list — share, delivery, edit.</div>
+        <div class="hub-steps">→ Scenario 12</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SCENARIO 01 -->
+  <div class="section" id="s01">
+    <div class="section-tag">Scenario 01</div>
+    <div class="section-title">🌱 First time open — Onboarding</div>
+    <div class="section-sub">Trigger: User installs app and opens it for the first time. No account, no data, no profile.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:900px;">
+
+          <!-- COLUMN 1: Quick-start screen -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">App opens for first time</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen"><div class="screen-badge">Screen 01</div>Welcome screen<div class="node-desc">"Plan meals your family will love"</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">Tap "Get started"</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen" style="border-color:#4ade8060;max-width:180px;"><div class="screen-badge">Screen 02</div>Quick start — one screen<div class="node-desc">Who's eating · ages · cultural / religious flag · how much time today. Language auto-detected.</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">Tap "Show my plan"</div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">AI generates first weekly plan<div class="node-desc">~5 sec. Uses age groups + flag + time. No gate-keeping.</div></div>
+          </div>
+
+          <div class="arrow-right" style="margin-top:0;margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <!-- COLUMN 2: Plan review + swap -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-screen"><div class="screen-badge">Screen 03</div>Your first week<div class="node-desc">Weekly plan shown — ready in seconds</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">User reviews plan</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Looks good</div>
+                <div class="node node-end-good">Plan confirmed<div class="node-desc">Grocery list generated automatically</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">Wants to swap</div>
+                <div class="node node-action">Tap 🔄 on meal card<div class="node-desc">Bottom sheet → 3 alternatives. Same rules. Tap to pick.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Swap confirmed ✓</div>
+              </div>
+            </div>
+            <div class="arrow-down"></div>
+            <!-- Phase 2 refinement note -->
+            <div class="node node-end-neutral" style="max-width:200px;border-style:dashed;margin-top:8px;">⟳ Phase 2: Refine later<div class="node-desc">After 2–3 sessions Sofra nudges: "Want to fine-tune your plan?" → opens preferences (dietary rules, budget, dislikes)</div></div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-system">Grocery list auto-generated<div class="node-desc">All meals this week combined. Sorted by category.</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Grocery list screen<div class="node-desc">Ready to shop or share</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Want to share list?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes</div>
+                <div class="node node-action">Share via WhatsApp / copy / print</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-skip">Not now</div>
+                <div class="node node-end-good">Home screen<div class="node-desc">Onboarding complete. Notification permission asked.</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 02 -->
+  <div class="section" id="s02">
+    <div class="section-tag">Scenario 02</div>
+    <div class="section-title">☀️ Daily check-in — Returning user</div>
+    <div class="section-sub">Trigger: User opens the app on a regular weekday morning. Plan already exists.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:1000px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">Opens app</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Today view<div class="node-desc">Breakfast, Lunch, Dinner for today</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Any action taken?</div>
+            <div class="arrow-down"></div>
+            <div class="branch" style="gap:8px;">
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Tap a meal</div>
+                <div class="node node-screen">Recipe detail<div class="node-desc">Full recipe, ingredients, steps</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Swap a meal</div>
+                <div class="node node-action">Tap 🔄 on meal card<div class="node-desc">Bottom sheet shows 3 alternatives. Same rules. Tap to confirm.</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Skip a meal</div>
+                <div class="node node-system">Slot marked skipped<div class="node-desc">Grocery list updated</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-skip">Just views</div>
+                <div class="node node-end-neutral">Closes app<div class="node-desc">Plan unchanged</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:16px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-decision">Start cooking?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes</div>
+                <div class="node node-screen">Cook Mode<div class="node-desc">Step-by-step. Timer. Full screen.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-action">Cook the meal</div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Rate dinner<div class="node-desc">👍 👎 or star rating</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-system">AI learns preference<div class="node-desc">Adjusts future meal ranking</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Day complete ✓</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">Not yet</div>
+                <div class="node node-system">Reminder sent at cook start time<div class="node-desc">Target time − prep+cook time</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-neutral">User returns later</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 03 -->
+  <div class="section" id="s03">
+    <div class="section-tag">Scenario 03</div>
+    <div class="section-title">🛵 Ordering out tonight</div>
+    <div class="section-sub">Trigger: User doesn't want to cook. One-tap override for any meal slot.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:800px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">User on today's plan</div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">Taps "We're ordering out" on dinner slot</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Override confirmation<div class="node-desc">"Just dinner, or the whole day?"</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Scope of override</div>
+            <div class="arrow-down"></div>
+            <div class="branch" style="gap:8px;">
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Just this meal</div>
+                <div class="node node-system">Single slot marked "Ordering out"<div class="node-desc">Ingredients for that meal removed from grocery list</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Plan updated ✓<div class="node-desc">Other meals unchanged</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Whole day</div>
+                <div class="node node-system">Full day marked "Busy day"<div class="node-desc">All 3 slots cleared. Grocery list updated.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Day cleared ✓</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:16px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-system">Pattern tracking begins<div class="node-desc">If "ordering out" on same weekday 3+ times...</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Pattern detected?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes — 3 occurrences</div>
+                <div class="node node-screen">Gentle suggestion<div class="node-desc">"Looks like Fridays are takeout nights — should we stop planning dinner on Fridays?"</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-decision">User agrees?</div>
+                <div class="arrow-down"></div>
+                <div class="branch">
+                  <div class="branch-item">
+                    <div class="branch-label branch-yes">Yes</div>
+                    <div class="node node-end-good">Friday dinners permanently cleared from plan</div>
+                  </div>
+                  <div class="branch-item">
+                    <div class="branch-label branch-no">No</div>
+                    <div class="node node-end-neutral">Dismissed. No change. Won't ask again soon.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">Not yet</div>
+                <div class="node node-end-neutral">Counter increments silently</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 04 -->
+  <div class="section" id="s04">
+    <div class="section-tag">Scenario 04</div>
+    <div class="section-title">👥 Guests coming for dinner</div>
+    <div class="section-sub">Trigger: User activates Guest Mode for a specific meal. Plan and grocery list scale up automatically.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:900px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">User on today's dinner slot</div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">Taps "Guests coming"</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Guest setup<div class="node-desc">"How many extra people?" + any dietary needs for this meal only</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">Enters: +3 guests, one vegetarian</div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">AI checks current dinner suggestion<div class="node-desc">Does it scale to 7 people? Is it guest-appropriate? Does it satisfy the vegetarian?</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Current meal suitable?</div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes — scales well</div>
+                <div class="node node-system">Ingredient quantities ×1.75<div class="node-desc">Grocery list updated for extra portions</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Updated meal card<div class="node-desc">"Serves 7 · Guest mode" badge shown</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Plan ready ✓<div class="node-desc">Guest profiles temporary — not saved to household</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No — doesn't work</div>
+                <div class="node node-system">AI suggests guest-appropriate alternative<div class="node-desc">Large-group tag, vegetarian-safe, impressive but not complex</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-decision">User approves new meal?</div>
+                <div class="arrow-down"></div>
+                <div class="branch">
+                  <div class="branch-item">
+                    <div class="branch-label branch-yes">Yes</div>
+                    <div class="node node-end-good">New meal locked in. Grocery list updated.</div>
+                  </div>
+                  <div class="branch-item">
+                    <div class="branch-label branch-alt">Suggest more</div>
+                    <div class="node node-system">Shows 3 more options</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 05 -->
+  <div class="section" id="s05">
+    <div class="section-tag">Scenario 05</div>
+    <div class="section-title">🥘 Leftover day</div>
+    <div class="section-sub">Trigger: User logs leftovers after a meal — system tracks them and suggests using them up before they expire.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:950px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">Meal just cooked</div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">User taps "Save leftovers"</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Leftover setup<div class="node-desc">"How many portions? Which family members?"</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Leftover Card created<div class="node-desc">Dish name + portions + expiry window (fish=1d, soup=4d, meat=3d)</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">AI checks: can leftovers cover a future meal?<div class="node-desc">Portions vs. household size</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Enough portions for a full meal?</div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes — covers all</div>
+                <div class="node node-system">Plan slot replaced with leftover<div class="node-desc">Grocery ingredients for that meal removed from shopping list</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Plan shows Leftover Card<div class="node-desc">"Using yesterday's chicken — reheating only"</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Leftover used ✓<div class="node-desc">Grocery list updated. Less waste.</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Partial — covers some</div>
+                <div class="node node-system">AI plans a complementary dish<div class="node-desc">Leftover chicken (2 portions) + new salad (4 portions) = dinner for 4</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Split meal plan shown<div class="node-desc">Leftover + side dish. Grocery list only for the side.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Hybrid meal planned ✓</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No — not enough</div>
+                <div class="node node-system">Leftover Card shown as snack option<div class="node-desc">Not used in main plan. Shows up as "available snack" for applicable profiles.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-decision">Expiry approaching?</div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Expiry reminder<div class="node-desc">"Use within 1 day or it expires" badge</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 06 -->
+  <div class="section" id="s06">
+    <div class="section-tag">Scenario 06</div>
+    <div class="section-title">🕌 Cultural occasion</div>
+    <div class="section-sub">Trigger: System calendar detects an upcoming occasion relevant to the household's cultural profile (e.g. Eid, Orthodox Christmas, Nowruz, Passover).</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:850px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-system">Calendar check — occasion detected<div class="node-desc">5 days before the event</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Occasion banner appears<div class="node-desc">"Eid Al-Fitr is in 5 days 🌙 — how would you like to plan for it?"</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">User's choice</div>
+            <div class="arrow-down"></div>
+            <div class="branch" style="gap:8px;">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Plan the whole week</div>
+                <div class="node node-system">AI replaces week with culturally-appropriate meals<div class="node-desc">Traditional dishes for the occasion. Fasting days respected if applicable.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Full week plan shown<div class="node-desc">Specialty ingredient shopping list generated early</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Week plan updated ✓</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Just the day</div>
+                <div class="node node-system">Eid day replaced only<div class="node-desc">Traditional feast meal suggested. Rest of week unchanged.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Single day updated ✓</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-skip">Skip this year</div>
+                <div class="node node-end-neutral">Dismissed. Won't show for this occasion this year.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:16px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-system">Early shopping list generated<div class="node-desc">Specialty items flagged: "Order 4 days ahead — may not be in regular stores"</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Special grocery list<div class="node-desc">Standard items + specialty items separated</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-end-good">User prepared early ✓<div class="node-desc">No last-minute scramble</div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 07 -->
+  <div class="section" id="s07">
+    <div class="section-tag">Scenario 07</div>
+    <div class="section-title">📖 Adding a recipe</div>
+    <div class="section-sub">Trigger: User taps "Add recipe" from the My Recipes screen. Four input paths, all lead to the same end state.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:1100px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">Taps "Add a recipe"</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen"><div class="screen-badge">Screen 06</div>Choose input method</div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Which method?</div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;gap:16px;flex-direction:column;">
+            <div style="display:flex;gap:8px;flex-wrap:nowrap;">
+
+              <!-- Method 1 -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;min-width:150px;">
+                <div class="branch-label branch-alt" style="white-space:nowrap;">✍️ Type / paste</div>
+                <div class="node node-action">User types or pastes recipe text</div>
+                <div class="arrow-down"></div>
+                <div class="node node-system">AI parses: name, ingredients, steps, time</div>
+              </div>
+
+              <!-- Method 2 -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;min-width:150px;">
+                <div class="branch-label branch-alt" style="white-space:nowrap;">🔗 Paste a link</div>
+                <div class="node node-action">User pastes URL</div>
+                <div class="arrow-down"></div>
+                <div class="node node-system">AI fetches &amp; extracts recipe from page</div>
+              </div>
+
+              <!-- Method 3 -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;min-width:150px;">
+                <div class="branch-label branch-alt" style="white-space:nowrap;">📷 Take photo</div>
+                <div class="node node-action">User photographs recipe card / cookbook</div>
+                <div class="arrow-down"></div>
+                <div class="node node-system">OCR reads text → AI extracts recipe</div>
+                <div class="arrow-down"></div>
+                <div class="node node-system" style="border-color:#a78bfa50;color:#c4b5fd;">✨ Photo quality checked<div class="node-desc">Auto-enhanced if low quality</div></div>
+              </div>
+
+              <!-- Method 4 -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;min-width:160px;">
+                <div class="branch-label branch-alt" style="white-space:nowrap;">🎬 Paste video link</div>
+                <div class="node node-action">User pastes YouTube / TikTok / Reels URL</div>
+                <div class="arrow-down"></div>
+                <div class="node node-decision">Has captions / description?</div>
+                <div class="arrow-down"></div>
+                <div class="branch">
+                  <div class="branch-item">
+                    <div class="branch-label branch-yes">Yes</div>
+                    <div class="node node-system">AI extracts recipe from caption</div>
+                  </div>
+                  <div class="branch-item">
+                    <div class="branch-label branch-no">No</div>
+                    <div class="node node-screen">Ask for ingredient list<div class="node-desc">Video thumbnail saved. User pastes list.</div></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-system">Auto-tag: dietary compliance, time tier, kitchen scenario</div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Hard Rule conflict check<div class="node-desc">Does this recipe violate any household rule?</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Conflict found?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes</div>
+                <div class="node node-screen">Warning shown<div class="node-desc">"Contains pork — conflicts with Layla's Halal rule. Save as personal only?"</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Saved as personal recipe only</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No</div>
+                <div class="node node-screen">Review screen<div class="node-desc">User confirms auto-filled data, sets visibility</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Saved to My Recipes ✓<div class="node-desc">Added to family planning pool if "Everyone" visibility set</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 08 -->
+  <div class="section" id="s08">
+    <div class="section-tag">Scenario 08</div>
+    <div class="section-title">🍳 Cook Mode</div>
+    <div class="section-sub">Trigger: User taps "Start cooking" from either the recipe detail page or the day's plan view.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:800px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">Taps "Start cooking"</div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Recipe + steps loaded from cache<div class="node-desc">Works offline. Screen stay-on enabled.</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Cook Mode — full screen<div class="node-desc">Step 1 of N shown. Ingredients summary at top.</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Timer starts if step has a duration<div class="node-desc">"Simmer for 15 minutes" → 15:00 countdown</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Timer done / step done?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Step done → Next</div>
+                <div class="node node-screen">Next step shown<div class="node-desc">Progress bar advances</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Need to pause</div>
+                <div class="node node-screen">Pause screen<div class="node-desc">Timer paused. Screen dim allowed.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-decision">Recipe from video?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes</div>
+                <div class="node node-screen">Video side panel available<div class="node-desc">Tap to show/hide original video</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No</div>
+                <div class="node node-end-neutral">Steps only view</div>
+              </div>
+            </div>
+            <div style="margin-top:16px;"></div>
+            <div class="node node-screen">Final step — "All done! 🎉"</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Rate this meal<div class="node-desc">👍 Loved it / 👎 Not for us / ★ Add to favourites</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Rating saved. AI adjusts future meal ranking.</div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Any leftovers?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes</div>
+                <div class="node node-screen">Leftover logging<div class="node-desc">"How many portions are left?"</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-system">Leftover Card created → plan updated</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No</div>
+                <div class="node node-end-good">Meal complete ✓<div class="node-desc">Back to today's plan</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 09 -->
+  <div class="section" id="s09">
+    <div class="section-tag">Scenario 09</div>
+    <div class="section-title">🏠🏠 Split household — co-parenting</div>
+    <div class="section-sub">Trigger: Family has shared custody. Child spends alternate days at two separate homes. Both parents need the child's dietary restrictions respected independently.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:950px;">
+
+          <!-- Parent A setup -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry" style="background:#E8553D20;border-color:#E8553D;">Parent A sets up profile</div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">Adds child "Mila, age 7"<div class="node-desc">Hard Rules: nut allergy, no shellfish</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Family Settings → Share<div class="node-desc">"Share Mila's profile with co-parent"</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Profile Share Code generated<div class="node-desc">KID-7X9P-MILA</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">Sends code to Parent B</div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <!-- Parent B setup -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry" style="background:#60a5fa20;border-color:#60a5fa;color:#60a5fa;">Parent B — separate household</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Enter Share Code<div class="node-desc">KID-7X9P-MILA</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Mila's Hard Rules synced — read-only<div class="node-desc">Parent B cannot edit Mila's restrictions. Only Parent A can.</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Set Mila's schedule<div class="node-desc">"Which days is Mila with you?" — Mon/Wed/Fri</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Plan generated with Mila excluded on off-days<div class="node-desc">Tue/Thu/Sat/Sun → plan for Parent B's household only, no Mila</div></div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <!-- Ongoing -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-system">Ongoing sync<div class="node-desc">If Parent A updates Mila's Hard Rules, Parent B's plan re-checks automatically</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Parent B notified<div class="node-desc">"Mila's profile updated by her other parent. Your plan has been reviewed."</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Privacy enforced<div class="node-desc">Parent A never sees Parent B's meal plan or household data. Only child Hard Rules are shared.</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-end-good">Both homes protected ✓<div class="node-desc">Mila's allergies respected everywhere, always</div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 10 -->
+  <div class="section" id="s10">
+    <div class="section-tag">Scenario 10</div>
+    <div class="section-title">🎒 Packed lunch day</div>
+    <div class="section-sub">Trigger: A child profile with a school day scheduled. System plans a lunchbox meal instead of a cooked lunch.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:850px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-system">Plan generation — school day detected for Layla (age 9)</div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Lunch slot switched to "Packed lunch" mode<div class="node-desc">Rules: no reheat, no strong smells, nut-free (school toggle on)</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">Age group applied: 7–12<div class="node-desc">Standard lunchbox format. No finger-food-only restriction.</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Any leftovers suitable for lunchbox?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes</div>
+                <div class="node node-system">Leftover suggested for lunchbox<div class="node-desc">Cold-safe, child-appropriate</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Plan shows: "Layla's lunchbox — leftover pasta"</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No</div>
+                <div class="node node-system">New lunchbox meal planned<div class="node-desc">Wraps, sandwiches, rice box — age-appropriate, school-safe</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Plan shows: "Layla's lunchbox — chicken wrap"</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:8px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-system">Grocery list — "Packed Lunches" category added<div class="node-desc">Separate section so parent knows what to buy specifically for lunchboxes</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Work lunches also needed?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes (adult profile)</div>
+                <div class="node node-system">Work lunch planned<div class="node-desc">Microwave-reheatable flag ON if office has microwave. Otherwise cold-only.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Plan shows: "Your lunch — reheatable rice bowl"</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No</div>
+                <div class="node node-end-good">Lunchbox only planned ✓</div>
+              </div>
+            </div>
+            <div style="margin-top:16px;"></div>
+            <div class="node node-end-good">All packed lunches ready in plan ✓<div class="node-desc">Morning prep time estimated. Reminder sent night before.</div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 11 -->
+  <div class="section" id="s11">
+    <div class="section-tag">Scenario 11</div>
+    <div class="section-title">🌍 Community recipes <span style="font-size:13px;font-weight:700;color:#fbbf24;background:#2a200a;border:1px solid #fbbf2440;border-radius:8px;padding:3px 10px;margin-left:10px;vertical-align:middle;">Phase 2</span></div>
+    <div class="section-sub">MVP: Recipes can be shared one-to-one via link. No public feed in MVP. The flow below is the target Phase 2 design — not yet built.</div>
+    <div style="background:#1a1500;border:1px solid #fbbf2440;border-radius:12px;padding:12px 16px;margin-bottom:20px;font-size:12px;color:#fbbf24;">
+      ⚠️ <strong>Phase 2 only.</strong> In MVP, users can share a recipe by generating a private link (Settings → My Recipes → Share recipe). Recipients see a read-only view. There is no public feed, no community browse, and no public publishing in MVP.
+    </div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:950px;">
+
+          <!-- Browse path -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">Opens Community tab</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen"><div class="screen-badge">Screen 08</div>Community feed<div class="node-desc">Filtered to household's Hard Rules</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-action">Taps a recipe card</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Community recipe detail<div class="node-desc">Source tag: "Community recipe by [username]"</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">User action</div>
+            <div class="arrow-down"></div>
+            <div class="branch" style="gap:8px;">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Save to My Recipes</div>
+                <div class="node node-system">Saved to personal library<div class="node-desc">Hard Rule check run</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">In My Recipes ✓<div class="node-desc">Can be added to family plan</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Rate it</div>
+                <div class="node node-system">Rating added<div class="node-desc">Contributes to community score</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-neutral">Rating saved</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-skip">Just views</div>
+                <div class="node node-end-neutral">Back to feed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:16px;margin-right:8px;align-self:center;"></div>
+
+          <!-- Publish path -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">Taps "Publish a recipe"</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen"><div class="screen-badge">Screen 08</div>Publish screen<div class="node-desc">From existing My Recipes or new entry</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">First time publishing?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes</div>
+                <div class="node node-screen">One-tap community agreement<div class="node-desc">4-line terms: your recipe, original content, community use, right to remove</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-action">User agrees (timestamped)</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No — already agreed</div>
+                <div class="node node-end-neutral">Go straight to publish</div>
+              </div>
+            </div>
+            <div class="arrow-down"></div>
+            <div class="node node-system">AI moderation check<div class="node-desc">No harmful content, ingredients make sense</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">Passes check?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Yes</div>
+                <div class="node node-end-good">Published to community ✓<div class="node-desc">Source tag: "Community recipe" shown</div></div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-no">No</div>
+                <div class="node node-screen">Friendly flag shown<div class="node-desc">"We couldn't publish this — here's why"</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-warn">Returned to drafts</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO 12 -->
+  <div class="section" id="s12">
+    <div class="section-tag">Scenario 12</div>
+    <div class="section-title">🛒 Grocery list — shopping flow</div>
+    <div class="section-sub">Trigger: User opens the grocery list after the weekly plan is confirmed. Multiple paths depending on how they shop.</div>
+
+    <div class="scenario">
+      <div style="overflow-x:auto;">
+        <div style="display:flex;gap:0;align-items:flex-start;min-width:950px;">
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-entry">Opens Grocery List</div>
+            <div class="arrow-down"></div>
+            <div class="node node-screen">Grocery list screen<div class="node-desc">Sorted by category: Produce, Meat, Dairy, Pantry, Packed Lunches, Specialty</div></div>
+            <div class="arrow-down"></div>
+            <div class="node node-decision">How does user shop?</div>
+            <div class="arrow-down"></div>
+            <div class="branch" style="gap:8px;">
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Shops in person</div>
+                <div class="node node-action">Uses list in app while shopping<div class="node-desc">Taps items to check off</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Live checkoff view<div class="node-desc">Checked items move to bottom. Counter shows progress.</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">Shopping done ✓</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Sends to someone else</div>
+                <div class="node node-action">Taps Share</div>
+                <div class="arrow-down"></div>
+                <div class="node node-screen">Share options<div class="node-desc">WhatsApp, Telegram, copy text, print-ready PDF</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-good">List shared ✓</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Wants delivery</div>
+                <div class="node node-end-neutral" style="border-color:#fbbf2440;color:#fbbf24;">Coming soon (Phase 2)<div class="node-desc">For now: Export → WhatsApp the list to your delivery app manually</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow-right" style="margin-left:16px;margin-right:8px;align-self:center;"></div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div class="node node-decision">User edits the list?</div>
+            <div class="arrow-down"></div>
+            <div class="branch">
+              <div class="branch-item">
+                <div class="branch-label branch-yes">Removes / has an item</div>
+                <div class="node node-decision">Tap item → "Already bought this?"<div class="node-desc">Warning shown if removing something needed for a recipe</div></div>
+                <div class="arrow-down"></div>
+                <div class="branch" style="gap:6px;">
+                  <div class="branch-item" style="min-width:90px;">
+                    <div class="branch-label branch-alt" style="font-size:9px;">Keep on list</div>
+                    <div class="node node-end-neutral" style="font-size:10px;">No change</div>
+                  </div>
+                  <div class="branch-item" style="min-width:90px;">
+                    <div class="branch-label branch-yes" style="font-size:9px;">Move to Pantry</div>
+                    <div class="node node-end-good" style="font-size:10px;">Pantry updated ✓</div>
+                  </div>
+                  <div class="branch-item" style="min-width:90px;">
+                    <div class="branch-label branch-no" style="font-size:9px;">Remove</div>
+                    <div class="node node-end-neutral" style="font-size:10px;">List updated</div>
+                  </div>
+                </div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-alt">Adds an item</div>
+                <div class="node node-action">Freeform add<div class="node-desc">Added to "Other" category</div></div>
+                <div class="arrow-down"></div>
+                <div class="node node-end-neutral">List updated</div>
+              </div>
+              <div class="branch-item">
+                <div class="branch-label branch-skip">No edits</div>
+                <div class="node node-end-neutral">Uses as generated</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div style="text-align:center;padding:24px 0 48px;color:#374151;font-size:13px;">
+    User Flows — Intelligent Family Meal Planner · 12 Scenarios · All paths documented
+  </div>
+
+</div>
+</body>
+</html>

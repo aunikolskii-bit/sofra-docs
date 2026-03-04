@@ -295,6 +295,16 @@
   </nav>
 
 
+  <!-- Quick-access top tasks -->
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;">
+    <a href="#swap-meal" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">🔄 Change tonight's dinner</a>
+    <a href="#grocery-list" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">🛒 Grocery list</a>
+    <a href="#allergy-safety" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">⚠️ Allergies &amp; safety</a>
+    <a href="#account" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">🔗 Share with a partner</a>
+    <a href="#offline" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">📵 Offline</a>
+    <a href="#cancel-premium" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">⭐ Subscription</a>
+  </div>
+
   <!-- ── 1. GETTING STARTED ── -->
   <section class="help-section" id="getting-started">
     <div class="section-heading">
@@ -321,13 +331,9 @@
           <span class="article-toggle">+</span>
         </div>
         <div class="article-a">
-          <p>During your first-time setup, Sofra walks you through three quick steps:</p>
-          <ul>
-            <li><strong>Step 1 — Who's at the table:</strong> Add every person you cook for. Give them a name and an age group (adult, teenager, child, toddler). Age matters because Sofra automatically applies age-appropriate rules — for example, it won't suggest whole nuts or raw honey for children under 1.</li>
-            <li><strong>Step 2 — Dietary rules:</strong> Tap any rules that apply to each person. You can set different rules per person — one family member may be gluten-free while others aren't.</li>
-            <li><strong>Step 3 — Cooking style:</strong> Tell Sofra how you like to cook and when. This sets the complexity of recipes and how many active cooking nights per week to plan for.</li>
-          </ul>
-          <p>The whole setup takes about 60 seconds. You can always update everything later from your profile.</p>
+          <p>Sofra gets you to your first plan in under 60 seconds. The quick-start screen asks just four things: who you're cooking for, their ages, any cultural or religious flag (like halal or fasting), and roughly how much time you have to cook. That's it — Sofra generates your plan immediately.</p>
+          <p>You don't need to set up dietary rules upfront. Once you see your first plan, you can refine as you go: add an allergy, set a preference, adjust your cooking style. Nothing is permanent — everything can be changed at any time from your profile.</p>
+          <div class="tip"><strong>Tip:</strong> If someone at your table has a serious allergy, add it as a hard rule before generating your first plan — it takes 2 taps and means Sofra will never suggest a meal that breaks it.</div>
         </div>
       </div>
 
@@ -365,13 +371,20 @@
           <span class="article-toggle">+</span>
         </div>
         <div class="article-a">
-          <p>Sofra has a free plan that gives you full access to meal planning, the grocery list, and Cooking Mode. It's not a limited trial — you can use the core app indefinitely for free.</p>
-          <p>A premium plan adds extra features like advanced dietary filtering, the ability to save unlimited personal recipes, access to the full community library, and household sharing across more than two devices. You can see what's included in premium inside the app under <strong>Settings → Sofra Premium</strong>.</p>
+          <p>The core of Sofra is free — forever. That means: your weekly meal plan, your grocery list, Cooking Mode, and your family's dietary rules. No time limit, no crippled version.</p>
+          <p>A Premium plan adds features that go beyond the core:</p>
+          <ul>
+            <li><strong>Household sync</strong> — share your live plan with a partner on their own device, with real-time updates</li>
+            <li><strong>Unlimited personal recipes</strong> — save as many of your own recipes as you want (free plan: up to 10)</li>
+            <li><strong>Advanced dietary protocols</strong> — complex multi-rule combinations like low-FODMAP + gluten-free + calorie targets simultaneously</li>
+            <li><strong>Data export</strong> — download your full meal history, ratings, and household data</li>
+          </ul>
+          <p>Everything else — the week view, the community recipe browser, shopping mode, cooking reminders — is free for everyone. You can see the full comparison under <strong>Settings → Sofra Premium</strong>.</p>
           <div class="tip"><strong>No credit card required</strong> to get started. You'll only see upgrade prompts when you try to use a premium-only feature.</div>
         </div>
       </div>
 
-      <div class="article">
+      <div class="article" id="offline">
         <div class="article-q" onclick="toggle(this)">
           Does Sofra work without internet?
           <span class="article-toggle">+</span>
@@ -408,27 +421,27 @@
           <span class="article-toggle">+</span>
         </div>
         <div class="article-a">
-          <p>Sofra's AI builds your plan by solving a constraint puzzle — it finds meals that work for every person at your table simultaneously. It considers:</p>
+          <p>Sofra looks at everyone at your table simultaneously and finds meals that work for all of them at once. It weighs up:</p>
           <ul>
             <li>Every household member's hard dietary rules (allergies, halal, gluten-free, etc.) — these are never broken</li>
             <li>Soft preferences (dislikes, budget, spice tolerance) — respected where possible</li>
             <li>Cooking time and complexity based on your stated cooking style</li>
-            <li>Nutritional variety across the week — it avoids repeating the same proteins or cuisines too often</li>
+            <li>Variety across the week — no identical meal within 14 days, no same protein two nights in a row</li>
             <li>Your feedback from previous weeks — recipes you rated poorly won't come back</li>
           </ul>
-          <p>The plan refreshes each week on the day you first open the app for that week. You can also manually regenerate it at any time.</p>
+          <p>Sofra generates your new week's plan on Sunday evening by default. If you open the app before it's been generated, it creates one on the spot. You can also regenerate it manually at any time, and you can change the generation day in <strong>Settings → Meal planning → Weekly refresh</strong>.</p>
         </div>
       </div>
 
-      <div class="article">
+      <div class="article" id="swap-meal">
         <div class="article-q" onclick="toggle(this)">
           How do I swap a meal I don't want?
           <span class="article-toggle">+</span>
         </div>
         <div class="article-a">
-          <p>Tap any meal in your plan to open it, then tap the <strong>Swap</strong> button (↕ icon) in the top corner. Sofra will suggest 3 alternative meals that still fit your household's rules and the day's available cooking time.</p>
-          <p>Pick one, or tap "Show more options" to see additional suggestions. Your original choice is replaced immediately and the grocery list updates automatically.</p>
-          <div class="tip"><strong>Tip:</strong> Sofra learns from your swaps. If you consistently swap away from, say, fish dishes on weekdays, it will start suggesting them less often.</div>
+          <p>Tap the <strong>🔄 button directly on the meal card</strong>. A sheet slides up with 3 alternative meals that still fit your household's rules and the day's available cooking time. Tap the one you want — the grocery list updates immediately.</p>
+          <p>If none of the three work, tap "Show more" to see additional options.</p>
+          <div class="tip"><strong>Tip:</strong> Sofra learns from your swaps. If you consistently swap away from fish on weekdays, it will start suggesting it less often.</div>
         </div>
       </div>
 
@@ -473,6 +486,34 @@
             <li><strong>Add a soft rule:</strong> If there's a specific ingredient or cuisine you never want, you can add it as a soft rule in your profile. For example: "No liver dishes" or "Prefer not to have the same protein two nights in a row."</li>
           </ul>
           <p>After 2–3 weeks of use, most users find the suggestions feel noticeably more personalised.</p>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="article-q" onclick="toggle(this)">
+          When exactly is next week's plan generated? Can I change the day?
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-a">
+          <p>By default, Sofra generates your new weekly plan on <strong>Sunday evening</strong>. If you open the app before it's been generated that week, it creates one on the spot.</p>
+          <p>You can change the generation day and time in <strong>Settings → Meal planning → Weekly refresh</strong>. Some families prefer Friday so they can shop on Saturday morning with a fresh list.</p>
+          <div class="tip"><strong>You can always regenerate manually.</strong> Pull down on the home screen or tap the refresh icon in the top corner. Note: if you've already started shopping for the week, regenerating will change your grocery list — Sofra will warn you before it does this.</div>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="article-q" onclick="toggle(this)">
+          What if Sofra can't find a meal that fits everyone?
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-a">
+          <p>This can happen with very specific combinations of hard rules (for example, gluten-free + vegan + nut-free + halal all in one household). When Sofra can't find a perfect match, it won't silently give you something wrong. Instead it shows a transparent message explaining which rule it couldn't satisfy, and offers you three choices:</p>
+          <ul>
+            <li><strong>Try a different day</strong> — more flexibility on timing or cooking style may unlock more options</li>
+            <li><strong>Relax one rule temporarily</strong> — Sofra shows which rule is the bottleneck and lets you override it for just that meal</li>
+            <li><strong>Use Pantry Mode</strong> — cook something from what's already at home, bypassing the constraint</li>
+          </ul>
+          <p>In practice this is rare — the recipe library covers most combinations. AI-generated recipes exist specifically to fill gaps when the library can't.</p>
         </div>
       </div>
 
@@ -562,7 +603,7 @@
     </div>
     <div class="article-grid">
 
-      <div class="article">
+      <div class="article" id="grocery-list">
         <div class="article-q" onclick="toggle(this)">
           How does the grocery list work?
           <span class="article-toggle">+</span>
@@ -636,13 +677,29 @@
 
       <div class="article">
         <div class="article-q" onclick="toggle(this)">
+          I already bought some ingredients — why did they disappear from my list?
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-a">
+          <p>This happens when you swap or skip a meal after you've already shopped — Sofra removes the ingredients for the old meal and adds the ones for the new one. It's automatic to keep the list accurate, but it can be frustrating if you've already bought those items.</p>
+          <p>When Sofra detects that you've already done some shopping (it can see checked-off items), it warns you before making changes and gives you three options:</p>
+          <ul>
+            <li><strong>Keep on list</strong> — the item stays, so you can still use it</li>
+            <li><strong>Move to Pantry</strong> — marks it as something you have at home, available for future suggestions</li>
+            <li><strong>Remove</strong> — removes it from the list as planned</li>
+          </ul>
+          <div class="tip"><strong>Safe rule of thumb:</strong> Do your plan swaps and skips before you shop. Once you're done shopping, Sofra assumes the list is final and won't change it automatically.</div>
+        </div>
+      </div>
+
+      <div class="article" id="grocery-delivery">
+        <div class="article-q" onclick="toggle(this)">
           Can I order my groceries for delivery?
           <span class="article-toggle">+</span>
         </div>
         <div class="article-a">
-          <p>Yes — tap the <strong>Export</strong> button (⬆ icon) in the grocery list and choose <strong>"Order for delivery"</strong>. This sends your list directly to a connected grocery delivery service.</p>
-          <p>Sofra supports the major delivery services available in your region. You can set a preferred provider in <strong>Settings → Grocery → Delivery service</strong>. If you haven't linked a provider yet, Sofra will show you the available options when you tap "Order for delivery" for the first time.</p>
-          <div class="tip"><strong>Tip:</strong> The items are pre-filled in your delivery basket, but you review and confirm the order before anything is purchased. Sofra never places an order without you explicitly checking out.</div>
+          <p><strong>Coming soon.</strong> Grocery delivery integration is on the roadmap but not yet available. For now, the Export button lets you share your list via WhatsApp, copy it to clipboard, or print it — all of which make it easy to hand to a delivery service or shopping app manually.</p>
+          <div class="tip"><strong>Quick workaround:</strong> WhatsApp the list to yourself or a partner, then use it to place an order in your preferred delivery app.</div>
         </div>
       </div>
 
@@ -657,6 +714,23 @@
       <h2>Dietary rules &amp; family</h2>
     </div>
     <div class="article-grid">
+
+      <div class="article" id="allergy-safety">
+        <div class="article-q" onclick="toggle(this)">
+          Can Sofra guarantee my family's allergy safety?
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-a">
+          <p>Sofra will <strong>never suggest a meal that contains an ingredient you've marked as a hard rule</strong> — that guarantee is absolute and built into every plan it generates.</p>
+          <p>However, Sofra cannot guarantee safety from things outside its control:</p>
+          <ul>
+            <li><strong>Cross-contamination</strong> — a recipe may be nut-free, but an ingredient might be processed in a facility that handles nuts. Always check product labels.</li>
+            <li><strong>Restaurant or takeaway food</strong> — Sofra only controls plans you cook at home from the listed ingredients.</li>
+            <li><strong>Recipe inaccuracies</strong> — if you spot an ingredient in a recipe that shouldn't be there, tap "Report a problem" immediately.</li>
+          </ul>
+          <div class="warning"><strong>Sofra is a planning tool, not a medical device.</strong> For life-threatening allergies, always verify ingredients independently. Never rely solely on any app for allergy safety.</div>
+        </div>
+      </div>
 
       <div class="article">
         <div class="article-q" onclick="toggle(this)">
@@ -873,11 +947,47 @@
 
       <div class="article">
         <div class="article-q" onclick="toggle(this)">
-          I forgot how to do something — is there a tutorial I can re-watch?
+          I forgot how something works — where can I find quick help?
           <span class="article-toggle">+</span>
         </div>
         <div class="article-a">
-          <p>Yes. Go to <strong>Settings → Replay onboarding tour</strong>. This walks you through the main app features again at your own pace, without resetting any of your data or settings.</p>
+          <p>Go to <strong>Settings → Quick help</strong>. This shows brief tips for all the main features at your own pace, without changing any of your data or settings. You can also tap the <strong>?</strong> icon on any screen to get context-sensitive help for exactly what you're looking at.</p>
+        </div>
+      </div>
+
+      <div class="article" id="cancel-premium">
+        <div class="article-q" onclick="toggle(this)">
+          How do I cancel Premium? What happens after I cancel?
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-a">
+          <p>You can cancel Premium at any time through the app store where you subscribed — Apple App Store or Google Play. Go to your subscription settings there and cancel.</p>
+          <p>When you cancel:</p>
+          <ul>
+            <li>You keep Premium until the end of your current billing period</li>
+            <li>After that, your account reverts to the free plan — your data, plans, and settings are all kept</li>
+            <li>Personal recipes over the free limit (10) are preserved but hidden until you re-subscribe or delete the excess</li>
+            <li>Household sync pauses — your partner can still view the plan but real-time updates stop</li>
+          </ul>
+          <p>To restore a purchase on a new device, sign in with the same account and tap <strong>Restore purchases</strong> in <strong>Settings → Sofra Premium</strong>.</p>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="article-q" onclick="toggle(this)">
+          Will Sofra send me too many notifications? How do I control them?
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-a">
+          <p>Sofra keeps notifications minimal by design. Here's what it sends and when:</p>
+          <ul>
+            <li><strong>Cooking reminder</strong> — only when you've set one manually for a specific meal. Never automatic.</li>
+            <li><strong>Defrost reminder</strong> — the evening before a meal that needs frozen ingredients. Can be turned off.</li>
+            <li><strong>Plan ready</strong> — one notification when your new weekly plan is generated. Can be turned off.</li>
+            <li><strong>"Recipe fixed" confirmation</strong> — only if you previously reported a problem. One notification, then done.</li>
+          </ul>
+          <p>You can control all of these in <strong>Settings → Notifications</strong>, including setting quiet hours so nothing comes through during school runs, work hours, or at night.</p>
+          <div class="tip"><strong>One-tap silence:</strong> Turn off all Sofra notifications at once in your phone's system settings (Settings → Apps → Sofra → Notifications). Your data and plan are unaffected.</div>
         </div>
       </div>
 
@@ -888,8 +998,8 @@
   <!-- Contact strip -->
   <div class="contact-strip">
     <h3>Still need help?</h3>
-    <p>Our team is real people — we read every message and reply within a few hours.</p>
-    <a class="contact-btn" href="mailto:support@sofra.app">Chat with us →</a>
+    <p>The fastest route is the <strong>in-app "Report a problem"</strong> button — most issues are handled automatically. For everything else, our team reads every message and usually replies within 1–2 business days.</p>
+    <a class="contact-btn" href="mailto:support@sofra.app">Email us →</a>
   </div>
 
 </div>

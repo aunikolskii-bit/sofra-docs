@@ -2067,7 +2067,7 @@
           <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
             <div class="node node-entry" data-en="User adds new hard rule (e.g. nut allergy for child)" data-ru="Пользователь добавляет жёсткое правило (например, аллергия на орехи)">New hard rule added<div class="node-desc">e.g. "Mia — nut allergy"</div></div>
             <div class="arrow-down"></div>
-            <div class="node node-system" data-en="System rescans all meals in current 7-day window" data-ru="Система сканирует все блюда текущих 7 дней">Rescan triggered<div class="node-desc">Every meal for the current week checked against the new rule. Runs in &lt;2 seconds.</div></div>
+            <div class="node node-system" data-en="System rescans all meals in the current week plan" data-ru="Система сканирует все блюда текущего недельного плана">Rescan triggered<div class="node-desc">Every meal for the current week checked against the new rule. Runs in &lt;2 seconds.</div></div>
             <div class="arrow-down"></div>
             <div class="node node-decision" data-en="Any conflicts found?" data-ru="Найдены конфликты?">Any conflicts?</div>
           </div>
@@ -2181,7 +2181,7 @@
             <div class="arrow-down"></div>
             <div class="node node-screen" data-en="Swap confirmed screen — shows grocery changes" data-ru="Экран подтверждения замены — показывает изменения в списке">Swap confirmed + diff<div class="node-desc">"✓ Swapped. Grocery list updated." → tap to see diff: + Chicken breast 300g · − Beef mince 400g</div></div>
             <div class="arrow-down"></div>
-            <div class="node node-decision" data-en="Items removed covered by pantry?" data-ru="Убранные продукты есть в кладовой?">Pantry covers removed items?</div>
+            <div class="node node-decision" data-en="Items removed covered by pantry?" data-ru="Убранные продукты есть в запасах?">Pantry covers removed items?</div>
           </div>
 
           <div class="arrow-right"></div>
@@ -2189,9 +2189,9 @@
           <div class="branch">
             <div class="branch-item">
               <div class="branch-label branch-yes" data-en="Yes — already have it" data-ru="Да — уже есть">Yes</div>
-              <div class="node node-system" data-en="New items added to grocery list. Removed items stay in pantry — not re-added to list." data-ru="Новые продукты добавлены в список. Убранные остаются в кладовой — в список не добавляются.">Pantry item kept<div class="node-desc">Removed item stays in pantry stock. Grocery list only shows what still needs to be bought.</div></div>
+              <div class="node node-system" data-en="New items added to grocery list. Removed items stay in pantry — not re-added to list." data-ru="Новые продукты добавлены в список. Убранные остаются в запасах — в список не добавляются.">Pantry item kept<div class="node-desc">Removed item stays in pantry stock. Grocery list only shows what still needs to be bought.</div></div>
               <div class="arrow-down"></div>
-              <div class="node node-end-good" data-en="✓ Swap done. Grocery list is accurate. Pantry unchanged." data-ru="✓ Замена выполнена. Список точный. Кладовая не тронута.">✓ Accurate list</div>
+              <div class="node node-end-good" data-en="✓ Swap done. Grocery list is accurate. Pantry unchanged." data-ru="✓ Замена выполнена. Список точный. Запасы не тронуты.">✓ Accurate list</div>
             </div>
             <div class="branch-item">
               <div class="branch-label branch-no" data-en="No — need to buy" data-ru="Нет — нужно купить">No</div>
@@ -2630,9 +2630,9 @@ const RU = {
   "Option shown: \"Remind me to start\"": "Показана опция: «Напомнить начать»",
   "Override confirmation": "Подтверждение отмены",
   "Override logged": "Отмена зафиксирована",
-  "Pantry covers removed items?": "Кладовая покрывает удалённые продукты?",
-  "Pantry item kept": "Продукт из кладовой сохранён",
-  "Pantry updated ✓": "Кладовая обновлена ✓",
+  "Pantry covers removed items?": "Убранные продукты есть в запасах?",
+  "Pantry item kept": "Продукт из запасов сохранён",
+  "Pantry updated ✓": "Запасы обновлены ✓",
   "Parent A sets up profile": "Родитель А настраивает профиль",
   "Parent B notified": "Родитель Б уведомлён",
   "Parent B — separate household": "Родитель Б — отдельный дом",

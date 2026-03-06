@@ -6,1086 +6,1116 @@
 <title>Sofra — Help Centre</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: #0a0a0a;
-    color: #ccc;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-  }
-
-  /* ── Header ── */
-  .site-header {
-    background: #0d0d0d;
-    border-bottom: 1px solid #1a1a1a;
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo {
-    font-size: 20px;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: -0.5px;
-  }
+  body { background: #0a0a0a; color: #ccc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; line-height: 1.7; }
+  
+  .site-header { background: #0d0d0d; border-bottom: 1px solid #1a1a1a; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .logo { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
   .logo span { color: #4ade80; }
-  .header-tag {
-    font-size: 12px;
-    color: #555;
-  }
-
-  /* ── Hero ── */
-  .hero {
-    background: linear-gradient(180deg, #0f1a0f 0%, #0a0a0a 100%);
-    padding: 48px 24px 40px;
-    text-align: center;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .hero h1 {
-    font-size: 28px;
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-  }
-  .hero p {
-    font-size: 14px;
-    color: #666;
-    max-width: 420px;
-    margin: 0 auto 24px;
-  }
-
-  /* ── Search bar (visual only) ── */
-  .search-bar {
-    max-width: 480px;
-    margin: 0 auto;
-    background: #111;
-    border: 1px solid #2a2a2a;
-    border-radius: 14px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .search-bar span { font-size: 16px; }
-  .search-bar input {
-    background: none;
-    border: none;
-    outline: none;
-    color: #888;
-    font-size: 14px;
-    flex: 1;
-    font-family: inherit;
-  }
-
-  /* ── Layout ── */
-  .page {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-
-  /* ── Section navigation pills ── */
-  .section-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 48px;
-  }
-  .section-nav a {
-    background: #111;
-    border: 1px solid #2a2a2a;
-    border-radius: 20px;
-    padding: 7px 14px;
-    font-size: 13px;
-    color: #888;
-    text-decoration: none;
-    transition: all 0.15s;
-  }
-  .section-nav a:hover {
-    border-color: #4ade80;
-    color: #4ade80;
-  }
-
-  /* ── Help section ── */
-  .help-section {
-    margin-bottom: 52px;
-    scroll-margin-top: 80px;
-  }
-  .section-heading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .section-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: #0f2a1a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .section-heading h2 {
-    font-size: 18px;
-    font-weight: 800;
-    color: #fff;
-  }
-
-  /* ── Article cards ── */
-  .article-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .article {
-    background: #0d0d0d;
-    border: 1px solid #1a1a1a;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 2px;
-  }
-
-  .article-q {
-    padding: 14px 18px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    user-select: none;
-  }
-  .article-q:hover { background: #111; }
-
-  .article-toggle {
-    font-size: 16px;
-    color: #4ade80;
-    flex-shrink: 0;
-    margin-top: 1px;
-    font-weight: 400;
-  }
-
-  .article-a {
-    padding: 0 18px 16px;
-    font-size: 13px;
-    color: #888;
-    line-height: 1.75;
-    display: none;
-    border-top: 1px solid #1a1a1a;
-  }
-  .article-a.open {
-    display: block;
-    padding-top: 14px;
-  }
-  .article-a p { margin-bottom: 10px; }
-  .article-a p:last-child { margin-bottom: 0; }
-  .article-a strong { color: #ccc; }
-  .article-a ul {
-    padding-left: 18px;
-    margin: 8px 0;
-  }
-  .article-a ul li {
-    margin-bottom: 6px;
-  }
-  .article-a .tip {
-    background: #0a1a0a;
-    border: 1px solid #1a3a1a;
-    border-radius: 8px;
-    padding: 10px 12px;
-    margin-top: 10px;
-    font-size: 12px;
-    color: #4a8a5a;
-  }
-  .article-a .tip strong { color: #4ade80; }
-  .article-a .warning {
-    background: #1a1000;
-    border: 1px solid #3a2800;
-    border-radius: 8px;
-    padding: 10px 12px;
-    margin-top: 10px;
-    font-size: 12px;
-    color: #8a6a30;
-  }
-
-  /* ── Contact strip ── */
-  .contact-strip {
-    background: #0f2a1a;
-    border: 1px solid #1a4a2a;
-    border-radius: 16px;
-    padding: 28px 24px;
-    text-align: center;
-    margin-top: 24px;
-  }
-  .contact-strip h3 {
-    font-size: 16px;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-  .contact-strip p {
-    font-size: 13px;
-    color: #4a8a5a;
-    margin-bottom: 18px;
-  }
-  .contact-btn {
-    display: inline-block;
-    background: #4ade80;
-    color: #000;
-    font-weight: 800;
-    font-size: 14px;
-    padding: 12px 28px;
-    border-radius: 12px;
-    text-decoration: none;
-  }
-
-  /* ── Footer ── */
-  footer {
-    text-align: center;
-    padding: 32px 24px;
-    font-size: 12px;
-    color: #333;
-    border-top: 1px solid #1a1a1a;
-  }
+  .header-tag { font-size: 12px; color: #555; }
+  
+  .lang-toggle { display: flex; gap: 4px; margin-left: auto; flex-shrink: 0; }
+  .lang-btn { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 16px; border: 1px solid #374151; background: transparent; color: #6B7280; cursor: pointer; transition: all 0.15s; letter-spacing: 0.5px; }
+  .lang-btn:hover { border-color: #4ade8060; color: #4ade80; }
+  .lang-btn.active { background: #4ade80; border-color: #4ade80; color: #000; }
+  
+  .hero { background: linear-gradient(180deg, #0f1a0f 0%, #0a0a0a 100%); padding: 48px 24px 40px; text-align: center; border-bottom: 1px solid #1a1a1a; }
+  .hero h1 { font-size: 28px; font-weight: 900; color: #fff; margin-bottom: 10px; letter-spacing: -0.5px; }
+  .hero p { font-size: 14px; color: #666; max-width: 420px; margin: 0 auto 24px; }
+  
+  .search-bar { max-width: 480px; margin: 0 auto; background: #111; border: 1px solid #2a2a2a; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+  .search-bar input { flex: 1; background: transparent; border: none; color: #ccc; font-size: 14px; outline: none; }
+  .search-bar input::placeholder { color: #555; }
+  
+  .section-nav { display: flex; gap: 8px; padding: 24px; overflow-x: auto; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid #1a1a1a; }
+  .nav-pill { padding: 8px 14px; border-radius: 20px; border: 1px solid #2a2a2a; background: transparent; color: #888; font-size: 13px; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+  .nav-pill:hover { border-color: #4ade80; color: #4ade80; }
+  .nav-pill.active { background: #4ade80; border-color: #4ade80; color: #000; }
+  
+  .quick-access { padding: 32px 24px; border-bottom: 1px solid #1a1a1a; }
+  .quick-access h2 { font-size: 14px; font-weight: 600; color: #888; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+  .quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .quick-card { background: #111; border: 1px solid #1a1a1a; border-radius: 10px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s; }
+  .quick-card:hover { border-color: #4ade80; background: #0d1a0d; }
+  .quick-card-icon { font-size: 20px; margin-bottom: 8px; }
+  .quick-card-label { font-size: 12px; color: #888; line-height: 1.4; }
+  
+  .content { max-width: 860px; margin: 0 auto; padding: 32px 24px; }
+  .faq-section { margin-bottom: 48px; }
+  .section-heading { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 28px; padding-bottom: 12px; border-bottom: 2px solid #4ade80; }
+  .faq-item { margin-bottom: 24px; border: 1px solid #1a1a1a; border-radius: 12px; overflow: hidden; }
+  .faq-question { padding: 16px 20px; background: #111; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; }
+  .faq-question:hover { background: #1a1a1a; }
+  .faq-q-text { font-size: 15px; font-weight: 600; color: #fff; }
+  .faq-toggle { font-size: 18px; color: #4ade80; }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #0a0a0a; border-top: 1px solid #1a1a1a; }
+  .faq-answer.open { max-height: 2000px; transition: max-height 0.3s ease-in; }
+  .faq-answer-content { padding: 20px; font-size: 14px; color: #bbb; line-height: 1.8; }
+  .faq-answer-content p { margin-bottom: 14px; }
+  .faq-answer-content ul, .faq-answer-content ol { margin: 14px 0 14px 20px; }
+  .faq-answer-content li { margin-bottom: 10px; }
+  .faq-answer-content strong { color: #fff; }
+  .faq-answer-content em { color: #999; font-style: italic; }
+  .faq-tip, .faq-warning, .faq-note { margin: 14px 0; padding: 14px; border-radius: 8px; font-size: 13px; border-left: 3px solid; }
+  .faq-tip { background: #0d1a0d; border-left-color: #4ade80; color: #aaa; }
+  .faq-warning { background: #1a0d0d; border-left-color: #ff6b6b; color: #aaa; }
+  .faq-note { background: #0d1a1a; border-left-color: #4db8ff; color: #aaa; }
+  .faq-answer-content table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px; }
+  .faq-answer-content table th, .faq-answer-content table td { padding: 10px; text-align: left; border: 1px solid #1a1a1a; }
+  .faq-answer-content table th { background: #111; color: #fff; font-weight: 600; }
+  .faq-answer-content table td { background: #0a0a0a; color: #bbb; }
+  
+  .contact-strip { background: #111; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; padding: 32px 24px; text-align: center; }
+  .contact-strip h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 12px; }
+  .contact-strip p { font-size: 14px; color: #888; margin-bottom: 12px; }
+  .contact-strip a { color: #4ade80; text-decoration: none; font-weight: 600; }
+  .contact-strip a:hover { text-decoration: underline; }
+  
+  footer { background: #0a0a0a; border-top: 1px solid #1a1a1a; padding: 28px 24px; text-align: center; color: #555; font-size: 12px; }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header class="site-header">
   <div class="logo">Sofra<span>.</span></div>
-  <div class="header-tag">Help Centre</div>
+  <div class="header-tag" data-en="Help Centre" data-ru="Центр помощи"></div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+  </div>
 </header>
 
-<!-- Hero -->
-<div class="hero">
-  <h1>How can we help?</h1>
-  <p>Find answers to the most common questions about Sofra — from getting started to cooking mode and everything in between.</p>
+<section class="hero">
+  <h1 data-en="How can we help?" data-ru="Чем мы можем помочь?"></h1>
+  <p data-en="Find answers to the most common questions about Sofra — from getting started to cooking mode and everything in between." data-ru="Ответы на самые частые вопросы о Sofra — от первых шагов до режима готовки."></p>
   <div class="search-bar">
+    <input type="text" data-en-placeholder="Search help articles…" data-ru-placeholder="Поиск по статьям…">
     <span>🔍</span>
-    <input type="text" placeholder="Search help articles…" />
   </div>
-</div>
+</section>
 
-<!-- Page content -->
-<div class="page">
+<nav class="section-nav">
+  <button class="nav-pill active" onclick="filterSection('getting-started')" data-en="🚀 Getting started" data-ru="🚀 Начало работы"></button>
+  <button class="nav-pill" onclick="filterSection('weekly-plan')" data-en="📅 Your weekly plan" data-ru="📅 Недельный план"></button>
+  <button class="nav-pill" onclick="filterSection('recipes')" data-en="🍳 Recipes" data-ru="🍳 Рецепты"></button>
+  <button class="nav-pill" onclick="filterSection('grocery')" data-en="🛒 Grocery & shopping" data-ru="🛒 Покупки"></button>
+  <button class="nav-pill" onclick="filterSection('dietary')" data-en="🥗 Dietary rules & family" data-ru="🥗 Правила питания и семья"></button>
+  <button class="nav-pill" onclick="filterSection('cooking')" data-en="⏱️ Cooking mode" data-ru="⏱️ Режим готовки"></button>
+  <button class="nav-pill" onclick="filterSection('account')" data-en="🔐 Account & privacy" data-ru="🔐 Аккаунт и приватность"></button>
+</nav>
 
-  <!-- Section navigation -->
-  <nav class="section-nav">
-    <a href="#getting-started">🚀 Getting started</a>
-    <a href="#weekly-plan">📅 Your weekly plan</a>
-    <a href="#recipes">🍳 Recipes</a>
-    <a href="#grocery">🛒 Grocery & shopping</a>
-    <a href="#dietary">🥗 Dietary rules & family</a>
-    <a href="#cooking-mode">⏱️ Cooking mode</a>
-    <a href="#account">🔐 Account & privacy</a>
-  </nav>
+<section class="quick-access">
+  <h2 data-en="Quick access" data-ru="Быстрый доступ"></h2>
+  <div class="quick-grid">
+    <div class="quick-card"><div class="quick-card-icon">🔄</div><div class="quick-card-label" data-en="Change tonight's dinner" data-ru="Заменить ужин"></div></div>
+    <div class="quick-card"><div class="quick-card-icon">🛒</div><div class="quick-card-label" data-en="Grocery list" data-ru="Список покупок"></div></div>
+    <div class="quick-card"><div class="quick-card-icon">⚠️</div><div class="quick-card-label" data-en="Allergies & safety" data-ru="Аллергии и безопасность"></div></div>
+    <div class="quick-card"><div class="quick-card-icon">👤</div><div class="quick-card-label" data-en="Family & preferences" data-ru="Семья и предпочтения"></div></div>
+    <div class="quick-card"><div class="quick-card-icon">🔐</div><div class="quick-card-label" data-en="Account (save & restore)" data-ru="Аккаунт (сохранение)"></div></div>
+    <div class="quick-card"><div class="quick-card-icon">📵</div><div class="quick-card-label" data-en="Offline" data-ru="Без интернета"></div></div>
+    <div class="quick-card"><div class="quick-card-icon">🛟</div><div class="quick-card-label" data-en="Report a problem" data-ru="Сообщить о проблеме"></div></div>
+  </div>
+</section>
 
+<div class="content">
 
-  <!-- Quick-access top tasks -->
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;">
-    <a href="#swap-meal" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">🔄 Change tonight's dinner</a>
-    <a href="#grocery-list" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">🛒 Grocery list</a>
-    <a href="#allergy-safety" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">⚠️ Allergies &amp; safety</a>
-    <a href="#account" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">🔗 Share with a partner</a>
-    <a href="#offline" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">📵 Offline</a>
-    <a href="#cancel-premium" style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:20px;padding:9px 16px;font-size:13px;color:#4ade80;text-decoration:none;">⭐ Subscription</a>
+<!-- SECTION 1: GETTING STARTED -->
+<div class="faq-section" data-section="getting-started">
+  <h2 class="section-heading" data-en="Getting started" data-ru="Начало работы"></h2>
+  
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What is Sofra and how does it work?" data-ru="Что такое Sofra и как это работает?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra is a meal planning app that builds a personalised weekly plan for your household — automatically. Every week, it looks at who you're cooking for, any dietary rules, your cooking style, and what's realistic for your schedule, and generates a plan covering breakfast, lunch, and dinner that works for everyone." data-ru="Sofra — приложение для планирования питания, которое автоматически составляет недельный план для вашей семьи. Каждую неделю оно учитывает, для кого вы готовите, диетические правила, ваш стиль готовки и доступное время — и создаёт план завтраков, обедов и ужинов, который подходит всем."></p>
+        <p data-en="You don't search for recipes or browse through lists. Sofra just shows you what to cook each day, with the shopping list already built. When it's time to cook, you open Cooking Mode and follow the steps." data-ru="Вам не нужно искать рецепты или листать списки. Sofra просто показывает, что готовить каждый день, и список покупок уже готов. Когда пришло время готовить, откройте Режим готовки и следуйте шагам."></p>
+        <div class="faq-tip">
+          <strong data-en="Good to know:" data-ru="Полезно знать:"></strong> <span data-en="Sofra learns from you over time. Cooking a meal and rating it is the strongest signal — thumbs up or down, favourites, and written reports all shape future plans. Swapping a meal is a softer signal that helps too, but the clearest feedback comes when you actually cook something and tell Sofra how it went." data-ru="Sofra учится со временем. Приготовить блюдо и оценить его — самый сильный сигнал: лайк, дизлайк, избранное и отзывы формируют будущие планы. Замена блюда тоже помогает, но самая чёткая обратная связь — когда вы готовите и рассказываете, как получилось."></span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ── 1. GETTING STARTED ── -->
-  <section class="help-section" id="getting-started">
-    <div class="section-heading">
-      <div class="section-icon">🚀</div>
-      <h2>Getting started</h2>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How do I set up my household during onboarding?" data-ru="Как настроить домохозяйство при первом запуске?"></span>
+      <span class="faq-toggle">+</span>
     </div>
-    <div class="article-grid">
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What is Sofra and how does it work?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra is a meal planning app that builds a personalised weekly plan for your household — automatically. Every week, it looks at who you're cooking for, any dietary rules, your cooking style, and what's realistic for your schedule, and generates a plan covering breakfast, lunch, and dinner that works for everyone.</p>
-          <p>You don't search for recipes or browse through lists. Sofra just shows you what to cook each day, with the shopping list already built. When it's time to cook, you open Cooking Mode and follow the steps.</p>
-          <div class="tip"><strong>Good to know:</strong> Sofra learns from you over time. The more you use it — accepting meals, swapping ones you don't want, rating recipes — the better your weekly plans become.</div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra gets you to your first plan in under 60 seconds. The quick-start screen asks just four things: who you're cooking for, their ages, any cultural or religious flag (like halal or fasting), and roughly how much time you have to cook. That's it — Sofra generates your plan immediately." data-ru="Sofra покажет первый план менее чем за 60 секунд. Экран быстрого старта спрашивает четыре вещи: для кого вы готовите, возраст, культурные или религиозные предпочтения (халяль, пост) и примерно сколько времени есть на готовку. Всё — Sofra сразу составляет план."></p>
+        <p data-en="You don't need to set up dietary rules upfront. Once you see your first plan, you can refine as you go: add an allergy, set a preference, adjust your cooking style. Nothing is permanent — everything can be changed at any time from your profile." data-ru="Необязательно настраивать правила питания сразу. Увидев первый план, вы можете дополнять: добавить аллергию, настроить предпочтения, изменить стиль готовки. Ничего постоянного — всё можно изменить в любой момент через профиль."></p>
+        <div class="faq-tip">
+          <strong data-en="Tip:" data-ru="Совет:"></strong> <span data-en="If someone at your table has a serious allergy, add it as a hard rule before generating your first plan — it takes 2 taps and means Sofra will never suggest a meal that breaks it." data-ru="Если у кого-то за столом серьёзная аллергия, добавьте её как жёсткое правило до первого плана — это 2 нажатия, и Sofra никогда не предложит блюдо, которое его нарушает."></span>
         </div>
       </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How do I set up my household during onboarding?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra gets you to your first plan in under 60 seconds. The quick-start screen asks just four things: who you're cooking for, their ages, any cultural or religious flag (like halal or fasting), and roughly how much time you have to cook. That's it — Sofra generates your plan immediately.</p>
-          <p>You don't need to set up dietary rules upfront. Once you see your first plan, you can refine as you go: add an allergy, set a preference, adjust your cooking style. Nothing is permanent — everything can be changed at any time from your profile.</p>
-          <div class="tip"><strong>Tip:</strong> If someone at your table has a serious allergy, add it as a hard rule before generating your first plan — it takes 2 taps and means Sofra will never suggest a meal that breaks it.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Do I need to create an account to use Sofra?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>No — you can start using Sofra immediately without creating an account. Your first weekly plan is generated as soon as you finish the setup.</p>
-          <p>However, creating an account (with Apple or Google sign-in) lets you:</p>
-          <ul>
-            <li>Access your plan and family settings from multiple devices</li>
-            <li>Recover your data if you reinstall or switch phones</li>
-            <li>Share the plan with another adult in your household</li>
-          </ul>
-          <div class="warning"><strong>Note:</strong> If you skip account creation and uninstall the app, your family setup and plan history will be lost. We recommend signing in after your first week to save your data.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Can I use Sofra just for myself, without a family?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Absolutely. During setup, just add yourself as the only person. Sofra will plan meals sized for one person, with serving sizes and grocery quantities adjusted accordingly.</p>
-          <p>You can always add more people later — say, if a partner moves in or you start cooking for someone else regularly.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Is Sofra free to use?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>The core of Sofra is free — forever. That means: your weekly meal plan, your grocery list, Cooking Mode, and your family's dietary rules. No time limit, no crippled version.</p>
-          <p>A Premium plan adds features that go beyond the core:</p>
-          <ul>
-            <li><strong>Household sync</strong> — share your live plan with a partner on their own device, with real-time updates</li>
-            <li><strong>Unlimited personal recipes</strong> — save as many of your own recipes as you want (free plan: up to 10)</li>
-            <li><strong>Advanced dietary protocols</strong> — complex multi-rule combinations like low-FODMAP + gluten-free + calorie targets simultaneously</li>
-            <li><strong>Data export</strong> — download your full meal history, ratings, and household data</li>
-          </ul>
-          <p>Everything else — the week view, shopping mode, cooking reminders — is free for everyone. You can see the full comparison under <strong>Settings → Sofra Premium</strong>.</p>
-          <p style="color:#888;font-size:13px;">📌 <em>Community recipe browsing is coming in a future update.</em></p>
-          <div class="tip"><strong>No credit card required</strong> to get started. You'll only see upgrade prompts when you try to use a premium-only feature.</div>
-        </div>
-      </div>
-
-      <div class="article" id="offline">
-        <div class="article-q" onclick="toggle(this)">
-          Does Sofra work without internet?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Most of the core experience works offline. Once your weekly plan has loaded, you can view meals, follow Cooking Mode step by step, and check off your grocery list — all without a signal.</p>
-          <p>A few things do need a connection:</p>
-          <ul>
-            <li>Generating a new weekly plan or regenerating after a household change</li>
-            <li>Swapping a meal (Sofra needs to fetch alternatives)</li>
-            <li>Household sync across devices <em>(Premium feature — your plan and any offline changes sync once you're back online even on a single device)</em></li>
-          </ul>
-          <p>Any changes you make offline (checking off groceries, advancing cooking steps) are saved locally and sync automatically once you're back online.</p>
-          <div class="tip"><strong>Tip:</strong> Shop Mode is fully offline by design — supermarkets often have poor signal. Your shopping progress saves locally throughout the trip.</div>
-        </div>
-      </div>
-
     </div>
-  </section>
+  </div>
 
-
-  <!-- ── 2. WEEKLY PLAN ── -->
-  <section class="help-section" id="weekly-plan">
-    <div class="section-heading">
-      <div class="section-icon">📅</div>
-      <h2>Your weekly plan</h2>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Do I need to create an account to use Sofra?" data-ru="Нужен ли аккаунт, чтобы пользоваться Sofra?"></span>
+      <span class="faq-toggle">+</span>
     </div>
-    <div class="article-grid">
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How is my weekly plan created?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra looks at everyone at your table simultaneously and finds meals that work for all of them at once. It weighs up:</p>
-          <ul>
-            <li>Every household member's hard dietary rules (allergies, halal, gluten-free, etc.) — these are never broken</li>
-            <li>Soft preferences (dislikes, budget, spice tolerance) — respected where possible</li>
-            <li>Cooking time and complexity based on your stated cooking style</li>
-            <li>Variety across the week — no identical meal within 14 days, no same protein two nights in a row</li>
-            <li>Your feedback from previous weeks — recipes you rated poorly won't come back</li>
-          </ul>
-          <p>Sofra generates your new week's plan on Sunday evening by default. If you open the app before it's been generated, it creates one on the spot. You can also regenerate it manually at any time, and you can change the generation day in <strong>Settings → Meal planning → Weekly refresh</strong>.</p>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="No — you can start immediately without an account. Your first weekly plan is generated as soon as you finish setup." data-ru="Нет — можно начать сразу без аккаунта. Первый недельный план создаётся, как только вы завершите настройку."></p>
+        <p data-en="If you create an account (with Apple or Google sign-in), Sofra can restore your plan if you reinstall the app or change your phone. An account is optional — your weekly plan works without one." data-ru="Если вы создадите аккаунт (вход через Apple или Google), Sofra сможет восстановить план при переустановке или смене телефона. Аккаунт необязателен — план работает и без него."></p>
+        <div class="faq-warning">
+          <strong data-en="Note:" data-ru="Обратите внимание:"></strong> <span data-en="If you use Sofra without an account and delete the app, your plan and settings may be lost on that device. We recommend signing in after your first week to keep your data safe." data-ru="Если вы используете Sofra без аккаунта и удалите приложение, план и настройки могут быть потеряны. Рекомендуем войти в аккаунт после первой недели, чтобы сохранить данные."></span>
         </div>
       </div>
-
-      <div class="article" id="swap-meal">
-        <div class="article-q" onclick="toggle(this)">
-          How do I swap a meal I don't want?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Tap the <strong>🔄 button directly on the meal card</strong>. A sheet slides up with 3 alternative meals that still fit your household's rules and the day's available cooking time. Tap the one you want — the grocery list updates immediately.</p>
-          <p>If none of the three work, tap "Show more" to see additional options.</p>
-          <div class="tip"><strong>Tip:</strong> Sofra learns from your swaps. If you consistently swap away from fish on weekdays, it will start suggesting it less often.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What happens if I skip a day?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Tap the meal for that day, scroll down, and tap <strong>"Skip this day"</strong>. You'll be asked why — ordering out, eating leftovers, or just not cooking. This helps Sofra understand your week better.</p>
-          <p>The grocery list automatically removes the ingredients for that meal. Any leftovers from previous days can be flagged using the Leftovers feature so they're not wasted.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Can I plan breakfast and lunch too, not just dinner?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Yes — Sofra plans all three meals. During setup, you can choose which meals you want help with: breakfast, lunch, dinner, or any combination. You can change this at any time in <strong>Settings → Meal planning → Which meals to plan</strong>.</p>
-          <p>Each meal type is treated a little differently:</p>
-          <ul>
-            <li><strong>Breakfast</strong> — quick and simple by default. Sofra suggests things like overnight oats, eggs, or yogurt bowls based on who's eating and how much time is available in the morning. You can set a "max prep time" for weekday breakfasts so nothing involves actual cooking before school or work.</li>
-            <li><strong>Lunch</strong> — Sofra can plan home lunches, or packed lunches for work and school. For children, it factors in school-safe requirements (e.g. nut-free lunchboxes). For adults, it can suggest batch-cook options that use leftovers from last night's dinner.</li>
-            <li><strong>Dinner</strong> — the most complex to plan for a full household, and the most detailed in terms of step-by-step cooking guidance.</li>
-          </ul>
-          <p>All three meals share the same dietary rules and family constraints — you only set those once.</p>
-          <div class="tip"><strong>Tip:</strong> If mornings are hectic in your household, try setting a 5-minute max prep time for weekday breakfasts. Sofra will only suggest things that are genuinely quick.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Why does Sofra keep suggesting meals I don't like?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>This usually means Sofra doesn't have enough feedback yet to know your preferences. There are two ways to help it learn faster:</p>
-          <ul>
-            <li><strong>Rate meals after cooking:</strong> A quick thumbs up or down goes a long way. A thumbs down on a meal type (e.g., any dish with aubergine) tells Sofra to avoid it.</li>
-            <li><strong>Add a soft rule:</strong> If there's a specific ingredient or cuisine you never want, you can add it as a soft rule in your profile. For example: "No liver dishes" or "Prefer not to have the same protein two nights in a row."</li>
-          </ul>
-          <p>After 2–3 weeks of use, most users find the suggestions feel noticeably more personalised.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          When exactly is next week's plan generated? Can I change the day?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>By default, Sofra generates your new weekly plan on <strong>Sunday evening</strong>. If you open the app before it's been generated that week, it creates one on the spot.</p>
-          <p>You can change the generation day and time in <strong>Settings → Meal planning → Weekly refresh</strong>. Some families prefer Friday so they can shop on Saturday morning with a fresh list.</p>
-          <div class="tip"><strong>You can always regenerate manually.</strong> Pull down on the home screen or tap the refresh icon in the top corner. Note: if you've already started shopping for the week, regenerating will change your grocery list — Sofra will warn you before it does this.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What if Sofra can't find a meal that fits everyone?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>This can happen with very specific combinations of hard rules (for example, gluten-free + vegan + nut-free + halal all in one household). When Sofra can't find a perfect match, it won't silently give you something wrong. Instead it shows a transparent message explaining which rule it couldn't satisfy, and offers you three choices:</p>
-          <ul>
-            <li><strong>Try a different day</strong> — more flexibility on timing or cooking style may unlock more options</li>
-            <li><strong>Loosen a soft preference</strong> — Sofra shows which soft preference (like cuisine type or cooking time) is limiting options and lets you adjust it for just that meal. <strong>Hard rules — allergies, medical restrictions, and religious requirements — are never relaxed, no matter what.</strong></li>
-            <li><strong>Use Pantry Mode</strong> — cook something from what's already at home</li>
-          </ul>
-          <div class="warning"><strong>Hard rules are absolute.</strong> Allergy, medical, and religious dietary rules will never be overridden by Sofra — not even if no other meal is available. Sofra will generate an AI recipe that meets every hard rule before it would ever suggest skipping one.</div>
-          <p>In practice this is rare — the recipe library covers most combinations. AI-generated recipes exist specifically to fill gaps when the library can't.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What is the Leftovers feature?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>When you skip a day or end up with food left over from last night, the Leftovers feature lets you flag it so Sofra can factor it into the week. Tap the meal for that day and choose <strong>"We have leftovers"</strong>.</p>
-          <p>Sofra treats that meal as covered and adjusts the rest of the week accordingly — it might reduce the grocery quantities for the next night, or suggest a recipe that incorporates what you have (e.g., leftover roast chicken turning into a chicken salad for lunch the next day).</p>
-          <div class="tip"><strong>Tip:</strong> The Leftovers feature is most useful at the end of the week when you want to clear the fridge before your next shop. Combining it with Pantry Mode gives you a zero-waste day.</div>
-        </div>
-      </div>
-
     </div>
-  </section>
+  </div>
 
-
-  <!-- ── 3. RECIPES ── -->
-  <section class="help-section" id="recipes">
-    <div class="section-heading">
-      <div class="section-icon">🍳</div>
-      <h2>Recipes</h2>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I use Sofra just for myself, without a family?" data-ru="Можно ли пользоваться Sofra одному, без семьи?"></span>
+      <span class="faq-toggle">+</span>
     </div>
-    <div class="article-grid">
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Where do the recipes come from?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra uses two recipe sources at launch, and each one is clearly labelled in the recipe view:</p>
-          <ul>
-            <li><strong>Curated library:</strong> Recipes written, tested, and reviewed by the Sofra team. These go through a full quality check before being added. This is the foundation of the library — around 3,000 recipes at launch, covering a wide range of cuisines and dietary needs.</li>
-            <li><strong>AI-generated recipes:</strong> For households with very specific dietary combinations (e.g. gluten-free + halal + dairy-free + nut allergy), the curated library may not cover every situation. In those cases, Sofra generates a recipe tailored to your exact constraints. These are clearly marked and reviewed by users over time — see "What happens when I report a recipe problem?" below.</li>
-          </ul>
-          <p>You can also add your own private recipes that only your household can see — tap <strong>+ Add Recipe</strong> in the My Recipes section. See "Can I add my own recipes?" below for details.</p>
-          <p style="color:#888;font-size:13px;">📌 <em>Community recipe browsing — where you can discover and share recipes with other Sofra families — is coming in a future update.</em></p>
-        </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Absolutely. During setup, just add yourself as the only person. Sofra will plan meals sized for one person, with serving sizes and grocery quantities adjusted accordingly." data-ru="Конечно. При настройке просто добавьте себя как единственного человека. Sofra будет планировать порции и покупки на одного."></p>
+        <p data-en="You can always add more people later — say, if a partner moves in or you start cooking for someone else regularly." data-ru="Добавить людей можно в любой момент — например, если с вами поселится партнёр или вы начнёте регулярно готовить для кого-то."></p>
       </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Can I add my own recipes?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Yes. Tap the <strong>+ Add Recipe</strong> button in the My Recipes section. You can enter a recipe manually — title, ingredients, and step-by-step instructions.</p>
-          <p>Once saved, your recipe becomes available for Sofra to include in your weekly plan. You can also mark it as a household favourite so it appears more often.</p>
-          <p>You can share any recipe with someone by sending them a link — they can view it and add it to their own Sofra. This is the best way to pass recipes to friends or family.</p>
-          <p style="color:#888;font-size:13px;">📌 <em>Publishing recipes to a public community feed is coming in a future update.</em></p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What happens when I report a recipe problem?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>If a recipe step seems wrong — the timing, quantities, or instructions don't make sense — tap <strong>Report a problem</strong> on that step while you're cooking.</p>
-          <p>Reports are weighted by whether you actually cooked the meal. If you tapped "Made It" or spent time in cooking mode, your report carries full weight. This keeps feedback meaningful and filters out accidental taps.</p>
-          <p>Here's what happens next:</p>
-          <ul>
-            <li>A small number of weighted reports on the same step → Sofra's AI rewrites it automatically</li>
-            <li>Repeated issues or serious problems → escalated to a human reviewer</li>
-            <li>Once fixed, you get a notification: "That step you reported has been updated"</li>
-          </ul>
-          <div class="tip"><strong>Good to know:</strong> You're reporting the specific step, not the whole recipe — so only what's wrong gets changed. You don't need to do anything after reporting — the system handles it.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How do I save a recipe as a favourite?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Open any recipe and tap the <strong>♡ Save</strong> button. Saved recipes appear in your My Recipes library. You can also mark them as a household favourite, which signals to Sofra that you'd like this meal to appear in your plans more regularly.</p>
-        </div>
-      </div>
-
     </div>
-  </section>
+  </div>
 
-
-  <!-- ── 4. GROCERY & SHOPPING ── -->
-  <section class="help-section" id="grocery">
-    <div class="section-heading">
-      <div class="section-icon">🛒</div>
-      <h2>Grocery &amp; shopping</h2>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Is Sofra free to use?" data-ru="Sofra бесплатна?"></span>
+      <span class="faq-toggle">+</span>
     </div>
-    <div class="article-grid">
-
-      <div class="article" id="grocery-list">
-        <div class="article-q" onclick="toggle(this)">
-          How does the grocery list work?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra automatically builds your grocery list from your weekly plan. Every ingredient across all planned meals is combined, and quantities are consolidated — so if two recipes both need onions, you'll see one line: "Onions — 4 medium" rather than two separate entries.</p>
-          <p>As you shop, tap each item to check it off. The list remembers what you've already bought even if you close the app mid-shop.</p>
-          <p>If you swap or skip a meal, the list updates automatically — ingredients for removed meals are taken off, ingredients for new meals are added.</p>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra's core is free: your weekly meal plan, grocery list, Cooking Mode, and dietary rules are included at no cost — with no time limit and no crippled version." data-ru="Основные функции Sofra бесплатны: недельный план, список покупок, Режим готовки и правила питания — без ограничений по времени и без урезанной версии."></p>
+        <p data-en="Some optional features may be added later as Premium. If that happens, Sofra will always clearly show what is free vs. paid inside the app before you're asked for anything." data-ru="Некоторые дополнительные функции могут появиться в Premium. Если это произойдёт, Sofra всегда чётко покажет, что бесплатно, а что платно, прежде чем что-то запрашивать."></p>
+        <div class="faq-tip">
+          <strong data-en="No credit card required" data-ru="Банковская карта не нужна"></strong> <span data-en="to get started." data-ru="для начала работы."></span>
         </div>
       </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Can I export or share the grocery list?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Yes. In the Grocery List screen, tap the <strong>Export</strong> button (⬆ icon) in the top corner. You can:</p>
-          <ul>
-            <li>Send via WhatsApp (handy for sharing with a partner)</li>
-            <li>Copy to clipboard</li>
-            <li>Print a physical copy</li>
-            <li>Email or share to Notes</li>
-          </ul>
-          <p>The exported list is grouped by category (produce, meat, dairy, pantry, etc.) so it's easy to navigate in a physical store.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What is Shop Mode?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Shop Mode is a focused in-store experience designed for when you're physically at the supermarket. Tap <strong>"Start Shopping"</strong> on the grocery list and the app switches into a mode built for checking things off with one hand while pushing a trolley.</p>
-          <p>Here's what changes in Shop Mode:</p>
-          <ul>
-            <li>Items are sorted by store section (Produce, Dairy, Meat, Bakery, Pantry) — the order you naturally walk through a shop, not by meal</li>
-            <li>Each item gets a large, easy-to-tap checkbox</li>
-            <li>When you check something off, it dims and moves to the bottom — so what's left always stays at the top and you never lose your place</li>
-            <li>A progress bar shows how many items you still need: "8 of 13 items left"</li>
-            <li>The screen stays on automatically — no need to unlock your phone between aisles</li>
-          </ul>
-          <p>When you've checked off everything, you'll see a summary screen and a button to go back to your plan. If you need to uncheck something you picked up by mistake, just tap it again.</p>
-          <div class="tip"><strong>No signal? No problem.</strong> Shop Mode works entirely offline. Most supermarkets have patchy reception — your progress saves locally and syncs once you're back online.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What is Pantry Mode?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Pantry Mode is for those days when you don't want to shop — you want to cook with what you already have, or as close to it as possible.</p>
-          <p>Activate it by tapping <strong>"Cook from pantry"</strong> on any day in your plan. Sofra asks you to confirm what's in your fridge and cupboards (takes about 30 seconds), then finds the best meal that matches what you have. Rather than only showing meals you can make with zero shopping, Sofra also highlights meals that are just <strong>one ingredient away</strong> — so you get genuinely good options, not just whatever happens to be in the back of the cupboard.</p>
-          <p>Each option clearly shows what you already have and what the one extra item would be, so you can decide at a glance whether it's worth a quick trip or not.</p>
-          <div class="tip"><strong>Tip:</strong> Pantry Mode is especially useful at the end of the week when you're trying to use up ingredients before they expire.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Can I add extra items to the grocery list manually?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Yes. Scroll to the bottom of the grocery list and tap <strong>+ Add item</strong>. Type anything you need — it doesn't have to be related to a recipe. Common uses are household essentials like washing-up liquid or bin bags that you want to grab while you're already in the shop.</p>
-          <p>Manually added items are kept separate from recipe-generated items, so if you regenerate your meal plan, your hand-added items stay on the list.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          I already bought some ingredients — why did they disappear from my list?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>This happens when you swap or skip a meal after you've already shopped — Sofra removes the ingredients for the old meal and adds the ones for the new one. It's automatic to keep the list accurate, but it can be frustrating if you've already bought those items.</p>
-          <p>When Sofra detects that you've already done some shopping (it can see checked-off items), it warns you before making changes and gives you three options:</p>
-          <ul>
-            <li><strong>Keep on list</strong> — the item stays, so you can still use it</li>
-            <li><strong>Move to Pantry</strong> — marks it as something you have at home, available for future suggestions</li>
-            <li><strong>Remove</strong> — removes it from the list as planned</li>
-          </ul>
-          <div class="tip"><strong>Safe rule of thumb:</strong> Do your plan swaps and skips before you shop. Once you're done shopping, Sofra assumes the list is final and won't change it automatically.</div>
-        </div>
-      </div>
-
-      <div class="article" id="grocery-delivery">
-        <div class="article-q" onclick="toggle(this)">
-          Can I order my groceries for delivery?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p><strong>Coming soon.</strong> Grocery delivery integration is on the roadmap but not yet available. For now, the Export button lets you share your list via WhatsApp, copy it to clipboard, or print it — all of which make it easy to hand to a delivery service or shopping app manually.</p>
-          <div class="tip"><strong>Quick workaround:</strong> WhatsApp the list to yourself or a partner, then use it to place an order in your preferred delivery app.</div>
-        </div>
-      </div>
-
     </div>
-  </section>
+  </div>
 
-
-  <!-- ── 5. DIETARY RULES & FAMILY ── -->
-  <section class="help-section" id="dietary">
-    <div class="section-heading">
-      <div class="section-icon">🥗</div>
-      <h2>Dietary rules &amp; family</h2>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Does Sofra work without internet?" data-ru="Работает ли Sofra без интернета?"></span>
+      <span class="faq-toggle">+</span>
     </div>
-    <div class="article-grid">
-
-      <div class="article" id="allergy-safety">
-        <div class="article-q" onclick="toggle(this)">
-          Can Sofra guarantee my family's allergy safety?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra will <strong>never suggest a meal that contains an ingredient you've marked as a hard rule</strong> — that guarantee is absolute and built into every plan it generates.</p>
-          <p>However, Sofra cannot guarantee safety from things outside its control:</p>
-          <ul>
-            <li><strong>Cross-contamination</strong> — a recipe may be nut-free, but an ingredient might be processed in a facility that handles nuts. Always check product labels.</li>
-            <li><strong>Restaurant or takeaway food</strong> — Sofra only controls plans you cook at home from the listed ingredients.</li>
-            <li><strong>Recipe inaccuracies</strong> — if you spot an ingredient in a recipe that shouldn't be there, tap "Report a problem" immediately.</li>
-          </ul>
-          <div class="warning"><strong>Sofra is a planning tool, not a medical device.</strong> For life-threatening allergies, always verify ingredients independently. Never rely solely on any app for allergy safety.</div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Most of the core experience works offline. Once your weekly plan has loaded, you can view meals, follow Cooking Mode step by step, and check off your grocery list — all without a signal." data-ru="Большая часть функций работает офлайн. Как только недельный план загружен, вы можете смотреть блюда, следовать Режиму готовки и отмечать покупки — всё без связи."></p>
+        <p data-en="A few things do need a connection:" data-ru="Некоторые функции требуют подключения:"></p>
+        <ul>
+          <li data-en="Generating a new weekly plan or regenerating after a household change" data-ru="Создание нового недельного плана или обновление после изменений в семье"></li>
+          <li data-en="Swapping a meal (Sofra needs to fetch alternatives)" data-ru="Замена блюда (Sofra загружает альтернативы)"></li>
+          <li data-en="Saving or restoring your plan via an account (if you've set one up)" data-ru="Сохранение или восстановление плана через аккаунт (если он создан)"></li>
+        </ul>
+        <p data-en="Any changes you make offline — checking off groceries, advancing cooking steps — are saved locally on your device." data-ru="Все изменения офлайн — отмеченные покупки, пройденные шаги — сохраняются локально на устройстве."></p>
+        <div class="faq-tip">
+          <strong data-en="Tip:" data-ru="Совет:"></strong> <span data-en="Shop Mode is fully offline by design — supermarkets often have poor signal. Your shopping progress saves locally throughout the trip." data-ru="Режим покупок полностью офлайн — в магазинах часто плохая связь. Прогресс покупок сохраняется локально."></span>
         </div>
       </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What's the difference between a hard rule and a soft rule?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p><strong>Hard rules</strong> are absolute — Sofra will never suggest a meal that breaks them. Use these for allergies, religious dietary requirements, and medical restrictions. Examples: nut allergy, halal only, coeliac (gluten-free), dairy allergy.</p>
-          <p><strong>Soft rules</strong> are strong preferences — Sofra respects them as much as possible, but there may be rare cases where the constraint can't be met for the whole household. Use these for dislikes or things you'd rather avoid but wouldn't cause harm. Examples: "Prefer not to eat liver", "Avoid very spicy food", "No more than 2 fish dishes per week".</p>
-          <div class="warning"><strong>Important:</strong> Never use a soft rule for a genuine allergy or medical restriction. Always set those as hard rules. Soft rules can occasionally be overridden by the planning engine when no better options exist.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Hard vs soft rules — real examples
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Not sure which type to use? Here's a quick guide:</p>
-          <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;">
-            <thead>
-              <tr>
-                <th style="text-align:left;padding:8px 12px;background:#111;color:#4ade80;border-bottom:1px solid #2a2a2a;">Set as a Hard rule</th>
-                <th style="text-align:left;padding:8px 12px;background:#111;color:#aaa;border-bottom:1px solid #2a2a2a;">Set as a Soft rule</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom:1px solid #1a1a1a;">
-                <td style="padding:8px 12px;color:#fff;">Nut allergy (anaphylaxis risk)</td>
-                <td style="padding:8px 12px;color:#aaa;">Prefer to avoid nuts</td>
-              </tr>
-              <tr style="border-bottom:1px solid #1a1a1a;">
-                <td style="padding:8px 12px;color:#fff;">Halal or Kosher</td>
-                <td style="padding:8px 12px;color:#aaa;">Prefer less red meat</td>
-              </tr>
-              <tr style="border-bottom:1px solid #1a1a1a;">
-                <td style="padding:8px 12px;color:#fff;">Coeliac disease (strict gluten-free)</td>
-                <td style="padding:8px 12px;color:#aaa;">Prefer gluten-light meals</td>
-              </tr>
-              <tr style="border-bottom:1px solid #1a1a1a;">
-                <td style="padding:8px 12px;color:#fff;">Type 1 diabetes (low sugar)</td>
-                <td style="padding:8px 12px;color:#aaa;">Trying to reduce sugar</td>
-              </tr>
-              <tr>
-                <td style="padding:8px 12px;color:#fff;">Vegetarian / vegan (committed)</td>
-                <td style="padding:8px 12px;color:#aaa;">Prefer fewer meat dishes</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="tip" style="margin-top:12px;"><strong>Simple test:</strong> If eating this ingredient would cause real harm or go against a sincere religious belief — it's a hard rule. If you'd just rather not but it wouldn't ruin your week — it's a soft rule.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How does Sofra get better over time?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>When you first start, Sofra knows your household rules and preferences — but nothing about what you actually enjoy eating. In the first couple of weeks, you'll see a wider range of meals as Sofra figures out what fits your family.</p>
-          <p>Three signals help it learn quickly:</p>
-          <ul>
-            <li><strong>"Made It"</strong> — when you tap this after cooking, Sofra marks the meal as a household success. It will suggest similar meals more often.</li>
-            <li><strong>Swap</strong> — when you swap a meal, Sofra notes what you moved away from. It won't repeat that pattern as readily.</li>
-            <li><strong>Recipe reports</strong> — if you flag a step as wrong while cooking, that feeds into the quality of the recipe itself over time.</li>
-          </ul>
-          <p>After about two weeks of normal use, most families notice the plans feeling noticeably more "theirs." You don't need to do anything extra — just use the app and the signals happen naturally.</p>
-          <div class="tip"><strong>Tip:</strong> The fastest way to train Sofra is to tap "Made It" whenever you actually cook a meal — even if it was just okay. It takes one tap and makes a real difference.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Can I set different rules for different family members?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Yes — each person in your household has their own individual rules. For example, one family member can be gluten-free while everyone else isn't. Sofra looks at each person's rules when it plans, and finds meals that work for everyone simultaneously.</p>
-          <p>To update an individual's rules, go to <strong>Profile → Household → [Person's name] → Edit rules</strong>.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How do I add or remove a family member?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Go to <strong>Profile → Household</strong>. Tap <strong>+ Add person</strong> to add someone new. To remove a person, tap their name and scroll down to <strong>Remove from household</strong>.</p>
-          <p><strong>Adding someone</strong> — the plan regenerates automatically for next week to include the new person. This week's plan stays as-is unless you ask Sofra to regenerate it now.</p>
-          <p><strong>Removing someone</strong> — the plan does not regenerate automatically. Instead, a banner appears asking what you'd like to do: keep the current week as planned, or regenerate now. This is intentional — if you've already done some shopping this week, regenerating would make your existing groceries less accurate. You choose.</p>
-          <div class="tip"><strong>Just for this week?</strong> If someone is away temporarily (e.g. a child staying at grandparents), you don't need to remove them from your household. Use the <strong>Skip person this week</strong> option under their name instead. Their rules and profile stay saved.</div>
-          <div class="tip"><strong>Note for families with young children:</strong> When you add a child, enter their age accurately. Sofra uses age to apply automatic safety rules (e.g., no raw honey for under 1 year old, low salt for toddlers).</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          My child just developed a new allergy. How do I update that immediately?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Go to <strong>Profile → Household → [Child's name] → Edit rules</strong>. Add the allergy as a <strong>hard rule</strong>. Save it — the change takes effect immediately.</p>
-          <p>Sofra will re-check the current week's plan against the new rule. If any planned meal now conflicts with it, you'll see a warning banner on the home screen with a prompt to regenerate or swap the affected days.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What dietary rules does Sofra support?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra supports a wide range of dietary needs — both medical and lifestyle. Common options include:</p>
-          <ul>
-            <li><strong>Allergies:</strong> Nuts, peanuts, dairy, gluten, egg, soy, shellfish, fish, sesame, and others</li>
-            <li><strong>Religious:</strong> Halal, Kosher, Hindu vegetarian</li>
-            <li><strong>Lifestyle:</strong> Vegetarian, vegan, pescatarian, flexitarian</li>
-            <li><strong>Medical / low-intake:</strong> Low sodium, low sugar, low FODMAP, diabetic-friendly, low calorie</li>
-            <li><strong>Age-based:</strong> Automatic rules applied to young children (no raw honey, low salt for under-2s, soft textures for toddlers)</li>
-          </ul>
-          <p>Each person in your household can have their own combination of rules. Rules marked as <strong>hard</strong> are never broken. You can also add custom rules as free text soft preferences — for example, "No coriander" or "Avoid very oily dishes".</p>
-          <div class="tip"><strong>Can't find the one you need?</strong> Use the free-text "soft rule" field under each person's profile to describe any preference Sofra doesn't have a preset for.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Does Sofra support fasting calendars?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Yes. Sofra has a built-in fasting calendar feature for households where religious fasting is part of daily life.</p>
-          <p>Currently supported fasting traditions include:</p>
-          <ul>
-            <li><strong>Ramadan:</strong> Sofra adjusts your daily plan to show Suhoor (pre-dawn meal) and Iftar (breaking fast at sunset) instead of regular mealtimes. Meals are planned for the right times automatically based on your location.</li>
-            <li><strong>Orthodox Christian fasting:</strong> Sofra recognises the major fasting periods (Great Lent, Apostles' Fast, Dormition Fast, Nativity Fast) and the regular Wednesday/Friday fasting days, automatically switching to no-meat, no-dairy, or no-oil meals depending on the strictness level you set.</li>
-            <li><strong>Hindu &amp; Jain fasting days:</strong> Individual fasting days (Ekadashi, Navratri, etc.) where specific ingredients are excluded can be set in the fasting calendar.</li>
-          </ul>
-          <p>To set up fasting: go to <strong>Profile → Household → [Person's name] → Fasting calendar</strong>. You choose the tradition and your level of observance — Sofra handles the rest automatically each week.</p>
-          <div class="tip"><strong>Different family members, different practices:</strong> Fasting is set per person. One family member can follow Ramadan while the rest of the household eats normally — Sofra plans for everyone simultaneously.</div>
-        </div>
-      </div>
-
     </div>
-  </section>
-
-
-  <!-- ── 6. COOKING MODE ── -->
-  <section class="help-section" id="cooking-mode">
-    <div class="section-heading">
-      <div class="section-icon">⏱️</div>
-      <h2>Cooking mode</h2>
-    </div>
-    <div class="article-grid">
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How does Cooking Mode work?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Cooking Mode walks you through a recipe step by step — one step on screen at a time so you're never hunting through a wall of text while your hands are covered in flour.</p>
-          <p>Each step has an optional built-in timer. When the timer on one step finishes, Sofra shows you the next step automatically. You can also advance manually at any point.</p>
-          <p>The screen stays awake throughout cooking mode so you don't have to keep unlocking your phone.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Can Sofra remind me when to start cooking?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Yes. Tap any meal in your plan and tap <strong>"Remind me to start cooking"</strong>. Set when you want the meal to be ready. Sofra works backwards from that time using the recipe's total cooking duration and sends you a push notification at exactly the right moment.</p>
-          <p>For example: if a recipe takes 45 minutes and you want it ready at 7pm, Sofra will remind you to start at 6:15pm.</p>
-          <p>To enable this, you'll need to allow notifications when prompted. You can manage notification settings at any time in <strong>Settings → Notifications</strong>.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What are defrost reminders?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>If tomorrow's recipe requires a frozen ingredient (like chicken or fish), Sofra will send you a reminder the evening before to move it from the freezer to the fridge overnight.</p>
-          <p>This only works if you've enabled notifications. You can turn defrost reminders on or off separately in <strong>Settings → Notifications → Defrost reminders</strong>.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Can I cook for more people than planned — guests, for example?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Yes. When you open any recipe in Cooking Mode, you'll see the current serving size at the top (e.g. "Serves 4"). Tap it and adjust the number up or down. Sofra instantly recalculates every ingredient quantity in the recipe to match the new serving size.</p>
-          <p>This doesn't affect your grocery list for the week — it's just a one-time adjustment for tonight's cook. If you regularly cook for more people than in your household, it's worth updating your household count instead so the grocery list reflects reality.</p>
-          <div class="tip"><strong>Tip:</strong> If you scaled up for guests and have proper leftovers afterwards, flag them using the Leftovers feature so Sofra doesn't plan a second night of the same thing unnecessarily.</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ── 7. ACCOUNT & PRIVACY ── -->
-  <section class="help-section" id="account">
-    <div class="section-heading">
-      <div class="section-icon">🔐</div>
-      <h2>Account &amp; privacy</h2>
-    </div>
-    <div class="article-grid">
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          What data does Sofra store about me?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra stores the information needed to plan your meals — nothing more. Specifically:</p>
-          <ul>
-            <li>Your household members' names and age groups</li>
-            <li>Dietary rules you've set (hard and soft)</li>
-            <li>Your cooking style and schedule preferences</li>
-            <li>Your meal history (what was planned, what was cooked, ratings you gave)</li>
-            <li>Your account email address (if you sign in)</li>
-          </ul>
-          <p>We do not sell your data to third parties, use it for advertising, or share it with food brands. Your dietary information — especially allergy data — is treated as sensitive and is encrypted in storage.</p>
-          <p>You can see a full summary of everything Sofra stores about your household in <strong>Settings → Data &amp; Privacy → See what we store</strong>.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How do I use Sofra on a second device?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sign in with the same Apple or Google account you used originally. Your household setup, plan, and history will sync automatically. This also works if you get a new phone — just sign in and everything is restored.</p>
-          <p>If you haven't created an account yet, go to <strong>Profile → Save your plan</strong> to set one up before switching devices.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How do I share access with my partner?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Go to <strong>Settings → Household sharing</strong> and invite your partner by email. Once they accept, they can view and interact with the same plan — swapping meals, checking off groceries, and entering Cooking Mode — from their own device.</p>
-          <p>Both people see the same plan in real time. Changes made by either person (a meal swap, a checked-off grocery item) are reflected immediately for both.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          How do I delete my account?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Go to <strong>Settings → Account → Delete account</strong>. You'll be asked to confirm. Once confirmed:</p>
-          <ul>
-            <li>Your account and all associated data is permanently deleted within 30 days</li>
-            <li>Your household setup, plan history, saved recipes, and ratings are removed</li>
-            <li>Any recipes you shared via link will continue to work for anyone who received the link, but they won't be linked to your account</li>
-          </ul>
-          <div class="warning"><strong>This cannot be undone.</strong> If you're just taking a break, you can instead deactivate notifications and simply not open the app — your data will be kept safely until you return.</div>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          I forgot how something works — where can I find quick help?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Go to <strong>Settings → Quick help</strong>. This shows brief tips for all the main features at your own pace, without changing any of your data or settings. You can also tap the <strong>?</strong> icon on any screen to get context-sensitive help for exactly what you're looking at.</p>
-        </div>
-      </div>
-
-      <div class="article" id="cancel-premium">
-        <div class="article-q" onclick="toggle(this)">
-          How do I cancel Premium? What happens after I cancel?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>You can cancel Premium at any time through the app store where you subscribed — Apple App Store or Google Play. Go to your subscription settings there and cancel.</p>
-          <p>When you cancel:</p>
-          <ul>
-            <li>You keep Premium until the end of your current billing period</li>
-            <li>After that, your account reverts to the free plan — your data, plans, and settings are all kept</li>
-            <li>Personal recipes over the free limit (10) are preserved but hidden until you re-subscribe or delete the excess</li>
-            <li>Household sync pauses — your partner can still view the plan but real-time updates stop</li>
-          </ul>
-          <p>To restore a purchase on a new device, sign in with the same account and tap <strong>Restore purchases</strong> in <strong>Settings → Sofra Premium</strong>.</p>
-        </div>
-      </div>
-
-      <div class="article">
-        <div class="article-q" onclick="toggle(this)">
-          Will Sofra send me too many notifications? How do I control them?
-          <span class="article-toggle">+</span>
-        </div>
-        <div class="article-a">
-          <p>Sofra keeps notifications minimal by design. Here's what it sends and when:</p>
-          <ul>
-            <li><strong>Cooking reminder</strong> — only when you've set one manually for a specific meal. Never automatic.</li>
-            <li><strong>Defrost reminder</strong> — the evening before a meal that needs frozen ingredients. Can be turned off.</li>
-            <li><strong>Plan ready</strong> — one notification when your new weekly plan is generated. Can be turned off.</li>
-            <li><strong>"Recipe fixed" confirmation</strong> — only if you previously reported a problem. One notification, then done.</li>
-          </ul>
-          <p>You can control all of these in <strong>Settings → Notifications</strong>, including setting quiet hours so nothing comes through during school runs, work hours, or at night.</p>
-          <div class="tip"><strong>One-tap silence:</strong> Turn off all Sofra notifications at once in your phone's system settings (Settings → Apps → Sofra → Notifications). Your data and plan are unaffected.</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- Contact strip -->
-  <div class="contact-strip">
-    <h3>Still need help?</h3>
-    <p>The fastest route is the <strong>in-app "Report a problem"</strong> button — most issues are handled automatically. For everything else, our team reads every message and usually replies within 1–2 business days.</p>
-    <a class="contact-btn" href="mailto:support@sofra.app">Email us →</a>
   </div>
 
 </div>
+
+<!-- SECTION 2: WEEKLY PLAN -->
+<div class="faq-section" data-section="weekly-plan">
+  <h2 class="section-heading" data-en="Your weekly plan" data-ru="Ваш недельный план"></h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How is my weekly plan created?" data-ru="Как составляется недельный план?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra looks at everyone at your table simultaneously and finds meals that work for all of them at once. It weighs up:" data-ru="Sofra учитывает всех за столом одновременно и находит блюда, подходящие всем. Она взвешивает:"></p>
+        <ul>
+          <li data-en="Every household member's hard dietary rules (allergies, halal, gluten-free, etc.) — these are never broken" data-ru="Жёсткие правила питания каждого члена семьи (аллергии, халяль, безглютеновое и т.д.) — они никогда не нарушаются"></li>
+          <li data-en="Soft preferences (dislikes, budget, spice tolerance) — respected where possible" data-ru="Мягкие предпочтения (антипатии, бюджет, допустимая острота) — учитываются по возможности"></li>
+          <li data-en="Cooking time and complexity based on your stated cooking style" data-ru="Время и сложность готовки с учётом вашего стиля"></li>
+          <li data-en="Variety across the week — no identical meal within 14 days, no same protein two nights in a row" data-ru="Разнообразие в течение недели — одинаковое блюдо не повторяется 14 дней, один и тот же белок не подряд"></li>
+          <li data-en="Your feedback from previous weeks — recipes you rated 👎 are suppressed for 90 days, then may reappear unless permanently removed. Starred ⭐ favourites are suggested more often." data-ru="Ваши оценки за прошлые недели — рецепты с 👎 скрыты на 90 дней, потом могут вернуться, если не удалены. Избранные ⭐ предлагаются чаще."></li>
+        </ul>
+        <p data-en="Sofra generates your new week's plan on Sunday evening by default. If you open the app before it's been generated, it creates one on the spot. You can change the generation day in <strong>Plan → ⚙️ Plan settings → Weekly refresh</strong>." data-ru="По умолчанию Sofra создаёт новый план в воскресенье вечером. Если вы откроете приложение раньше, план будет создан сразу. День обновления можно изменить в <strong>План → ⚙️ Настройки плана → Обновление</strong>."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How do I swap a meal I don't want?" data-ru="Как заменить блюдо, которое мне не подходит?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Tap the <strong>🔄 button directly on the meal card</strong>. A sheet slides up with 3 alternative meals that still fit your household's rules and the day's available cooking time. Tap the one you want — the grocery list updates immediately." data-ru="Нажмите <strong>🔄 кнопку прямо на карточке блюда</strong>. Появится панель с 3 альтернативами, которые соответствуют правилам вашей семьи и доступному времени. Выберите подходящее — список покупок обновится сразу."></p>
+        <p data-en="If none of the three work, tap \"Show more\" to see additional options." data-ru="Если ни одно из трёх не подходит, нажмите «Показать ещё» для дополнительных вариантов."></p>
+        <div class="faq-tip">
+          <strong data-en="Tip:" data-ru="Совет:"></strong> <span data-en="Sofra notices your swaps. If you consistently swap away from fish on weekdays, it will start suggesting it less often. For stronger feedback, cook the meal you actually want and rate it — that teaches Sofra faster than swapping alone." data-ru="Sofra замечает замены. Если вы постоянно убираете рыбу в будни, она будет предлагаться реже. Для более сильного сигнала приготовьте желаемое блюдо и оцените его — это учит Sofra быстрее."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What happens if I skip a day?" data-ru="Что происходит, если я пропускаю день?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Tap the meal for that day, scroll down, and tap <strong>\"Skip this day\"</strong>. You'll be asked why — ordering out, eating leftovers, or just not cooking. This helps Sofra understand your week better." data-ru="Нажмите на блюдо этого дня, прокрутите вниз и выберите <strong>«Пропустить этот день»</strong>. Вас спросят почему — заказ еды, остатки или просто не готовите. Это помогает Sofra лучше понять вашу неделю."></p>
+        <p data-en="The grocery list automatically removes the ingredients for that meal. Any leftovers from previous days can be flagged using the Leftovers feature so they're not wasted." data-ru="Список покупок автоматически убирает ингредиенты этого блюда. Остатки прошлых дней можно отметить функцией Остатки, чтобы они не пропали."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I plan breakfast and lunch too, not just dinner?" data-ru="Можно планировать завтраки и обеды, не только ужины?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes — Sofra plans all three meals. During setup, you can choose which meals you want help with: breakfast, lunch, dinner, or any combination. You can change this at any time in <strong>Plan → ⚙️ Plan settings → Meals to plan</strong>." data-ru="Да — Sofra планирует все три приёма пищи. При настройке можно выбрать, что планировать: завтрак, обед, ужин или любую комбинацию. Это можно изменить в любой момент в <strong>План → ⚙️ Настройки плана → Приёмы пищи</strong>."></p>
+        <p data-en="Each meal type is treated a little differently:" data-ru="Каждый приём пищи обрабатывается по-разному:"></p>
+        <ul>
+          <li><strong data-en="Breakfast" data-ru="Завтрак"></strong> <span data-en="— quick and simple by default. Sofra suggests things like overnight oats, eggs, or yogurt bowls based on who's eating and how much time is available in the morning. You can set a \"max prep time\" for weekday breakfasts so nothing involves actual cooking before school or work." data-ru="— по умолчанию быстрый и простой. Sofra предлагает овсянку на ночь, яйца или йогурт-боулы с учётом едоков и утреннего времени. Можно задать максимальное время подготовки для будних завтраков."></span></li>
+          <li><strong data-en="Lunch" data-ru="Обед"></strong> <span data-en="— Sofra can plan home lunches, or packed lunches for work and school. For children, it factors in school-safe requirements (e.g. nut-free lunchboxes). For adults, it can suggest batch-cook options that use leftovers from last night's dinner." data-ru="— Sofra может планировать домашние обеды или ланч-боксы для работы и школы. Для детей учитываются школьные ограничения (например, без орехов). Для взрослых — варианты из остатков вчерашнего ужина."></span></li>
+          <li><strong data-en="Dinner" data-ru="Ужин"></strong> <span data-en="— the most complex to plan for a full household, and the most detailed in terms of step-by-step cooking guidance." data-ru="— самый сложный в планировании для всей семьи и самый подробный в пошаговых инструкциях."></span></li>
+        </ul>
+        <p data-en="All three meals share the same dietary rules and family constraints — you only set those once." data-ru="Все три приёма пищи используют одни и те же правила питания — вы задаёте их один раз."></p>
+        <div class="faq-tip">
+          <strong data-en="Tip:" data-ru="Совет:"></strong> <span data-en="If mornings are hectic in your household, try setting a 5-minute max prep time for weekday breakfasts. Sofra will only suggest things that are genuinely quick." data-ru="Если утра в вашей семье суматошные, попробуйте установить 5-минутный лимит для будних завтраков. Sofra предложит только действительно быстрое."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Why does Sofra keep suggesting meals I don't like?" data-ru="Почему Sofra продолжает предлагать блюда, которые мне не нравятся?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="This usually means Sofra doesn't have enough feedback yet to know your preferences. There are two ways to help it learn faster:" data-ru="Обычно это значит, что у Sofra ещё недостаточно обратной связи. Два способа ускорить обучение:"></p>
+        <ul>
+          <li><strong data-en="Rate meals after cooking:" data-ru="Оценивайте блюда после готовки:"></strong> <span data-en="A quick thumbs up or down goes a long way. A thumbs down on a meal type (e.g., any dish with aubergine) tells Sofra to avoid it." data-ru="Быстрый лайк или дизлайк очень помогает. Дизлайк на тип блюда (например, всё с баклажанами) скажет Sofra избегать его."></span></li>
+          <li><strong data-en="Add a soft rule:" data-ru="Добавьте мягкое правило:"></strong> <span data-en="If there's a specific ingredient or cuisine you never want, you can add it as a soft rule in your profile. For example: \"No liver dishes\" or \"Prefer not to have the same protein two nights in a row.\"" data-ru="Если есть ингредиент или кухня, которые вы никогда не хотите, добавьте мягкое правило в профиле. Например: «Без блюд из печени» или «Разный белок каждый день»."></span></li>
+        </ul>
+        <p data-en="After 2–3 weeks of use, most users find the suggestions feel noticeably more personalised." data-ru="Через 2–3 недели использования большинство пользователей замечает, что предложения стали заметно более персональными."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="When exactly is next week's plan generated? Can I change the day?" data-ru="Когда именно создаётся план на следующую неделю? Можно ли сменить день?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="By default, Sofra generates your new weekly plan on <strong>Sunday evening</strong>. If you open the app before it's been generated that week, it creates one on the spot." data-ru="По умолчанию Sofra создаёт новый план в <strong>воскресенье вечером</strong>. Если вы откроете приложение до этого, план будет создан сразу."></p>
+        <p data-en="You can change the generation day and time in <strong>Plan → ⚙️ Plan settings → Weekly refresh</strong>. Some families prefer Friday so they can shop on Saturday morning with a fresh list." data-ru="День и время можно изменить в <strong>План → ⚙️ Настройки плана → Обновление</strong>. Некоторые семьи предпочитают пятницу, чтобы закупиться в субботу утром."></p>
+        <div class="faq-note">
+          <strong data-en="Note:" data-ru="Примечание:"></strong> <span data-en="If you've already started shopping for the week and the plan regenerates, your grocery list will update — Sofra will warn you before it does this." data-ru="Если вы уже начали покупки и план обновляется, список покупок изменится — Sofra предупредит перед этим."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What if Sofra can't find a meal that fits everyone?" data-ru="Что если Sofra не может найти блюдо, подходящее всем?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="This can happen with very specific combinations of hard rules (for example, gluten-free + vegan + nut-free + halal all in one household). When Sofra can't find a perfect match, it won't silently give you something wrong. Instead it shows a transparent message explaining which rule it couldn't satisfy, and offers you three choices:" data-ru="Это может случиться при очень специфических сочетаниях жёстких правил (например, безглютеновое + веганское + без орехов + халяль в одном доме). Когда Sofra не находит идеального совпадения, она не подставит что-то неподходящее. Вместо этого покажет, какое правило не удалось соблюсти, и предложит три варианта:"></p>
+        <ul>
+          <li><strong data-en="Try a different day" data-ru="Попробовать другой день"></strong> <span data-en="— more flexibility on timing or cooking style may unlock more options" data-ru="— больше гибкости по времени или стилю готовки может открыть новые варианты"></span></li>
+          <li><strong data-en="Loosen a soft preference" data-ru="Смягчить предпочтение"></strong> <span data-en="— Sofra shows which soft preference (like cuisine type or cooking time) is limiting options and lets you adjust it for just that meal. <strong>Hard rules — allergies, medical restrictions, and religious requirements — are never relaxed, no matter what.</strong>" data-ru="— Sofra покажет, какое мягкое правило (тип кухни или время готовки) ограничивает выбор, и позволит изменить его для этого блюда. <strong>Жёсткие правила — аллергии, медицинские ограничения, религиозные требования — никогда не смягчаются.</strong>"></span></li>
+          <li><strong data-en="Use Pantry Mode" data-ru="Режим Запасы"></strong> <span data-en="— cook something from what's already at home" data-ru="— приготовить что-то из того, что уже есть дома"></span></li>
+        </ul>
+        <div class="faq-warning">
+          <strong data-en="Hard rules are absolute." data-ru="Жёсткие правила абсолютны."></strong> <span data-en="Allergy, medical, and religious dietary rules will never be overridden by Sofra — not even if no other meal is available. Sofra will generate an AI recipe that meets every hard rule before it would ever suggest skipping one." data-ru="Аллергии, медицинские и религиозные правила никогда не нарушаются — даже если нет других вариантов. Sofra сгенерирует рецепт, который соблюдает все жёсткие правила."></span>
+        </div>
+        <p data-en="In practice this is rare — the recipe library covers most combinations. AI-generated recipes exist specifically to fill gaps when the library can't." data-ru="На практике это редко — библиотека рецептов покрывает большинство сочетаний. AI-рецепты существуют именно для заполнения пробелов."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What is the Leftovers feature?" data-ru="Что такое функция Остатки?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="When you skip a day or end up with food left over from last night, the Leftovers feature lets you flag it so Sofra can factor it into the week. Tap the meal for that day and choose <strong>\"We have leftovers\"</strong>." data-ru="Когда вы пропускаете день или остаётся еда со вчерашнего, функция Остатки позволяет отметить это, и Sofra учтёт при планировании. Нажмите на блюдо дня и выберите <strong>«Есть остатки»</strong>."></p>
+        <p data-en="Sofra treats that meal as covered and adjusts the rest of the week accordingly — it might reduce the grocery quantities for the next night, or suggest a recipe that incorporates what you have (e.g., leftover roast chicken turning into a chicken salad for lunch the next day)." data-ru="Sofra засчитает этот приём пищи и скорректирует оставшуюся неделю — может уменьшить покупки на следующий день или предложить рецепт из того, что есть (например, остатки курицы превратятся в салат на обед)."></p>
+        <div class="faq-tip">
+          <strong data-en="Tip:" data-ru="Совет:"></strong> <span data-en="The Leftovers feature is most useful at the end of the week when you want to clear the fridge before your next shop. Combining it with Pantry Mode gives you a zero-waste day." data-ru="Функция Остатки особенно полезна в конце недели, чтобы очистить холодильник перед новым закупом. В сочетании с Режимом Запасы — день без отходов."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION 3: RECIPES -->
+<div class="faq-section" data-section="recipes">
+  <h2 class="section-heading" data-en="Recipes" data-ru="Рецепты"></h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Where do the recipes come from?" data-ru="Откуда берутся рецепты?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra uses two recipe sources at launch, and each one is clearly labelled in the recipe view:" data-ru="При запуске Sofra использует два источника рецептов, и каждый чётко обозначен:"></p>
+        <ul>
+          <li><strong data-en="Curated library:" data-ru="Курированная библиотека:"></strong> <span data-en="Recipes written, tested, and reviewed by the Sofra team. These go through a full quality check before being added. This is the foundation of the library — around 3,000 recipes at launch, covering a wide range of cuisines and dietary needs." data-ru="Рецепты, написанные, проверенные и отрецензированные командой Sofra. Они проходят полную проверку качества. Это основа — около 3 000 рецептов при запуске, покрывающих широкий спектр кухонь и диет."></span></li>
+          <li><strong data-en="AI-generated recipes:" data-ru="AI-рецепты:"></strong> <span data-en="For households with very specific dietary combinations (e.g. gluten-free + halal + dairy-free + nut allergy), the curated library may not cover every situation. In those cases, Sofra generates a recipe tailored to your exact constraints. These are clearly marked and reviewed by users over time — see \"What happens when I report a recipe problem?\" below." data-ru="Для семей с очень специфическими сочетаниями диет (безглютеновое + халяль + без молока + аллергия на орехи) курированная библиотека может не покрыть всё. В таких случаях Sofra генерирует рецепт под ваши ограничения. Они чётко отмечены и проверяются пользователями со временем."></span></li>
+        </ul>
+        <p data-en="You can also add your own private recipes that only your household can see — tap <strong>+ Add Recipe</strong> in the My Recipes section. See \"Can I add my own recipes?\" below for details." data-ru="Вы также можете добавлять собственные рецепты, видимые только вашей семье — нажмите <strong>+ Добавить рецепт</strong> в разделе Мои рецепты."></p>
+        <div class="faq-note">
+          <em data-en="Community recipe browsing — where you can discover and share recipes with other Sofra families — is coming in a future update." data-ru="Сообщество рецептов — где можно находить и делиться рецептами с другими семьями Sofra — появится в будущем обновлении."></em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I add my own recipes?" data-ru="Можно добавлять свои рецепты?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes. Tap the <strong>+ Add Recipe</strong> button in the My Recipes section. You can enter a recipe manually — title, ingredients, and step-by-step instructions." data-ru="Да. Нажмите <strong>+ Добавить рецепт</strong> в разделе Мои рецепты. Можно ввести рецепт вручную — название, ингредиенты и пошаговые инструкции."></p>
+        <p data-en="Once saved, your recipe becomes available for Sofra to include in your weekly plan. You can also mark it as a household favourite so it appears more often." data-ru="После сохранения рецепт станет доступен для включения в недельный план. Можно также отметить его как семейное избранное, чтобы он появлялся чаще."></p>
+        <p data-en="You can share any recipe with someone by sending them a link — they can view it and add it to their own Sofra. This is the best way to pass recipes to friends or family." data-ru="Любой рецепт можно отправить по ссылке — получатель сможет посмотреть его и добавить в свою Sofra."></p>
+        <div class="faq-note">
+          <em data-en="Publishing recipes to a public community feed is coming in a future update." data-ru="Публикация рецептов в общее сообщество появится в будущем обновлении."></em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What happens when I report a recipe problem?" data-ru="Что происходит, когда я сообщаю о проблеме с рецептом?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="If a recipe step seems wrong — the timing, quantities, or instructions don't make sense — tap <strong>Report a problem</strong> on that step while you're cooking." data-ru="Если шаг рецепта кажется неверным — время, количество или инструкции не сходятся — нажмите <strong>Сообщить о проблеме</strong> на этом шаге во время готовки."></p>
+        <p data-en="Reports are weighted by whether you actually cooked the meal. If you tapped \"Made It\" or spent time in cooking mode, your report carries full weight. This keeps feedback meaningful and filters out accidental taps." data-ru="Отзывы взвешиваются по тому, готовили ли вы блюдо. Если вы нажали «Приготовлено» или провели время в Режиме готовки, отзыв имеет полный вес. Это делает обратную связь значимой."></p>
+        <p data-en="Here's what happens next:" data-ru="Что происходит дальше:"></p>
+        <ul>
+          <li data-en="A small number of weighted reports on the same step → Sofra's AI rewrites it automatically" data-ru="Несколько взвешенных отзывов на один шаг → AI Sofra автоматически перепишет его"></li>
+          <li data-en="Repeated issues or serious problems → escalated to a human reviewer" data-ru="Повторяющиеся или серьёзные проблемы → передаются на проверку человеку"></li>
+          <li data-en="Once fixed, you get a notification: \"That step you reported has been updated\"" data-ru="После исправления вы получите уведомление: «Шаг, о котором вы сообщили, обновлён»"></li>
+        </ul>
+        <div class="faq-tip">
+          <strong data-en="Good to know:" data-ru="Полезно знать:"></strong> <span data-en="You're reporting the specific step, not the whole recipe — so only what's wrong gets changed. You don't need to do anything after reporting — the system handles it." data-ru="Вы сообщаете о конкретном шаге, а не обо всём рецепте — исправляется только ошибка. После отправки ничего делать не нужно."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How do I save a recipe as a favourite?" data-ru="Как сохранить рецепт в избранное?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Open any recipe and tap the <strong>♡ Save</strong> button. Saved recipes appear in your My Recipes library. You can also mark them as a household favourite, which signals to Sofra that you'd like this meal to appear in your plans more regularly." data-ru="Откройте любой рецепт и нажмите <strong>♡ Сохранить</strong>. Сохранённые рецепты появятся в Моих рецептах. Можно также отметить как семейное избранное — Sofra будет предлагать его чаще."></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION 4: GROCERY & SHOPPING - CONTINUED IN NEXT PART DUE TO LENGTH -->
+
+
+<!-- SECTION 4: GROCERY & SHOPPING -->
+<div class="faq-section" data-section="grocery">
+  <h2 class="section-heading" data-en="Grocery & shopping" data-ru="Покупки"></h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How does the grocery list work?" data-ru="Как работает список покупок?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra automatically builds your grocery list from your weekly plan. Every ingredient across all planned meals is combined, and quantities are consolidated — so if two recipes both need onions, you'll see one line: \"Onions — 4 medium\" rather than two separate entries." data-ru="Sofra автоматически составляет список покупок из недельного плана. Все ингредиенты объединяются — если два рецепта требуют лук, вы увидите одну строку: «Лук — 4 средних», а не две."></p>
+        <p data-en="As you shop, tap each item to check it off. The list remembers what you've already bought even if you close the app mid-shop." data-ru="Во время покупок нажимайте на товар, чтобы отметить. Список помнит, что вы уже купили, даже если закроете приложение."></p>
+        <p data-en="If you swap or skip a meal, the list updates automatically — ingredients for removed meals are taken off, ingredients for new meals are added." data-ru="Если вы замените или пропустите блюдо, список обновится автоматически — ингредиенты убранных блюд уберутся, новых — добавятся."></p>
+        <div class="faq-tip">
+          <strong data-en="About the cost estimate:" data-ru="О примерной стоимости:"></strong> <span data-en="The budget shown (e.g. \"Est. $52–68\") is based on regional average prices and may vary by store, season, and where you shop. Treat it as a rough guide, not a guaranteed total." data-ru="Показанный бюджет (например, «~₽3 200–3 800») основан на средних региональных ценах и может отличаться в зависимости от магазина, сезона и местоположения. Это ориентир, а не гарантия."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I export or share the grocery list?" data-ru="Можно экспортировать или отправить список покупок?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes. In the Grocery List screen, tap the <strong>Export</strong> button (⬆ icon) in the top corner. You can:" data-ru="Да. На экране Список покупок нажмите <strong>Экспорт</strong> (⬆ иконка) в верхнем углу. Варианты:"></p>
+        <ul>
+          <li data-en="Send via WhatsApp (handy for sharing with a partner)" data-ru="Отправить через WhatsApp (удобно для партнёра)"></li>
+          <li data-en="Copy to clipboard" data-ru="Скопировать в буфер обмена"></li>
+          <li data-en="Print a physical copy" data-ru="Распечатать бумажную копию"></li>
+          <li data-en="Email or share to Notes" data-ru="Отправить по email или в Заметки"></li>
+        </ul>
+        <p data-en="The exported list is grouped by category (produce, meat, dairy, pantry, etc.) so it's easy to navigate in a physical store." data-ru="Экспортированный список сгруппирован по категориям (овощи, мясо, молочное, бакалея) для удобства в магазине."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What is Shop Mode?" data-ru="Что такое Режим покупок?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Shop Mode is a focused in-store experience designed for when you're physically at the supermarket. Tap <strong>\"Start Shopping\"</strong> on the grocery list and the app switches into a mode built for checking things off with one hand while pushing a trolley." data-ru="Режим покупок — это удобный интерфейс для магазина. Нажмите <strong>«Начать покупки»</strong> на списке покупок, и приложение переключится в режим, оптимизированный для отметки покупок одной рукой."></p>
+        <p data-en="Here's what changes in Shop Mode:" data-ru="Что меняется в Режиме покупок:"></p>
+        <ul>
+          <li data-en="Items are sorted by store section (Produce, Dairy, Meat, Bakery, Pantry) — the order you naturally walk through a shop, not by meal" data-ru="Товары отсортированы по отделам магазина (Овощи, Молочное, Мясо, Выпечка, Бакалея) — в порядке прохода по магазину"></li>
+          <li data-en="Each item gets a large, easy-to-tap checkbox" data-ru="Каждый товар имеет большой удобный чекбокс"></li>
+          <li data-en="When you check something off, it dims and moves to the bottom — so what's left always stays at the top and you never lose your place" data-ru="Отмеченные товары тускнеют и уходят вниз — оставшиеся всегда наверху"></li>
+          <li data-en="A progress bar shows how many items you still need: \"8 of 13 items left\"" data-ru="Полоса прогресса показывает, сколько осталось: «8 из 13 товаров»"></li>
+          <li data-en="The screen stays on automatically — no need to unlock your phone between aisles" data-ru="Экран остаётся включённым — не нужно разблокировать телефон между рядами"></li>
+        </ul>
+        <p data-en="When you've checked off everything, you'll see a summary screen and a button to go back to your plan. If you need to uncheck something you picked up by mistake, just tap it again." data-ru="Когда всё отмечено, появится итоговый экран и кнопка возврата к плану. Если нужно убрать отметку — просто нажмите снова."></p>
+        <div class="faq-tip">
+          <strong data-en="No signal? No problem." data-ru="Нет связи? Не проблема."></strong> <span data-en="Shop Mode works entirely offline. Most supermarkets have patchy reception — your progress saves locally and updates automatically once you're back online." data-ru="Режим покупок полностью офлайн. В магазинах часто плохой сигнал — прогресс сохраняется локально."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What is Pantry Mode?" data-ru="Что такое Режим Запасы?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Pantry Mode is for those days when you don't want to shop — you want to cook with what you already have, or as close to it as possible." data-ru="Режим Запасы — для тех дней, когда вы не хотите идти в магазин и хотите готовить из того, что уже есть."></p>
+        <p data-en="Activate it by tapping <strong>\"Cook from pantry\"</strong> on any day in your plan. Sofra asks you to confirm what's in your fridge and cupboards (takes about 30 seconds), then finds the best meal that matches what you have. Rather than only showing meals you can make with zero shopping, Sofra also highlights meals that are just <strong>one ingredient away</strong> — so you get genuinely good options, not just whatever happens to be in the back of the cupboard." data-ru="Активируйте нажав <strong>«Готовить из запасов»</strong> на любой день плана. Sofra попросит подтвердить, что есть в холодильнике и шкафах (~30 секунд), и найдёт лучшее блюдо из ваших продуктов. Помимо блюд без покупок, Sofra покажет варианты, до которых <strong>не хватает одного ингредиента</strong>."></p>
+        <p data-en="Each option clearly shows what you already have and what the one extra item would be, so you can decide at a glance whether it's worth a quick trip or not." data-ru="Каждый вариант чётко показывает, что у вас есть и чего не хватает, чтобы вы могли быстро решить, стоит ли забежать в магазин."></p>
+        <div class="faq-tip">
+          <strong data-en="Tip:" data-ru="Совет:"></strong> <span data-en="Pantry Mode is especially useful at the end of the week when you're trying to use up ingredients before they expire." data-ru="Режим Запасы особенно полезен в конце недели, чтобы использовать продукты до истечения срока."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I add extra items to the grocery list manually?" data-ru="Можно ли вручную добавить товары в список покупок?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes. Scroll to the bottom of the grocery list and tap <strong>+ Add item</strong>. Type anything you need — it doesn't have to be related to a recipe. Common uses are household essentials like washing-up liquid or bin bags that you want to grab while you're already in the shop." data-ru="Да. Прокрутите список покупок вниз и нажмите <strong>+ Добавить товар</strong>. Введите что угодно — необязательно связанное с рецептом. Часто добавляют бытовые мелочи: моющее средство, пакеты для мусора."></p>
+        <p data-en="Manually added items are kept separate from recipe-generated items, so if you regenerate your meal plan, your hand-added items stay on the list." data-ru="Добавленные вручную товары хранятся отдельно от рецептных — при обновлении плана они остаются в списке."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="I already bought some ingredients — why did they disappear from my list?" data-ru="Я уже купил(а) часть продуктов — почему они исчезли из списка?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="This happens when you swap or skip a meal after you've already shopped — Sofra removes the ingredients for the old meal and adds the ones for the new one. It's automatic to keep the list accurate, but it can be frustrating if you've already bought those items." data-ru="Это происходит, когда вы заменяете или пропускаете блюдо после покупок — Sofra убирает ингредиенты старого блюда и добавляет новые. Это автоматика для точности списка."></p>
+        <p data-en="When Sofra detects that you've already done some shopping (it can see checked-off items), it warns you before making changes and gives you three options:" data-ru="Когда Sofra видит, что вы уже закупились (отмеченные товары), она предупреждает перед изменениями и даёт три варианта:"></p>
+        <ul>
+          <li><strong data-en="Keep on list" data-ru="Оставить в списке"></strong> <span data-en="— the item stays, so you can still use it" data-ru="— товар останется"></span></li>
+          <li><strong data-en="Move to Pantry" data-ru="В запасы"></strong> <span data-en="— marks it as something you have at home, available for future suggestions" data-ru="— пометить как имеющееся дома"></span></li>
+          <li><strong data-en="Remove" data-ru="Убрать"></strong> <span data-en="— removes it from the list as planned" data-ru="— удалить из списка"></span></li>
+        </ul>
+        <div class="faq-tip">
+          <strong data-en="Safe rule of thumb:" data-ru="Хорошее правило:"></strong> <span data-en="Do your plan swaps and skips before you shop. Once you're done shopping, Sofra assumes the list is final and won't change it automatically." data-ru="Делайте замены и пропуски до покупок. После покупок Sofra считает список окончательным и не меняет автоматически."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What happens if I accidentally remove an item from my grocery list?" data-ru="Что если я случайно удалю товар из списка покупок?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="When you remove an item, a brief <strong>Undo</strong> button appears at the bottom of the screen for a few seconds. Tap it immediately to restore the item." data-ru="При удалении товара внизу экрана ненадолго появится кнопка <strong>Отменить</strong>. Нажмите сразу, чтобы восстановить."></p>
+        <p data-en="If you missed the undo, you can manually add the item back by scrolling to the bottom of the list and tapping <strong>+ Add item</strong>. Or, if the item was part of a planned meal, you can tap that meal → Recipe → and the ingredient will be visible there for reference." data-ru="Если не успели — добавьте товар вручную через <strong>+ Добавить товар</strong> внизу списка. Или откройте блюдо → Рецепт — ингредиент будет виден там."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What if the app crashes while I'm shopping? Will I lose my progress?" data-ru="Что если приложение закроется во время покупок? Прогресс потеряется?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="No. Your shopping progress is saved automatically as you go. Every time you check off an item, that check is saved immediately to your device. If the app closes or crashes mid-shop, just reopen it and your list will be exactly where you left off — checked items still checked." data-ru="Нет. Прогресс покупок сохраняется автоматически. Каждая отметка сохраняется мгновенно на устройстве. Если приложение закроется — просто откройте снова, и список будет там же."></p>
+        <p data-en="This works even without an internet connection, which is by design since supermarkets often have patchy signal." data-ru="Это работает и без интернета — специально, потому что в магазинах часто плохая связь."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I order my groceries for delivery?" data-ru="Можно заказать доставку продуктов?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="<strong>Coming soon.</strong> Grocery delivery integration is on the roadmap but not yet available. For now, the Export button lets you share your list via WhatsApp, copy it to clipboard, or print it — all of which make it easy to hand to a delivery service or shopping app manually." data-ru="<strong>Скоро.</strong> Интеграция с доставкой продуктов в планах, но пока недоступна. Сейчас кнопка Экспорт позволяет отправить список через WhatsApp, скопировать или распечатать."></p>
+        <div class="faq-tip">
+          <strong data-en="Quick workaround:" data-ru="Быстрый способ:"></strong> <span data-en="WhatsApp the list to yourself or a partner, then use it to place an order in your preferred delivery app." data-ru="Отправьте список себе или партнёру в WhatsApp и используйте для заказа в приложении доставки."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- SECTION 5: DIETARY RULES & FAMILY -->
+<div class="faq-section" data-section="dietary">
+  <h2 class="section-heading" data-en="Dietary rules & family" data-ru="Правила питания и семья"></h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can Sofra guarantee my family's allergy safety?" data-ru="Может ли Sofra гарантировать безопасность от аллергий?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra will <strong>never suggest a meal that contains an ingredient you've marked as a hard rule</strong> — that guarantee is absolute and built into every plan it generates." data-ru="Sofra <strong>никогда не предложит блюдо с ингредиентом, который вы отметили как жёсткое правило</strong> — эта гарантия абсолютна и встроена в каждый план."></p>
+        <p data-en="However, Sofra cannot guarantee safety from things outside its control:" data-ru="Однако Sofra не может гарантировать безопасность от факторов вне её контроля:"></p>
+        <ul>
+          <li><strong data-en="Cross-contamination" data-ru="Перекрёстное загрязнение"></strong> <span data-en="— a recipe may be nut-free, but an ingredient might be processed in a facility that handles nuts. Always check product labels." data-ru="— рецепт может быть без орехов, но ингредиент мог производиться на фабрике с орехами. Всегда проверяйте этикетки."></span></li>
+          <li><strong data-en="Restaurant or takeaway food" data-ru="Ресторанная или доставочная еда"></strong> <span data-en="— Sofra only controls plans you cook at home from the listed ingredients." data-ru="— Sofra контролирует только домашние планы из указанных ингредиентов."></span></li>
+          <li><strong data-en="Recipe inaccuracies" data-ru="Неточности в рецептах"></strong> <span data-en="— if you spot an ingredient in a recipe that shouldn't be there, tap \"Report a problem\" immediately." data-ru="— если заметите ингредиент, которого не должно быть, нажмите «Сообщить о проблеме» немедленно."></span></li>
+        </ul>
+        <div class="faq-warning">
+          <strong data-en="Sofra is a planning tool, not a medical device." data-ru="Sofra — инструмент планирования, а не медицинское устройство."></strong> <span data-en="For life-threatening allergies, always verify ingredients independently. Never rely solely on any app for allergy safety." data-ru="При угрожающих жизни аллергиях всегда проверяйте ингредиенты самостоятельно. Не полагайтесь только на приложение."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What's the difference between a hard rule and a soft rule?" data-ru="В чём разница между жёстким и мягким правилом?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p><strong data-en="Hard rules" data-ru="Жёсткие правила"></strong> <span data-en="are absolute — Sofra will never suggest a meal that breaks them. Use these for allergies, religious dietary requirements, and medical restrictions. Examples: nut allergy, halal only, coeliac (gluten-free), dairy allergy." data-ru="абсолютны — Sofra никогда не предложит блюдо, которое их нарушает. Используйте для аллергий, религиозных требований и медицинских ограничений. Примеры: аллергия на орехи, только халяль, целиакия, аллергия на молоко."></span></p>
+        <p><strong data-en="Soft rules" data-ru="Мягкие правила"></strong> <span data-en="are strong preferences — Sofra respects them as much as possible, but there may be rare cases where the constraint can't be met for the whole household. Use these for dislikes or things you'd rather avoid but wouldn't cause harm. Examples: \"Prefer not to eat liver\", \"Avoid very spicy food\", \"No more than 2 fish dishes per week\"." data-ru="— сильные предпочтения. Sofra учитывает их по возможности, но в редких случаях они могут быть не соблюдены. Используйте для неприязни или предпочтений. Примеры: «Без печени», «Без очень острого», «Не более 2 рыбных блюд в неделю»."></span></p>
+        <div class="faq-warning">
+          <strong data-en="Important:" data-ru="Важно:"></strong> <span data-en="Never use a soft rule for a genuine allergy or medical restriction. Always set those as hard rules. Soft rules can occasionally be overridden by the planning engine when no better options exist." data-ru="Никогда не используйте мягкое правило для настоящей аллергии или медицинского ограничения. Они всегда должны быть жёсткими. Мягкие правила могут иногда не соблюдаться."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Hard vs soft rules — real examples" data-ru="Жёсткие и мягкие правила — примеры"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Not sure which type to use? Here's a quick guide:" data-ru="Не знаете, какой тип выбрать? Вот краткий справочник:"></p>
+        <table>
+          <tr>
+            <th data-en="Set as a Hard rule" data-ru="Жёсткое правило"></th>
+            <th data-en="Set as a Soft rule" data-ru="Мягкое правило"></th>
+          </tr>
+          <tr>
+            <td data-en="Nut allergy (anaphylaxis risk)" data-ru="Аллергия на орехи (риск анафилаксии)"></td>
+            <td data-en="Prefer to avoid nuts" data-ru="Предпочитаю без орехов"></td>
+          </tr>
+          <tr>
+            <td data-en="Halal or Kosher" data-ru="Халяль или Кошер"></td>
+            <td data-en="Prefer less red meat" data-ru="Меньше красного мяса"></td>
+          </tr>
+          <tr>
+            <td data-en="Coeliac disease (strict gluten-free)" data-ru="Целиакия (строго без глютена)"></td>
+            <td data-en="Prefer gluten-light meals" data-ru="Меньше глютена"></td>
+          </tr>
+          <tr>
+            <td data-en="Type 1 diabetes (low sugar)" data-ru="Диабет 1 типа (мало сахара)"></td>
+            <td data-en="Trying to reduce sugar" data-ru="Стараюсь меньше сахара"></td>
+          </tr>
+          <tr>
+            <td data-en="Vegetarian / vegan (committed)" data-ru="Вегетарианство / веганство (убеждённое)"></td>
+            <td data-en="Prefer fewer meat dishes" data-ru="Меньше мясных блюд"></td>
+          </tr>
+        </table>
+        <div class="faq-tip">
+          <strong data-en="Simple test:" data-ru="Простой тест:"></strong> <span data-en="If eating this ingredient would cause real harm or go against a sincere religious belief — it's a hard rule. If you'd just rather not but it wouldn't ruin your week — it's a soft rule." data-ru="Если этот ингредиент нанесёт реальный вред или противоречит вере — это жёсткое правило. Если просто не хотите, но ничего страшного — мягкое."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How does Sofra get better over time?" data-ru="Как Sofra улучшается со временем?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="When you first start, Sofra knows your household rules and preferences — but nothing about what you actually enjoy eating. In the first couple of weeks, you'll see a wider range of meals as Sofra figures out what fits your family." data-ru="В начале Sofra знает ваши правила и предпочтения, но ничего о том, что вам нравится. Первые пару недель вы увидите более широкий выбор блюд, пока Sofra узнаёт вашу семью."></p>
+        <p data-en="Three signals help it learn quickly, in order of strength:" data-ru="Три сигнала помогают учиться быстрее, в порядке силы:"></p>
+        <ul>
+          <li><strong data-en="\"Made It\" + rating (strongest)" data-ru="«Приготовлено» + оценка (самый сильный)"></strong> <span data-en="— when you cook a meal and rate it 👍, 👎, or ⭐, Sofra has a full picture: you actually ate it and you felt strongly enough to say so. 👎 meals are suppressed for 90 days. ⭐ favourites are surfaced more often. This is the clearest signal of all." data-ru="— когда вы готовите и оцениваете 👍, 👎 или ⭐, Sofra получает полную картину. 👎 блюда скрываются на 90 дней. ⭐ избранные предлагаются чаще."></span></li>
+          <li><strong data-en="Swap (softer signal)" data-ru="Замена (мягкий сигнал)"></strong> <span data-en="— when you swap a meal, Sofra notes what you moved away from. It won't repeat that pattern as readily — but it treats this as a mild preference, not a strong aversion. If you want something truly avoided, cook it, rate it 👎, and it disappears for 90 days." data-ru="— при замене Sofra отмечает, от чего вы отказались. Она не будет повторять этот паттерн так часто, но воспринимает как лёгкое предпочтение. Для сильного сигнала приготовьте, оцените 👎, и блюдо исчезнет на 90 дней."></span></li>
+          <li><strong data-en="Recipe reports" data-ru="Отзывы о рецептах"></strong> <span data-en="— if you flag a step as wrong while cooking, that feeds into the quality of the recipe itself over time." data-ru="— если вы отмечаете ошибку в шаге во время готовки, это улучшает качество рецепта со временем."></span></li>
+        </ul>
+        <p data-en="After about two weeks of normal use, most families notice the plans feeling noticeably more \"theirs.\" You don't need to do anything extra — just use the app and the signals happen naturally." data-ru="Через две недели обычного использования большинство семей замечает, что планы стали заметно «своими». Ничего дополнительного не нужно — просто пользуйтесь приложением."></p>
+        <div class="faq-tip">
+          <strong data-en="Tip:" data-ru="Совет:"></strong> <span data-en="The fastest way to train Sofra is to tap \"Made It\" and give a rating whenever you actually cook a meal — even if it was just okay. It takes two taps and makes a real difference." data-ru="Самый быстрый способ обучить Sofra — нажимать «Приготовлено» и оценивать каждое приготовленное блюдо. Два нажатия — и реальный эффект."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I set different rules for different family members?" data-ru="Можно ли задать разные правила для разных членов семьи?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes — each person in your household has their own individual rules. For example, one family member can be gluten-free while everyone else isn't. Sofra looks at each person's rules when it plans, and finds meals that work for everyone simultaneously." data-ru="Да — у каждого члена семьи свои правила. Например, один может быть безглютеновым, остальные — нет. Sofra учитывает правила каждого при планировании."></p>
+        <p data-en="To update an individual's rules, go to <strong>Profile → Household → [Person's name] → Edit rules</strong>." data-ru="Чтобы обновить правила, перейдите в <strong>Профиль → Семья → [Имя] → Изменить правила</strong>."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How do I add or remove a family member?" data-ru="Как добавить или убрать члена семьи?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Go to <strong>Profile → Household</strong>. Tap <strong>+ Add person</strong> to add someone new. To remove a person, tap their name and scroll down to <strong>Remove from household</strong>." data-ru="Перейдите в <strong>Профиль → Семья</strong>. Нажмите <strong>+ Добавить человека</strong>. Для удаления нажмите на имя и внизу — <strong>Убрать из семьи</strong>."></p>
+        <p><strong data-en="Adding someone" data-ru="Добавление"></strong> <span data-en="— the plan regenerates automatically for next week to include the new person. This week's plan stays as-is unless you ask Sofra to regenerate it now." data-ru="— план обновится автоматически на следующую неделю. Текущая неделя не меняется, если вы не запросите обновление."></span></p>
+        <p><strong data-en="Removing someone" data-ru="Удаление"></strong> <span data-en="— the plan does not regenerate automatically. Instead, a banner appears asking what you'd like to do: keep the current week as planned, or regenerate now. This is intentional — if you've already done some shopping this week, regenerating would make your existing groceries less accurate. You choose." data-ru="— план не обновляется автоматически. Появляется баннер с выбором: оставить текущую неделю или обновить сейчас. Это специально — если вы уже закупились, обновление сделает покупки менее точными."></span></p>
+        <div class="faq-tip">
+          <strong data-en="Just for this week?" data-ru="Только на эту неделю?"></strong> <span data-en="If someone is away temporarily (e.g. a child staying at grandparents), you don't need to remove them from your household. Use the <strong>Skip person this week</strong> option under their name instead. Their rules and profile stay saved." data-ru="Если кто-то временно отсутствует (ребёнок у бабушки), не нужно удалять из семьи. Используйте <strong>Пропустить на этой неделе</strong>. Профиль и правила сохранятся."></span>
+        </div>
+        <div class="faq-tip">
+          <strong data-en="Note for families with young children:" data-ru="Для семей с маленькими детьми:"></strong> <span data-en="When you add a child, enter their age accurately. Sofra uses age to apply automatic safety rules (e.g., no raw honey for under 1 year old, low salt for toddlers)." data-ru="При добавлении ребёнка укажите точный возраст. Sofra использует возраст для автоматических правил безопасности (без мёда до 1 года, мало соли для малышей)."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="My child just developed a new allergy. How do I update that immediately?" data-ru="У ребёнка обнаружилась новая аллергия. Как обновить немедленно?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Go to <strong>Profile → Household → [Child's name] → Edit rules</strong>. Add the allergy as a <strong>hard rule</strong>. Save it — the change takes effect immediately." data-ru="Перейдите в <strong>Профиль → Семья → [Имя ребёнка] → Изменить правила</strong>. Добавьте аллергию как <strong>жёсткое правило</strong>. Сохраните — изменение вступит в силу немедленно."></p>
+        <p data-en="Sofra will re-check the current week's plan against the new rule. If any planned meal now conflicts with it, you'll see a warning banner on the home screen with a prompt to regenerate or swap the affected days." data-ru="Sofra перепроверит текущий план. Если какое-то блюдо теперь конфликтует с новым правилом, на главном экране появится предупреждение с предложением обновить или заменить затронутые дни."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What dietary rules does Sofra support?" data-ru="Какие правила питания поддерживает Sofra?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra supports a wide range of dietary needs — both medical and lifestyle. Common options include:" data-ru="Sofra поддерживает широкий спектр диетических потребностей — медицинских и стилевых. Основные варианты:"></p>
+        <ul>
+          <li><strong data-en="Allergies:" data-ru="Аллергии:"></strong> <span data-en="Nuts, peanuts, dairy, gluten, egg, soy, shellfish, fish, sesame, and others" data-ru="Орехи, арахис, молоко, глютен, яйца, соя, моллюски, рыба, кунжут и другие"></span></li>
+          <li><strong data-en="Religious:" data-ru="Религиозные:"></strong> <span data-en="Halal, Kosher, Hindu vegetarian" data-ru="Халяль, Кошер, индуистское вегетарианство"></span></li>
+          <li><strong data-en="Lifestyle:" data-ru="Образ жизни:"></strong> <span data-en="Vegetarian, vegan, pescatarian, flexitarian" data-ru="Вегетарианство, веганство, пескетарианство, флекситарианство"></span></li>
+          <li><strong data-en="Medical / low-intake:" data-ru="Медицинские:"></strong> <span data-en="Low sodium, low sugar, low FODMAP, diabetic-friendly, low calorie" data-ru="Мало натрия, мало сахара, low FODMAP, для диабетиков, низкокалорийное"></span></li>
+          <li><strong data-en="Age-based:" data-ru="По возрасту:"></strong> <span data-en="Automatic rules applied to young children (no raw honey, low salt for under-2s, soft textures for toddlers)" data-ru="Автоматические правила для маленьких детей (без мёда до 1 года, мало соли до 2 лет, мягкие текстуры для малышей)"></span></li>
+        </ul>
+        <p data-en="Each person in your household can have their own combination of rules. Rules marked as <strong>hard</strong> are never broken. You can also add custom rules as free text soft preferences — for example, \"No coriander\" or \"Avoid very oily dishes\"." data-ru="У каждого члена семьи может быть своя комбинация правил. <strong>Жёсткие</strong> правила никогда не нарушаются. Можно также добавлять текстовые мягкие правила: «Без кинзы» или «Без жирных блюд»."></p>
+        <div class="faq-tip">
+          <strong data-en="Can't find the one you need?" data-ru="Не нашли нужное?"></strong> <span data-en="Use the free-text \"soft rule\" field under each person's profile to describe any preference Sofra doesn't have a preset for." data-ru="Используйте текстовое поле «мягкое правило» в профиле — опишите любое предпочтение, которого нет в пресетах."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Does Sofra support fasting calendars?" data-ru="Поддерживает ли Sofra календари поста?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes. Sofra has a built-in fasting calendar feature for households where religious fasting is part of daily life." data-ru="Да. В Sofra есть встроенный календарь поста для семей, где религиозный пост — часть повседневной жизни."></p>
+        <p data-en="Currently supported fasting traditions include:" data-ru="Поддерживаемые традиции поста:"></p>
+        <ul>
+          <li><strong data-en="Ramadan:" data-ru="Рамадан:"></strong> <span data-en="Sofra adjusts your daily plan to show Suhoor (pre-dawn meal) and Iftar (breaking fast at sunset) instead of regular mealtimes. Meals are planned for the right times automatically based on your time zone." data-ru="Sofra корректирует план, показывая Сухур (предрассветный приём пищи) и Ифтар (разговение на закате) вместо обычного расписания. Время приёмов определяется автоматически по вашему часовому поясу."></span></li>
+          <li><strong data-en="Orthodox Christian fasting:" data-ru="Православный пост:"></strong> <span data-en="Sofra recognises the major fasting periods (Great Lent, Apostles' Fast, Dormition Fast, Nativity Fast) and the regular Wednesday/Friday fasting days, automatically switching to no-meat, no-dairy, or no-oil meals depending on the strictness level you set." data-ru="Sofra распознаёт основные посты (Великий, Петров, Успенский, Рождественский) и среду/пятницу, автоматически переключаясь на постные блюда в зависимости от выбранного уровня строгости."></span></li>
+          <li><strong data-en="Hindu & Jain fasting days:" data-ru="Индуистские и джайнские посты:"></strong> <span data-en="Individual fasting days (Ekadashi, Navratri, etc.) where specific ingredients are excluded can be set in the fasting calendar." data-ru="Отдельные постные дни (Экадаши, Наваратри и др.) с исключением определённых ингредиентов задаются в календаре поста."></span></li>
+        </ul>
+        <p data-en="To set up fasting: go to <strong>Profile → Household → [Person's name] → Fasting calendar</strong>. You choose the tradition and your level of observance — Sofra handles the rest automatically each week." data-ru="Для настройки поста: <strong>Профиль → Семья → [Имя] → Календарь поста</strong>. Выберите традицию и уровень соблюдения — Sofra всё учтёт автоматически."></p>
+        <div class="faq-tip">
+          <strong data-en="Different family members, different practices:" data-ru="Разные члены семьи, разные практики:"></strong> <span data-en="Fasting is set per person. One family member can follow Ramadan while the rest of the household eats normally — Sofra plans for everyone simultaneously." data-ru="Пост устанавливается для каждого. Один может соблюдать Рамадан, пока остальные едят обычно — Sofra планирует для всех одновременно."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="My household has two different religious rules — like Halal and Kosher. How does that work?" data-ru="В нашей семье два разных религиозных правила — например, Халяль и Кошер. Как это работает?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="When you have multiple religious or cultural rules in one household, Sofra applies all of them simultaneously. So if one person keeps Halal and another keeps Kosher, every planned meal must satisfy both sets of rules at once." data-ru="Когда в семье несколько религиозных правил, Sofra применяет все одновременно. Если один соблюдает Халяль, а другой — Кошер, каждое блюдо должно удовлетворять обоим."></p>
+        <p data-en="This will narrow your options — the overlap between Halal and Kosher is real but limited — and Sofra will let you know if it can't find enough variety. In that case, it will suggest you review the soft preferences or add more variety to your custom recipe library." data-ru="Это сузит выбор — пересечение Халяль и Кошер реально, но ограничено — Sofra сообщит, если не может найти достаточно разнообразия, и предложит пересмотреть мягкие правила или добавить свои рецепты."></p>
+        <p data-en="Sofra will never silently drop either rule. If a conflict can't be resolved, it will surface the specific reason and offer options — not just fail quietly." data-ru="Sofra никогда молча не уберёт ни одно правило. При конфликте она покажет причину и предложит варианты."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I add twins, or two children with the same age and rules?" data-ru="Можно добавить близнецов или двух детей одного возраста?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes — add each child as a separate profile, even if they share the same age and dietary rules. They'll each appear by name in your household, and Sofra will account for two portions (not one) when planning and building the grocery list." data-ru="Да — добавьте каждого ребёнка отдельным профилем, даже если у них одинаковый возраст и правила. Каждый будет виден по имени, и Sofra учтёт две порции (не одну)."></p>
+        <p data-en="In the daily plan view, children who share the same meal are shown as one slot — for example, \"Dinner · Sam & Alex · Pasta with veg\" — rather than two separate identical rows. This keeps the screen tidy while still ensuring correct portion sizing for both." data-ru="В дневном плане дети с одним блюдом отображаются одной строкой — например, «Ужин · Саша и Лёша · Паста с овощами» — без дублирования. Экран остаётся аккуратным, а порции — точными."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Does Sofra support pregnancy? How does it handle what I can and can't eat?" data-ru="Поддерживает ли Sofra беременность? Как она учитывает, что можно и нельзя есть?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes. When you set up your household, you can mark yourself as pregnant and enter your trimester and, optionally, your expected due date. Sofra uses this to automatically adjust your meal plan throughout pregnancy." data-ru="Да. При настройке семьи вы можете отметить беременность, указать триместр и, по желанию, предполагаемую дату родов. Sofra автоматически скорректирует план питания."></p>
+        <p data-en="<strong>What Sofra changes during pregnancy:</strong>" data-ru="<strong>Что Sofra меняет при беременности:</strong>"></p>
+        <ul>
+          <li><strong data-en="Calorie and portion adjustments" data-ru="Калории и порции"></strong> <span data-en="— Sofra increases portion sizes and nutritional targets based on your trimester (first, second, or third). The amounts are based on standard nutritional guidelines for pregnancy." data-ru="— Sofra увеличивает порции и пищевые цели с учётом триместра (первый, второй, третий) по стандартным рекомендациям для беременных."></span></li>
+          <li><strong data-en="Hard ingredient blocks" data-ru="Жёсткие запреты на ингредиенты"></strong> <span data-en="— certain ingredients are automatically removed from your plan. These include raw or undercooked fish (including sushi), raw shellfish, unpasteurised dairy (some soft cheeses), unpasteurised juices, raw or undercooked eggs, liver and liver products (due to high vitamin A), and high-mercury fish (shark, swordfish, king mackerel, tilefish)." data-ru="— определённые продукты автоматически исключаются: сырая рыба (включая суши), сырые моллюски, непастеризованные молочные продукты, непастеризованные соки, сырые яйца, печень (из-за витамина А) и рыба с высоким содержанием ртути (акула, рыба-меч, макрель)."></span></li>
+          <li><strong data-en="Nutrient boosts" data-ru="Усиление питательных веществ"></strong> <span data-en="— Sofra prioritises meals high in folate, iron, calcium, and omega-3s during planning. You don't need to manage this manually." data-ru="— Sofra отдаёт приоритет блюдам с высоким содержанием фолиевой кислоты, железа, кальция и омега-3. Управлять этим вручную не нужно."></span></li>
+        </ul>
+        <p data-en="After your due date, Sofra automatically reverts your plan to standard settings. You can also update your profile manually at any time in <strong>Profile → Household → [Your name] → Life stage</strong>." data-ru="После указанной даты родов Sofra автоматически вернёт стандартные настройки. Обновить профиль можно вручную в любой момент: <strong>Профиль → Семья → [Ваше имя] → Жизненный этап</strong>."></p>
+        <div class="faq-warning">
+          <strong data-en="Important:" data-ru="Важно:"></strong> <span data-en="Sofra's pregnancy features are based on general nutritional guidelines. They are not a substitute for medical advice. Always follow the guidance of your midwife, doctor, or healthcare provider — especially for specific medical conditions during pregnancy." data-ru="Функции для беременных основаны на общих рекомендациях по питанию. Они не заменяют медицинскую консультацию. Всегда следуйте рекомендациям врача или акушера — особенно при специфических состояниях."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION 6: COOKING MODE -->
+<div class="faq-section" data-section="cooking">
+  <h2 class="section-heading" data-en="Cooking mode" data-ru="Режим готовки"></h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How does Cooking Mode work?" data-ru="Как работает Режим готовки?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Cooking Mode walks you through a recipe step by step — one step on screen at a time so you're never hunting through a wall of text while your hands are covered in flour." data-ru="Режим готовки проведёт вас через рецепт шаг за шагом — один шаг на экране, чтобы не искать нужное в стене текста с руками в муке."></p>
+        <p data-en="Each step has an optional built-in timer. When the timer on one step finishes, Sofra shows you the next step automatically. You can also advance manually at any point." data-ru="Каждый шаг имеет встроенный таймер (по желанию). Когда таймер заканчивается, Sofra автоматически показывает следующий шаг. Можно перейти вручную в любой момент."></p>
+        <p data-en="Your screen stays on while you're in Cook Mode — so you can follow the steps hands-free. It returns to normal as soon as you leave Cook Mode." data-ru="Экран остаётся включённым, пока вы в Режиме готовки — можно следовать шагам без рук. Экран вернётся в обычный режим, когда вы выйдете."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can Sofra remind me when to start cooking?" data-ru="Может ли Sofra напомнить, когда начинать готовить?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes — tap any meal in your plan and choose <strong>\"Remind me to start.\"</strong> Set your target meal-ready time and Sofra works out when you need to start based on the recipe length." data-ru="Да — нажмите на любое блюдо в плане и выберите <strong>«Напомнить о начале»</strong>. Укажите, к какому времени должно быть готово, и Sofra рассчитает время старта."></p>
+        <p data-en="You can manage notification settings in <strong>More → Notifications</strong>." data-ru="Настройки уведомлений: <strong>Ещё → Уведомления</strong>."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What are defrost reminders?" data-ru="Что такое напоминания о разморозке?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="If tomorrow's meal needs a frozen ingredient, Sofra can remind you the evening before to move it to the fridge. This is optional and off by default — turn it on in <strong>More → Notifications</strong>." data-ru="Если завтрашнее блюдо требует замороженный ингредиент, Sofra может напомнить вечером переложить его в холодильник. Эта функция необязательна и выключена по умолчанию: <strong>Ещё → Уведомления</strong>."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Can I cook for more people than planned — guests, for example?" data-ru="Можно готовить на больше людей — например, для гостей?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Yes. When you open any recipe in Cooking Mode, you'll see the current serving size at the top (e.g. \"Serves 4\"). Tap it and adjust the number up or down. Sofra instantly recalculates every ingredient quantity in the recipe to match the new serving size." data-ru="Да. Откройте любой рецепт в Режиме готовки — вверху видно текущее число порций (например, «На 4»). Нажмите и измените. Sofra мгновенно пересчитает все ингредиенты."></p>
+        <p data-en="This doesn't affect your grocery list for the week — it's just a one-time adjustment for tonight's cook. If you regularly cook for more people than in your household, it's worth updating your household count instead so the grocery list reflects reality." data-ru="Это не повлияет на недельный список покупок — разовая корректировка на сегодня. Если вы регулярно готовите на больше людей, лучше обновить состав семьи."></p>
+        <div class="faq-tip">
+          <strong data-en="Tip:" data-ru="Совет:"></strong> <span data-en="If you scaled up for guests and have proper leftovers afterwards, flag them using the Leftovers feature so Sofra doesn't plan a second night of the same thing unnecessarily." data-ru="Если готовили на гостей и остались остатки — отметьте через функцию Остатки, чтобы Sofra не запланировала то же блюдо на следующий день."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What happens if I lock my phone while a timer is running in Cooking Mode?" data-ru="Что будет, если заблокировать телефон во время таймера в Режиме готовки?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="The timer keeps running in the background. When it finishes, you'll receive a notification — even if your screen is locked or you've switched to another app." data-ru="Таймер продолжит работать в фоне. Когда он закончится, вы получите уведомление — даже с заблокированным экраном или из другого приложения."></p>
+        <p data-en="To receive that notification, you'll need to have allowed notifications for Sofra. You can check this in your phone's system settings under Sofra → Notifications." data-ru="Для получения уведомления нужно разрешить уведомления Sofra в настройках телефона: Sofra → Уведомления."></p>
+        <div class="faq-tip">
+          <strong data-en="Battery note:" data-ru="Заряд батареи:"></strong> <span data-en="Cooking Mode keeps your screen on while you're actively using it, to save you from constant unlocking. If your battery drops below 10% and your phone isn't plugged in, the screen will go back to auto-lock — Sofra will let you know once when this happens." data-ru="Режим готовки держит экран включённым во время использования. Если заряд упадёт ниже 10% без зарядки, экран вернётся к автоблокировке — Sofra предупредит один раз."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION 7: ACCOUNT & PRIVACY -->
+<div class="faq-section" data-section="account">
+  <h2 class="section-heading" data-en="Account & privacy" data-ru="Аккаунт и приватность"></h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="What data does Sofra store about me?" data-ru="Какие данные Sofra хранит обо мне?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra stores the information needed to plan your meals — nothing more. Specifically:" data-ru="Sofra хранит только то, что нужно для планирования питания. А именно:"></p>
+        <ul>
+          <li data-en="Your household member labels (optional) and age groups" data-ru="Имена (или метки) членов семьи и возрастные группы"></li>
+          <li data-en="Dietary rules you've set (hard and soft)" data-ru="Правила питания (жёсткие и мягкие)"></li>
+          <li data-en="Your cooking style and schedule preferences" data-ru="Стиль готовки и расписание"></li>
+          <li data-en="Your meal history (what was planned, what was cooked, ratings you gave)" data-ru="История питания (что планировалось, что готовилось, ваши оценки)"></li>
+          <li data-en="Your account email address (if you sign in)" data-ru="Email аккаунта (если вы вошли)"></li>
+        </ul>
+        <p data-en="We do not sell your data to third parties, use it for advertising, or share it with food brands. Your dietary information — especially allergy data — is treated as sensitive." data-ru="Мы не продаём данные третьим лицам, не используем для рекламы и не делимся с брендами. Диетическая информация — особенно аллергии — считается конфиденциальной."></p>
+        <p data-en="You can see a full summary of everything Sofra stores about your household in <strong>Settings → Data & Privacy → See what we store</strong>." data-ru="Полный список хранимых данных: <strong>Настройки → Данные и приватность → Что мы храним</strong>."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="I've forgotten how to sign in — how do I get back into my account?" data-ru="Я забыл(а), как войти — как восстановить доступ к аккаунту?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="On the sign-in screen, tap <strong>\"Forgot password?\"</strong> and enter the email address you signed up with. Sofra will send you a reset link." data-ru="На экране входа нажмите <strong>«Забыли пароль?»</strong> и введите email, с которым регистрировались. Sofra отправит ссылку для сброса."></p>
+        <ul>
+          <li><strong data-en="Tap the link within 30 minutes" data-ru="Перейдите по ссылке в течение 30 минут"></strong> <span data-en="— it expires after that for security." data-ru="— после этого она истекает."></span></li>
+          <li><strong data-en="If the link has expired, go back to \"Forgot password?\" and tap <strong>Resend</strong>" data-ru="Если ссылка истекла, вернитесь к «Забыли пароль?» и нажмите <strong>Отправить повторно</strong>"></strong> <span data-en="— a new link will arrive within a minute. (The resend button appears 60 seconds after the first attempt.)" data-ru="— новая ссылка придёт в течение минуты. (Кнопка появляется через 60 секунд.)"></span></li>
+          <li data-en="Check your spam or junk folder if the email doesn't arrive within a few minutes." data-ru="Проверьте папку спам, если письмо не приходит в течение нескольких минут."></li>
+        </ul>
+        <p data-en="If you signed up using Apple or Google, tap <strong>\"Sign in with Apple\"</strong> or <strong>\"Sign in with Google\"</strong> — there's no separate Sofra password to reset. Use whichever option you used when you first signed up." data-ru="Если вы регистрировались через Apple или Google, нажмите <strong>«Войти через Apple»</strong> или <strong>«Войти через Google»</strong> — отдельного пароля Sofra нет."></p>
+        <div class="faq-tip">
+          <strong data-en="Not sure which email you used?" data-ru="Не помните, какой email?"></strong> <span data-en="Try the email addresses you commonly use. The sign-in screen will show a confirmation once we find a match — we won't reveal whether an account exists until after the link is sent." data-ru="Попробуйте часто используемые адреса. Экран входа покажет подтверждение, когда найдёт совпадение."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How do I use Sofra on a second device?" data-ru="Как использовать Sofra на втором устройстве?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sign in with the same Apple or Google account you used originally. Sofra will restore your household setup, plan, and history onto the new device." data-ru="Войдите с тем же аккаунтом Apple или Google. Sofra восстановит настройки семьи, план и историю на новом устройстве."></p>
+        <p data-en="If you haven't created an account yet, go to <strong>Profile → Save your plan</strong> to set one up before switching devices." data-ru="Если аккаунт ещё не создан, перейдите в <strong>Профиль → Сохранить план</strong> перед сменой устройства."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How do I share my plan with my partner?" data-ru="Как поделиться планом с партнёром?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="You can share a read-only view of your weekly plan or grocery list by sending a link — tap the share icon on the plan or grocery list. The person you share with doesn't need an account." data-ru="Можно отправить ссылку на просмотр недельного плана или списка покупок. Получателю не нужен аккаунт."></p>
+        <p data-en="<strong>Shared editing</strong> — where both partners can edit the same plan at the same time — is coming in a future update (Phase 2)." data-ru="<strong>Совместное редактирование</strong> — когда оба партнёра могут редактировать один план — появится в будущем обновлении."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="How do I delete my account?" data-ru="Как удалить аккаунт?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Go to <strong>Settings → Account → Delete account</strong>. You'll be asked to confirm. Once confirmed, your account and associated data are scheduled for deletion." data-ru="Перейдите в <strong>Настройки → Аккаунт → Удалить аккаунт</strong>. Потребуется подтверждение. После подтверждения аккаунт и данные будут запланированы к удалению."></p>
+        <div class="faq-warning">
+          <strong data-en="This cannot be undone." data-ru="Это необратимо."></strong> <span data-en="If you're just taking a break, you can deactivate notifications and simply not open the app." data-ru="Если вы просто берёте паузу, отключите уведомления и просто не открывайте приложение."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="I forgot how something works — where can I find quick help?" data-ru="Я забыл(а), как что-то работает — где найти быструю помощь?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Go to <strong>Settings → Quick help</strong>. This shows brief tips for all the main features at your own pace, without changing any of your data or settings." data-ru="Перейдите в <strong>Настройки → Быстрая помощь</strong>. Здесь краткие подсказки по всем основным функциям — без изменения данных или настроек."></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggle(this)">
+      <span class="faq-q-text" data-en="Will Sofra send me too many notifications? How do I control them?" data-ru="Sofra не будет слать слишком много уведомлений? Как ими управлять?"></span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="faq-answer-content">
+        <p data-en="Sofra keeps notifications minimal by design. Here's what it sends and when:" data-ru="Sofra намеренно минимизирует уведомления. Вот что и когда отправляется:"></p>
+        <ul>
+          <li><strong data-en="Cooking reminder" data-ru="Напоминание о готовке"></strong> <span data-en="— only when you've set one manually for a specific meal. Never automatic." data-ru="— только когда вы установили его вручную. Никогда автоматически."></span></li>
+          <li><strong data-en="Defrost reminder" data-ru="Напоминание о разморозке"></strong> <span data-en="— the evening before a meal that needs frozen ingredients. Can be turned off." data-ru="— вечером перед блюдом с замороженными ингредиентами. Можно отключить."></span></li>
+          <li><strong data-en="Plan ready" data-ru="План готов"></strong> <span data-en="— one notification when your new weekly plan is generated. Can be turned off." data-ru="— одно уведомление при создании нового недельного плана. Можно отключить."></span></li>
+          <li><strong data-en="\"Recipe fixed\" confirmation" data-ru="«Рецепт исправлен»"></strong> <span data-en="— only if you previously reported a problem. One notification, then done." data-ru="— только если вы ранее сообщали о проблеме. Одно уведомление."></span></li>
+        </ul>
+        <p data-en="You can control all of these in <strong>Settings → Notifications</strong>, including setting quiet hours so nothing comes through during school runs, work hours, or at night." data-ru="Управлять всеми уведомлениями можно в <strong>Настройки → Уведомления</strong>, включая тихие часы — ничего не приходит во время учёбы, работы или ночью."></p>
+        <div class="faq-tip">
+          <strong data-en="One-tap silence:" data-ru="Быстрое отключение:"></strong> <span data-en="Turn off all Sofra notifications at once in your phone's system settings (Settings → Apps → Sofra → Notifications). Your data and plan are unaffected." data-ru="Выключите все уведомления Sofra в настройках телефона (Настройки → Приложения → Sofra → Уведомления). Данные и план не пострадают."></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<!-- Contact Strip -->
+<section class="contact-strip">
+  <h3 data-en="Still need help?" data-ru="Нужна дополнительная помощь?"></h3>
+  <p data-en="Use <strong>\"Report a problem\"</strong> in the app for the fastest help. Or email us at" data-ru="Используйте <strong>«Сообщить о проблеме»</strong> в приложении — это самый быстрый путь. Или напишите нам:"></p>
+  <p><strong>hello@sofra.app</strong></p>
+  <p data-en="We aim to reply within 1–2 business days." data-ru="Мы стараемся ответить в течение 1–2 рабочих дней."></p>
+</section>
 
 <!-- Footer -->
 <footer>
-  <strong>Sofra</strong> — Intelligent Family Meal Planner &nbsp;·&nbsp; Help Centre &nbsp;·&nbsp; <a href="mailto:support@sofra.app" style="color:#4ade80;">support@sofra.app</a>
+  <p data-en="Sofra — Intelligent Family Meal Planner · Help Centre" data-ru="Sofra — Умный семейный планировщик питания · Центр помощи"></p>
 </footer>
 
+</body>
+
 <script>
-  function toggle(el) {
-    const answer = el.nextElementSibling;
-    const icon = el.querySelector('.article-toggle');
-    const isOpen = answer.classList.contains('open');
-    answer.classList.toggle('open', !isOpen);
-    icon.textContent = isOpen ? '+' : '−';
+function toggle(element) {
+  const answer = element.nextElementSibling;
+  const toggleBtn = element.querySelector('.faq-toggle');
+  answer.classList.toggle('open');
+  toggleBtn.textContent = answer.classList.contains('open') ? '−' : '+';
+}
+
+function setLang(lang) {
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+  
+  // Update all elements with data-en/data-ru
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = lang === 'ru' && el.dataset.ru ? el.dataset.ru : el.dataset.en;
+    el.innerHTML = text;
+  });
+  
+  // Update placeholders
+  document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+    const placeholder = lang === 'ru' && el.dataset.ruPlaceholder ? el.dataset.ruPlaceholder : el.dataset.enPlaceholder;
+    el.setAttribute('placeholder', placeholder);
+  });
+  
+  // Update lang attribute and persist
+  document.documentElement.lang = lang;
+  sessionStorage.setItem('sofra_lang', lang);
+}
+
+// Load saved language on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = sessionStorage.getItem('sofra_lang');
+  if (saved === 'ru') {
+    setLang('ru');
   }
+});
+
+function filterSection(section) {
+  document.querySelectorAll('.nav-pill').forEach(pill => pill.classList.remove('active'));
+  event.target.classList.add('active');
+}
 </script>
 
-</body>
 </html>

@@ -870,6 +870,35 @@
     .hero h1 { font-size: 32px; }
     nav { padding: 12px 16px; }
   }
+
+  /* ===== LANGUAGE TOGGLE ===== */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #1a1a1c;
+    border: 1px solid #2a2a2c;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .lang-btn {
+    padding: 5px 14px;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+    user-select: none;
+  }
+  .lang-btn.active {
+    background: #4ade80;
+    color: #000;
+    border-radius: 20px;
+  }
+  .lang-btn:hover:not(.active) { color: #aaa; }
 </style>
 </head>
 <body>
@@ -892,6 +921,10 @@
     <a class="nav-link" href="#palette">Color & Brand</a>
     <a class="nav-link" href="#legal">Legal & Trust</a>
     <a class="nav-link" href="#plan">The Plan</a>
+  </div>
+  <div class="lang-toggle" id="langToggle">
+    <div class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</div>
+    <div class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</div>
   </div>
 </nav>
 
@@ -921,21 +954,21 @@
 
       <!-- SCREEN 1: Phase 0 Onboarding -->
       <div class="phone-card">
-        <div class="phone-label">01 — Phase 0 Onboarding</div>
+        <div class="phone-label">01 — <span data-en="Phase 0 Onboarding" data-ru="Шаг 0: Знакомство">Phase 0 Onboarding</span></div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="scr-header">
-              <div class="scr-step">STEP 1 OF 1</div>
-              <div class="scr-title">Tell us about your family</div>
-              <div class="scr-sub">You'll get a plan in under 60 seconds</div>
+              <div class="scr-step" data-en="STEP 1 OF 1" data-ru="ШАГ 1 ИЗ 1">STEP 1 OF 1</div>
+              <div class="scr-title" data-en="Tell us about your family" data-ru="Расскажите о вашей семье">Tell us about your family</div>
+              <div class="scr-sub" data-en="You'll get a plan in under 60 seconds" data-ru="Ваш план будет готов меньше чем за 60 секунд">You'll get a plan in under 60 seconds</div>
             </div>
             <div class="scr-body">
               <div class="input-group">
-                <div class="input-label">Who's eating?</div>
+                <div class="input-label" data-en="Who's eating?" data-ru="Кто будет есть?">Who's eating?</div>
                 <div class="counter-row">
                   <div class="counter-icon">🧑</div>
-                  <div class="counter-name">Adults</div>
+                  <div class="counter-name" data-en="Adults" data-ru="Взрослые">Adults</div>
                   <div class="counter-controls">
                     <div class="counter-btn">−</div>
                     <div class="counter-val">2</div>
@@ -944,8 +977,8 @@
                 </div>
                 <div class="counter-row">
                   <div class="counter-icon">👧</div>
-                  <div class="counter-name">Children</div>
-                  <div class="counter-age">Ages: 4, 7</div>
+                  <div class="counter-name" data-en="Children" data-ru="Дети">Children</div>
+                  <div class="counter-age" data-en="Ages: 4, 7" data-ru="Возраст: 4, 7">Ages: 4, 7</div>
                   <div class="counter-controls">
                     <div class="counter-btn">−</div>
                     <div class="counter-val">2</div>
@@ -956,51 +989,51 @@
 
               <!-- Pregnancy option — appears once adult count > 0 -->
               <div style="background:#1a1226;border:1px solid #c084fc20;border-radius:10px;padding:10px 12px;margin-bottom:10px;">
-                <div style="font-size:11px;color:#c084fc;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">OPTIONAL — For any adult</div>
+                <div style="font-size:11px;color:#c084fc;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;" data-en="OPTIONAL — For any adult" data-ru="ДОПОЛНИТЕЛЬНО — Для взрослых">OPTIONAL — For any adult</div>
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-                  <div style="font-size:12px;color:#ccc;">Anyone pregnant?</div>
+                  <div style="font-size:12px;color:#ccc;" data-en="Anyone pregnant?" data-ru="Есть беременные?">Anyone pregnant?</div>
                   <div style="display:flex;gap:0;background:#0f0a1a;border:1px solid #c084fc30;border-radius:6px;overflow:hidden;font-size:10px;">
-                    <div style="padding:3px 9px;background:#c084fc;color:#000;font-weight:700;">Yes</div>
-                    <div style="padding:3px 9px;color:#555;">No</div>
+                    <div style="padding:3px 9px;background:#c084fc;color:#000;font-weight:700;" data-en="Yes" data-ru="Да">Yes</div>
+                    <div style="padding:3px 9px;color:#555;" data-en="No" data-ru="Нет">No</div>
                   </div>
                 </div>
                 <!-- Shown when Yes is selected -->
                 <div style="border-top:1px solid #c084fc15;padding-top:8px;">
-                  <div style="font-size:11px;color:#888;margin-bottom:6px;">Which trimester?</div>
+                  <div style="font-size:11px;color:#888;margin-bottom:6px;" data-en="Which trimester?" data-ru="Какой триместр?">Which trimester?</div>
                   <div style="display:flex;gap:5px;">
-                    <div style="flex:1;background:#2a1a4a;border:1px solid #c084fc40;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#c084fc;font-weight:700;">1st</div>
-                    <div style="flex:1;background:#1a1226;border:1px solid #c084fc20;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#555;">2nd</div>
-                    <div style="flex:1;background:#1a1226;border:1px solid #c084fc20;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#555;">3rd</div>
-                    <div style="flex:1;background:#1a1226;border:1px solid #c084fc20;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#555;">Not sure</div>
+                    <div style="flex:1;background:#2a1a4a;border:1px solid #c084fc40;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#c084fc;font-weight:700;" data-en="1st" data-ru="1-й">1st</div>
+                    <div style="flex:1;background:#1a1226;border:1px solid #c084fc20;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#555;" data-en="2nd" data-ru="2-й">2nd</div>
+                    <div style="flex:1;background:#1a1226;border:1px solid #c084fc20;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#555;" data-en="3rd" data-ru="3-й">3rd</div>
+                    <div style="flex:1;background:#1a1226;border:1px solid #c084fc20;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#555;" data-en="Not sure" data-ru="Не знаю">Not sure</div>
                   </div>
-                  <div style="font-size:10px;color:#555;margin-top:6px;">Due date (optional): helps us transition back automatically</div>
-                  <div style="background:#0f0a1a;border:1px solid #2a2a34;border-radius:7px;padding:5px 8px;font-size:10px;color:#555;margin-top:4px;">📅 Add due date…</div>
+                  <div style="font-size:10px;color:#555;margin-top:6px;" data-en="Due date (optional): helps us transition back automatically" data-ru="Дата родов (необязательно): поможем вернуться автоматически">Due date (optional): helps us transition back automatically</div>
+                  <div style="background:#0f0a1a;border:1px solid #2a2a34;border-radius:7px;padding:5px 8px;font-size:10px;color:#555;margin-top:4px;" data-en="📅 Add due date…" data-ru="📅 Добавить дату родов…">📅 Add due date…</div>
                 </div>
               </div>
 
               <div class="input-group">
-                <div class="input-label">Cultural / Religious</div>
+                <div class="input-label" data-en="Cultural / Religious" data-ru="Культура / Религия">Cultural / Religious</div>
                 <div class="chip-row">
-                  <div class="chip">None</div>
-                  <div class="chip active">Halal</div>
-                  <div class="chip">Kosher</div>
-                  <div class="chip">Hindu</div>
-                  <div class="chip">Orthodox</div>
-                  <div class="chip">Other</div>
+                  <div class="chip" data-en="None" data-ru="Нет">None</div>
+                  <div class="chip active" data-en="Halal" data-ru="Халяль">Halal</div>
+                  <div class="chip" data-en="Kosher" data-ru="Кошерное">Kosher</div>
+                  <div class="chip" data-en="Hindu" data-ru="Индуизм">Hindu</div>
+                  <div class="chip" data-en="Orthodox" data-ru="Православие">Orthodox</div>
+                  <div class="chip" data-en="Other" data-ru="Другое">Other</div>
                 </div>
               </div>
 
               <div class="input-group">
-                <div class="input-label">Cooking time today</div>
+                <div class="input-label" data-en="Cooking time today" data-ru="Сколько времени на готовку">Cooking time today</div>
                 <div class="time-row">
-                  <div class="time-chip">10 min</div>
-                  <div class="time-chip active">20 min</div>
-                  <div class="time-chip">40 min</div>
-                  <div class="time-chip">No rush</div>
+                  <div class="time-chip" data-en="10 min" data-ru="10 мин">10 min</div>
+                  <div class="time-chip active" data-en="20 min" data-ru="20 мин">20 min</div>
+                  <div class="time-chip" data-en="40 min" data-ru="40 мин">40 min</div>
+                  <div class="time-chip" data-en="No rush" data-ru="Не спешу">No rush</div>
                 </div>
               </div>
 
-              <div class="scr-btn">Get my family's plan →</div>
+              <div class="scr-btn" data-en="Get my family's plan →" data-ru="План семьи →">Get my family's plan →</div>
             </div>
           </div>
         </div>
@@ -1008,36 +1041,36 @@
 
       <!-- SCREEN 2: Day Plan -->
       <div class="phone-card">
-        <div class="phone-label">02 — Today's Plan</div>
+        <div class="phone-label">02 — <span data-en="Today's Plan" data-ru="План на сегодня">Today's Plan</span></div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="plan-header">
-              <div class="plan-greeting">Good morning, Sarah ☀️</div>
-              <div class="plan-title">Sunday's Family Plan</div>
-              <div class="plan-meta">4 people · Halal · 20 min meals</div>
+              <div class="plan-greeting" data-en="Good morning, Sarah ☀️" data-ru="Доброе утро, Сара ☀️">Good morning, Sarah ☀️</div>
+              <div class="plan-title" data-en="Sunday's Family Plan" data-ru="Семейный план">Sunday's Family Plan</div>
+              <div class="plan-meta" data-en="4 people · Halal · 20 min meals" data-ru="4 чел. · Халяль · 20 мин на готовку">4 people · Halal · 20 min meals</div>
               <div style="display:flex;align-items:center;gap:6px;margin-top:6px;padding-top:6px;border-top:1px solid #4ade8018;">
                 <span style="font-size:10px;">🛒</span>
-                <span style="font-size:10px;color:#888;">Est. weekly groceries (price-tier estimate):</span>
+                <span style="font-size:10px;color:#888;" data-en="Est. weekly groceries (price-tier estimate):" data-ru="Примерно на неделю (оценка по ценовому уровню):">Est. weekly groceries (price-tier estimate):</span>
                 <span style="font-size:10px;font-weight:700;color:#4ade80;">₽3,200 – ₽3,800</span>
-                <span style="font-size:9px;background:#0f2a1a;color:#4ade80;padding:1px 5px;border-radius:4px;font-weight:700;margin-left:2px;">✓ In budget</span>
+                <span style="font-size:9px;background:#0f2a1a;color:#4ade80;padding:1px 5px;border-radius:4px;font-weight:700;margin-left:2px;" data-en="✓ In budget" data-ru="✓ В бюджете">✓ In budget</span>
               </div>
             </div>
             <div class="plan-body">
 
               <div class="cal-strip">
-                <div class="cal-day"><div class="day-name">Mon</div><div class="day-num">23</div><div class="dot"></div></div>
-                <div class="cal-day"><div class="day-name">Tue</div><div class="day-num">24</div><div class="dot"></div></div>
-                <div class="cal-day"><div class="day-name">Wed</div><div class="day-num">25</div><div class="dot"></div></div>
-                <div class="cal-day active"><div class="day-name">Sun</div><div class="day-num">01</div><div class="dot"></div></div>
-                <div class="cal-day"><div class="day-name">Mon</div><div class="day-num">02</div></div>
-                <div class="cal-day"><div class="day-name">Tue</div><div class="day-num">03</div></div>
+                <div class="cal-day"><div class="day-name" data-en="Mon" data-ru="Пн">Mon</div><div class="day-num">23</div><div class="dot"></div></div>
+                <div class="cal-day"><div class="day-name" data-en="Tue" data-ru="Вт">Tue</div><div class="day-num">24</div><div class="dot"></div></div>
+                <div class="cal-day"><div class="day-name" data-en="Wed" data-ru="Ср">Wed</div><div class="day-num">25</div><div class="dot"></div></div>
+                <div class="cal-day active"><div class="day-name" data-en="Sun" data-ru="Вс">Sun</div><div class="day-num">01</div><div class="dot"></div></div>
+                <div class="cal-day"><div class="day-name" data-en="Mon" data-ru="Пн">Mon</div><div class="day-num">02</div></div>
+                <div class="cal-day"><div class="day-name" data-en="Tue" data-ru="Вт">Tue</div><div class="day-num">03</div></div>
               </div>
 
               <div class="macro-bar">
                 <div class="macro-header">
-                  <div class="macro-title">Family Daily Total</div>
-                  <div class="macro-cal">1,840 <span>kcal avg</span></div>
+                  <div class="macro-title" data-en="Family Daily Total" data-ru="Итого на семью за день">Family Daily Total</div>
+                  <div class="macro-cal">1,840 <span data-en="kcal avg" data-ru="ккал среднее">kcal avg</span></div>
                 </div>
                 <div class="macro-track">
                   <div class="macro-seg" style="width:28%;background:#4ade80;"></div>
@@ -1045,20 +1078,20 @@
                   <div class="macro-seg" style="width:22%;background:#fbbf24;"></div>
                 </div>
                 <div class="macro-labels">
-                  <div class="macro-dot-label"><div class="dot-circle" style="background:#4ade80;"></div>Protein</div>
-                  <div class="macro-dot-label"><div class="dot-circle" style="background:#60a5fa;"></div>Carbs</div>
-                  <div class="macro-dot-label"><div class="dot-circle" style="background:#fbbf24;"></div>Fat</div>
+                  <div class="macro-dot-label"><div class="dot-circle" style="background:#4ade80;"></div><span data-en="Protein" data-ru="Белки">Protein</span></div>
+                  <div class="macro-dot-label"><div class="dot-circle" style="background:#60a5fa;"></div><span data-en="Carbs" data-ru="Углеводы">Carbs</span></div>
+                  <div class="macro-dot-label"><div class="dot-circle" style="background:#fbbf24;"></div><span data-en="Fat" data-ru="Жиры">Fat</span></div>
                 </div>
               </div>
 
               <div class="meal-card" style="border-color:#c084fc30;padding:0;overflow:hidden;">
                 <div style="display:flex;align-items:stretch;">
                   <div style="flex:1;padding:10px 12px;">
-                    <div class="meal-time-label">Breakfast · 8:00 AM</div>
-                    <div class="meal-name">Grandma's Manti ★</div>
+                    <div class="meal-time-label" data-en="Breakfast · 8:00 AM" data-ru="Завтрак · 8:00">Breakfast · 8:00 AM</div>
+                    <div class="meal-name" data-en="Grandma's Manti ★" data-ru="Бабушкины манты ★">Grandma's Manti ★</div>
                     <div class="meal-meta" style="margin-top:6px;">
-                      <div class="meal-badge" style="background:#c084fc15;color:#c084fc;border-color:#c084fc30;">Your recipe</div>
-                      <div class="meal-badge green">50 min</div>
+                      <div class="meal-badge" style="background:#c084fc15;color:#c084fc;border-color:#c084fc30;" data-en="Your recipe" data-ru="Ваш рецепт">Your recipe</div>
+                      <div class="meal-badge green">50 <span data-en="min" data-ru="мин">min</span></div>
                       <div class="meal-action">›</div>
                     </div>
                   </div>
@@ -1071,11 +1104,11 @@
               <div class="meal-card" style="padding:0;overflow:hidden;">
                 <div style="display:flex;align-items:stretch;">
                   <div style="flex:1;padding:10px 12px;">
-                    <div class="meal-time-label">Lunch · 12:30 PM</div>
-                    <div class="meal-name">Lentil Soup + Salad</div>
+                    <div class="meal-time-label" data-en="Lunch · 12:30 PM" data-ru="Обед · 12:30">Lunch · 12:30 PM</div>
+                    <div class="meal-name" data-en="Lentil Soup + Salad" data-ru="Чечевичный суп и салат">Lentil Soup + Salad</div>
                     <div class="meal-meta" style="margin-top:6px;">
-                      <div class="meal-badge green">15 min</div>
-                      <div class="meal-badge">Budget</div>
+                      <div class="meal-badge green">15 <span data-en="min" data-ru="мин">min</span></div>
+                      <div class="meal-badge" data-en="Budget" data-ru="Бюджетно">Budget</div>
                       <div class="meal-action">›</div>
                     </div>
                   </div>
@@ -1088,11 +1121,11 @@
               <div class="meal-card" style="padding:0;overflow:hidden;">
                 <div style="display:flex;align-items:stretch;">
                   <div style="flex:1;padding:10px 12px;">
-                    <div class="meal-time-label">Dinner · 6:30 PM</div>
-                    <div class="meal-name">Grilled Chicken Kofta + Rice</div>
+                    <div class="meal-time-label" data-en="Dinner · 6:30 PM" data-ru="Ужин · 18:30">Dinner · 6:30 PM</div>
+                    <div class="meal-name" data-en="Grilled Chicken Kofta + Rice" data-ru="Кофта из курицы с рисом">Grilled Chicken Kofta + Rice</div>
                     <div class="meal-meta" style="margin-top:6px;">
-                      <div class="meal-badge green">22 min</div>
-                      <div class="meal-badge">Halal ✓</div>
+                      <div class="meal-badge green">22 <span data-en="min" data-ru="мин">min</span></div>
+                      <div class="meal-badge" data-en="Halal ✓" data-ru="Халяль ✓">Halal ✓</div>
                       <div class="meal-action">›</div>
                     </div>
                   </div>
@@ -1109,43 +1142,43 @@
 
       <!-- SCREEN 3: Not Suitable -->
       <div class="phone-card">
-        <div class="phone-label">03 — "Not Suitable" Flow</div>
+        <div class="phone-label">03 — <span data-en='"Not Suitable" Flow' data-ru='"Не подходит" — замена'>«Not Suitable» Flow</span></div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="plan-header">
-              <div class="plan-greeting">Dinner · 6:30 PM</div>
-              <div class="plan-title">Grilled Chicken Kofta + Rice</div>
-              <div class="plan-meta">22 min · Halal · 420 kcal</div>
+              <div class="plan-greeting" data-en="Dinner · 6:30 PM" data-ru="Ужин · 18:30">Dinner · 6:30 PM</div>
+              <div class="plan-title" data-en="Grilled Chicken Kofta + Rice" data-ru="Кофта из курицы с рисом">Grilled Chicken Kofta + Rice</div>
+              <div class="plan-meta" data-en="22 min · Halal · 420 kcal" data-ru="22 мин · Халяль · 420 ккал">22 min · Halal · 420 kcal</div>
             </div>
             <div class="ns-overlay">
               <div style="height:20px;"></div>
-              <div class="ns-title">What's not working?</div>
-              <div class="ns-sub">Pick one reason — we'll adjust</div>
+              <div class="ns-title" data-en="What's not working?" data-ru="Что не подходит?">What's not working?</div>
+              <div class="ns-sub" data-en="Pick one reason — we'll adjust" data-ru="Выберите причину — подберём другое">Pick one reason — we'll adjust</div>
 
               <div class="ns-option">
                 <div class="ns-icon">⏱</div>
-                <div class="ns-text">Too long to cook right now</div>
+                <div class="ns-text" data-en="Too long to cook right now" data-ru="Слишком долго готовить">Too long to cook right now</div>
               </div>
               <div class="ns-option" style="border-color:#fbbf24;">
                 <div class="ns-icon">💰</div>
-                <div class="ns-text" style="color:#fbbf24;">Too expensive today</div>
+                <div class="ns-text" style="color:#fbbf24;" data-en="Too expensive today" data-ru="Слишком дорого сегодня">Too expensive today</div>
               </div>
               <div class="ns-option">
                 <div class="ns-icon"><span style="position:relative;display:inline-block;line-height:1;">🥕<span style="position:absolute;top:50%;left:-2px;right:-2px;height:2.5px;background:#ef4444;border-radius:2px;transform:rotate(-20deg);margin-top:-1px;display:block;"></span></span></div>
-                <div class="ns-text">Dislike an ingredient</div>
+                <div class="ns-text" data-en="Dislike an ingredient" data-ru="Не нравится ингредиент">Dislike an ingredient</div>
               </div>
               <div class="ns-option">
                 <div class="ns-icon">😐</div>
-                <div class="ns-text">Not in the mood</div>
+                <div class="ns-text" data-en="Not in the mood" data-ru="Не то настроение">Not in the mood</div>
               </div>
               <div class="ns-option">
                 <div class="ns-icon">✏️</div>
-                <div class="ns-text">Other reason</div>
+                <div class="ns-text" data-en="Other reason" data-ru="Другая причина">Other reason</div>
               </div>
 
-              <div style="margin-top:16px;text-align:center;font-size:12px;color:#333;">
-                One answer. We'll learn and update immediately.
+              <div style="margin-top:16px;text-align:center;font-size:12px;color:#333;" data-en="One answer. We'll remember this for next time." data-ru="Один ответ — и мы запомним это на следующий раз.">
+                One answer. We'll remember this for next time.
               </div>
             </div>
           </div>
@@ -1154,67 +1187,65 @@
 
       <!-- SCREEN 4: Pantry Mode -->
       <div class="phone-card">
-        <div class="phone-label">04 — Pantry Mode</div>
+        <div class="phone-label">04 — <span data-en="Pantry Mode" data-ru="Режим Запасы">Pantry Mode</span></div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="pantry-header">
-              <div class="pantry-title">What do you have?</div>
-              <div class="pantry-sub">Tell us your ingredients</div>
+              <div class="pantry-title" data-en="What do you have?" data-ru="Что есть дома?">What do you have?</div>
+              <div class="pantry-sub" data-en="Tell us your ingredients" data-ru="Укажите продукты">Tell us your ingredients</div>
             </div>
 
             <div class="pantry-search">
               <span>🔍</span>
-              <p>Search ingredients…</p>
+              <p data-en="Search ingredients…" data-ru="Поиск продуктов…">Search ingredients…</p>
             </div>
 
             <div class="ingredient-grid">
-              <!-- Added chips show name + tappable amount badge -->
               <div class="ing-chip added" style="display:flex;align-items:center;gap:4px;padding:5px 8px;">
                 <span style="color:#4ade80;font-size:10px;flex-shrink:0;">✓</span>
-                <span style="font-size:12px;flex:1;">Chicken breast</span>
-                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;">300g ▾</span>
+                <span style="font-size:12px;flex:1;" data-en="Chicken breast" data-ru="Куриная грудка">Chicken breast</span>
+                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;" data-en="300g ▾" data-ru="300 г ▾">300g ▾</span>
               </div>
               <div class="ing-chip added" style="display:flex;align-items:center;gap:4px;padding:5px 8px;">
                 <span style="color:#4ade80;font-size:10px;flex-shrink:0;">✓</span>
-                <span style="font-size:12px;flex:1;">Eggs</span>
-                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;">4 pcs ▾</span>
+                <span style="font-size:12px;flex:1;" data-en="Eggs" data-ru="Яйца">Eggs</span>
+                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;" data-en="4 pcs ▾" data-ru="4 шт ▾">4 pcs ▾</span>
               </div>
               <div class="ing-chip added" style="display:flex;align-items:center;gap:4px;padding:5px 8px;">
                 <span style="color:#4ade80;font-size:10px;flex-shrink:0;">✓</span>
-                <span style="font-size:12px;flex:1;">Rice</span>
-                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;">500g ▾</span>
+                <span style="font-size:12px;flex:1;" data-en="Rice" data-ru="Рис">Rice</span>
+                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;" data-en="500g ▾" data-ru="500 г ▾">500g ▾</span>
               </div>
               <div class="ing-chip added" style="display:flex;align-items:center;gap:4px;padding:5px 8px;">
                 <span style="color:#4ade80;font-size:10px;flex-shrink:0;">✓</span>
-                <span style="font-size:12px;flex:1;">Garlic</span>
-                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;">1 bulb ▾</span>
+                <span style="font-size:12px;flex:1;" data-en="Garlic" data-ru="Чеснок">Garlic</span>
+                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;" data-en="1 bulb ▾" data-ru="1 шт ▾">1 bulb ▾</span>
               </div>
-              <!-- Not-yet-added chips stay simple -->
-              <div class="ing-chip">Tomatoes</div>
-              <div class="ing-chip">Onion</div>
-              <div class="ing-chip">Lemon</div>
-              <div class="ing-chip">Olive oil</div>
+              <div class="ing-chip" data-en="Tomatoes" data-ru="Помидоры">Tomatoes</div>
+              <div class="ing-chip" data-en="Onion" data-ru="Лук">Onion</div>
+              <div class="ing-chip" data-en="Lemon" data-ru="Лимон">Lemon</div>
+              <div class="ing-chip" data-en="Olive oil" data-ru="Оливковое масло">Olive oil</div>
               <div class="ing-chip added" style="display:flex;align-items:center;gap:4px;padding:5px 8px;">
                 <span style="color:#4ade80;font-size:10px;flex-shrink:0;">✓</span>
-                <span style="font-size:12px;flex:1;">Soy sauce</span>
-                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;">½ bottle ▾</span>
+                <span style="font-size:12px;flex:1;" data-en="Soy sauce" data-ru="Соевый соус">Soy sauce</span>
+                <span style="font-size:10px;background:#0f2a1a;padding:1px 5px;border-radius:4px;font-weight:700;color:#4ade80;flex-shrink:0;" data-en="150 ml ▾" data-ru="150 мл ▾">150 ml ▾</span>
               </div>
-              <div class="ing-chip">Broccoli</div>
-              <div class="ing-chip">Cheese</div>
-              <div class="ing-chip">Butter</div>
+              <div class="ing-chip" data-en="Broccoli" data-ru="Брокколи">Broccoli</div>
+              <div class="ing-chip" data-en="Cheese" data-ru="Сыр">Cheese</div>
+              <div class="ing-chip" data-en="Butter" data-ru="Масло">Butter</div>
             </div>
-            <div style="padding:4px 0 2px;font-size:10px;color:#444;text-align:center;">Tap amount badge to adjust · ▾ = editable</div>
+            <div style="padding:4px 0 2px;font-size:10px;color:#444;text-align:center;" data-en="Tap amount badge to adjust · ▾ = editable" data-ru="Нажмите на количество, чтобы изменить · ▾ = редактируется">Tap amount badge to adjust · ▾ = editable</div>
 
             <div class="pantry-result">
-              <div class="pantry-result-label">Best Match</div>
-              <div class="pantry-result-name">Garlic Chicken Fried Rice</div>
+              <div class="pantry-result-label" data-en="Best Match" data-ru="Лучшее совпадение">Best Match</div>
+              <div class="pantry-result-name" data-en="Garlic Chicken Fried Rice" data-ru="Жареный рис с курицей и чесноком">Garlic Chicken Fried Rice</div>
               <div class="meal-meta" style="margin-top:8px;">
-                <div class="meal-badge green">18 min</div>
-                <div class="meal-badge">Halal ✓</div>
-                <div class="meal-badge">470 kcal</div>
+                <div class="meal-badge green">18 <span data-en="min" data-ru="мин">min</span></div>
+                <div class="meal-badge" data-en="Halal ✓" data-ru="Халяль ✓">Halal ✓</div>
+                <div class="meal-badge">470 <span data-en="kcal" data-ru="ккал">kcal</span></div>
               </div>
-              <div class="pantry-nudge">
+              <div class="pantry-nudge" data-en="💡 You only need 1 more ingredient — grab broccoli and this becomes a complete balanced meal." data-ru="💡 Не хватает всего 1 продукта — купите брокколи, и блюдо станет полноценным.">
                 <em>💡 You only need 1 more ingredient</em> — grab broccoli and this becomes a complete balanced meal.
               </div>
             </div>
@@ -1237,55 +1268,55 @@
 
       <!-- SCREEN 5: Grocery List -->
       <div class="phone-card">
-        <div class="phone-label">05 — Grocery List</div>
+        <div class="phone-label">05 — <span data-en="Grocery List" data-ru="Список покупок">Grocery List</span></div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="pantry-header" style="background:#100f1a;">
-              <div class="pantry-title">This Week's Groceries</div>
-              <div class="pantry-sub">14 items · Est. $52–68</div>
+              <div class="pantry-title" data-en="This Week's Groceries" data-ru="Покупки на эту неделю">This Week's Groceries</div>
+              <div class="pantry-sub" data-en="14 items · Est. $52–68" data-ru="14 позиций · Примерно ₽3 200–3 800">14 items · Est. $52–68</div>
             </div>
             <div class="plan-body">
 
-              <div style="font-size:11px;color:#555;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">🥦 Produce</div>
+              <div style="font-size:11px;color:#555;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;" data-en="🥦 Produce" data-ru="🥦 Овощи/фрукты">🥦 Produce</div>
               <div class="meal-card" style="padding:10px 14px;margin-bottom:6px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                  <span style="font-size:14px;color:#ccc;">Spinach, fresh</span>
+                  <span style="font-size:14px;color:#ccc;" data-en="Spinach, fresh" data-ru="Шпинат свежий">Spinach, fresh</span>
                   <span style="font-size:12px;color:#555;">200g</span>
                 </div>
               </div>
               <div class="meal-card" style="padding:10px 14px;margin-bottom:6px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                  <span style="font-size:14px;color:#ccc;">Tomatoes</span>
-                  <span style="font-size:12px;color:#555;">6 pcs</span>
+                  <span style="font-size:14px;color:#ccc;" data-en="Tomatoes" data-ru="Помидоры">Tomatoes</span>
+                  <span style="font-size:12px;color:#555;" data-en="6 pcs" data-ru="6 шт">6 pcs</span>
                 </div>
               </div>
               <div class="meal-card" style="padding:10px 14px;margin-bottom:14px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                  <span style="font-size:14px;color:#ccc;">Garlic</span>
-                  <span style="font-size:12px;color:#555;">1 bulb</span>
+                  <span style="font-size:14px;color:#ccc;" data-en="Garlic" data-ru="Чеснок">Garlic</span>
+                  <span style="font-size:12px;color:#555;" data-en="1 bulb" data-ru="1 шт">1 bulb</span>
                 </div>
               </div>
 
-              <div style="font-size:11px;color:#555;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">🥩 Protein</div>
+              <div style="font-size:11px;color:#555;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;" data-en="🥩 Protein" data-ru="🥩 Мясо/рыба">🥩 Protein</div>
               <div class="meal-card" style="padding:10px 14px;margin-bottom:6px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                  <span style="font-size:14px;color:#ccc;">Chicken breast (Halal)</span>
+                  <span style="font-size:14px;color:#ccc;" data-en="Chicken breast (Halal)" data-ru="Куриная грудка (Халяль)">Chicken breast (Halal)</span>
                   <span style="font-size:12px;color:#555;">800g</span>
                 </div>
               </div>
               <div class="meal-card" style="padding:10px 14px;margin-bottom:14px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                  <span style="font-size:14px;color:#ccc;">Eggs, free range</span>
-                  <span style="font-size:12px;color:#555;">12 pcs</span>
+                  <span style="font-size:14px;color:#ccc;" data-en="Eggs, free range" data-ru="Яйца, деревенские">Eggs, free range</span>
+                  <span style="font-size:12px;color:#555;" data-en="12 pcs" data-ru="12 шт">12 pcs</span>
                 </div>
               </div>
 
-              <div style="font-size:11px;color:#555;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">🫙 Pantry</div>
+              <div style="font-size:11px;color:#555;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;" data-en="🫙 Pantry" data-ru="🫙 Бакалея">🫙 Pantry</div>
               <div class="meal-card" style="padding:10px 14px;margin-bottom:6px;background:#0f1a0f;border-color:#1a3a1a;">
                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                  <span style="font-size:14px;color:#666;text-decoration:line-through;">Basmati rice</span>
-                  <span style="font-size:11px;color:#4ade80;font-weight:700;">YOU HAVE THIS</span>
+                  <span style="font-size:14px;color:#666;text-decoration:line-through;" data-en="Basmati rice" data-ru="Рис басмати">Basmati rice</span>
+                  <span style="font-size:11px;color:#4ade80;font-weight:700;" data-en="You have this" data-ru="Уже есть дома">You have this</span>
                 </div>
               </div>
 
@@ -1308,77 +1339,74 @@
 
       <!-- Phone mockup: Add Recipe screen -->
       <div class="phone-card" style="flex-shrink:0;">
-        <div class="phone-label">06 — Add Your Recipe</div>
+        <div class="phone-label">06 — <span data-en="Add Your Recipe" data-ru="Добавить свой рецепт">Add Your Recipe</span></div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="scr-header" style="background:#1a1040;color:#fff;">
-              <div class="scr-step" style="color:#c084fc;">MY RECIPES</div>
-              <div class="scr-title" style="color:#fff;">Add a recipe</div>
-              <div class="scr-sub" style="color:#9ca3af;">From memory, link, photo, or video</div>
+              <div class="scr-step" style="color:#c084fc;" data-en="MY RECIPES" data-ru="МОИ РЕЦЕПТЫ">MY RECIPES</div>
+              <div class="scr-title" style="color:#fff;" data-en="Add a recipe" data-ru="Добавить рецепт">Add a recipe</div>
+              <div class="scr-sub" style="color:#9ca3af;" data-en="From memory, link, photo, or video" data-ru="Из памяти, ссылки, фото или видео">From memory, link, photo, or video</div>
             </div>
             <div class="scr-body">
 
-              <!-- Input method selector -->
               <div class="input-group">
-                <div class="input-label">How do you want to add it?</div>
+                <div class="input-label" data-en="How do you want to add it?" data-ru="Как хотите добавить?">How do you want to add it?</div>
                 <div style="display:flex;flex-direction:column;gap:8px;">
                   <div style="background:#1e1626;border:1px solid #c084fc60;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
                     <span style="font-size:18px;">✍️</span>
                     <div>
-                      <div style="font-size:13px;color:#c084fc;font-weight:700;">Type or paste</div>
-                      <div style="font-size:11px;color:#666;">From memory, Telegram, or a website</div>
+                      <div style="font-size:13px;color:#c084fc;font-weight:700;" data-en="Type or paste" data-ru="Написать или вставить">Type or paste</div>
+                      <div style="font-size:11px;color:#666;" data-en="From memory, Telegram, or a website" data-ru="Из памяти, Telegram или сайта">From memory, Telegram, or a website</div>
                     </div>
                   </div>
                   <div style="background:#1a1a1c;border:1px solid #2a2a2c;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
                     <span style="font-size:18px;">🔗</span>
                     <div>
-                      <div style="font-size:13px;color:#aaa;font-weight:700;">Paste a link</div>
-                      <div style="font-size:11px;color:#666;">Any recipe website or blog</div>
+                      <div style="font-size:13px;color:#aaa;font-weight:700;" data-en="Paste a link" data-ru="Вставить ссылку">Paste a link</div>
+                      <div style="font-size:11px;color:#666;" data-en="Any recipe website or blog" data-ru="Любой кулинарный сайт или блог">Any recipe website or blog</div>
                     </div>
                   </div>
                   <div style="background:#1a1a1c;border:1px solid #2a2a2c;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
                     <span style="font-size:18px;">📷</span>
                     <div>
-                      <div style="font-size:13px;color:#aaa;font-weight:700;">Take a photo</div>
-                      <div style="font-size:11px;color:#666;">Recipe card, cookbook, handwritten</div>
-                      <div style="font-size:10px;color:#a78bfa;margin-top:3px;">✨ Auto-enhanced if quality is low</div>
+                      <div style="font-size:13px;color:#aaa;font-weight:700;" data-en="Take a photo" data-ru="Сделать фото">Take a photo</div>
+                      <div style="font-size:11px;color:#666;" data-en="Recipe card, cookbook, handwritten" data-ru="Карточка рецепта, книга, рукопись">Recipe card, cookbook, handwritten</div>
+                      <div style="font-size:10px;color:#a78bfa;margin-top:3px;" data-en="✨ Auto-enhanced if quality is low" data-ru="✨ Улучшается автоматически при низком качестве">✨ Auto-enhanced if quality is low</div>
                     </div>
                   </div>
                   <div style="background:#1a1a1c;border:1px solid #2a2a2c;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
                     <span style="font-size:18px;">🎬</span>
                     <div>
-                      <div style="font-size:13px;color:#aaa;font-weight:700;">Paste a video link</div>
-                      <div style="font-size:11px;color:#666;">YouTube, Instagram, TikTok, Reels</div>
+                      <div style="font-size:13px;color:#aaa;font-weight:700;" data-en="Paste a video link" data-ru="Вставить ссылку на видео">Paste a video link</div>
+                      <div style="font-size:11px;color:#666;" data-en="YouTube, Instagram, TikTok, Reels" data-ru="YouTube, Instagram, TikTok, Reels">YouTube, Instagram, TikTok, Reels</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Auto-detected tags preview -->
               <div style="background:#1e1626;border:1px solid #c084fc30;border-radius:10px;padding:12px 14px;margin-top:4px;">
-                <div style="font-size:10px;color:#c084fc;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">AUTO-DETECTED ✓</div>
+                <div style="font-size:10px;color:#c084fc;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;" data-en="AUTO-DETECTED ✓" data-ru="ОПРЕДЕЛЕНО АВТОМАТИЧЕСКИ ✓">AUTO-DETECTED ✓</div>
                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
-                  <span class="chip active" style="font-size:11px;border-color:#4ade80;color:#4ade80;background:#4ade8010;">Halal ✓</span>
-                  <span class="chip active" style="font-size:11px;border-color:#60a5fa;color:#60a5fa;background:#60a5fa10;">Dairy-free ✓</span>
-                  <span class="chip" style="font-size:11px;">40 min</span>
-                  <span class="chip" style="font-size:11px;">Full kitchen</span>
+                  <span class="chip active" style="font-size:11px;border-color:#4ade80;color:#4ade80;background:#4ade8010;" data-en="Halal ✓" data-ru="Халяль ✓">Halal ✓</span>
+                  <span class="chip active" style="font-size:11px;border-color:#60a5fa;color:#60a5fa;background:#60a5fa10;" data-en="Dairy-free ✓" data-ru="Без молока ✓">Dairy-free ✓</span>
+                  <span class="chip" style="font-size:11px;" data-en="40 min" data-ru="40 мин">40 min</span>
+                  <span class="chip" style="font-size:11px;" data-en="Full kitchen" data-ru="Полная кухня">Full kitchen</span>
                 </div>
-                <div style="font-size:11px;color:#555;">Nutrition estimated · 380 kcal per serving</div>
+                <div style="font-size:11px;color:#555;" data-en="Nutrition estimated · 380 kcal per serving" data-ru="Питательность рассчитана · 380 ккал на порцию">Nutrition estimated · 380 kcal per serving</div>
               </div>
 
-              <!-- Visibility setting -->
               <div class="input-group" style="margin-top:14px;">
-                <div class="input-label">Who is this recipe for?</div>
+                <div class="input-label" data-en="Who is this recipe for?" data-ru="Для кого этот рецепт?">Who is this recipe for?</div>
                 <div class="time-row">
-                  <div class="time-chip active">Everyone</div>
-                  <div class="time-chip">Just me</div>
-                  <div class="time-chip">Saved only</div>
+                  <div class="time-chip active" data-en="Everyone" data-ru="Все">Everyone</div>
+                  <div class="time-chip" data-en="Just me" data-ru="Только я">Just me</div>
+                  <div class="time-chip" data-en="Saved only" data-ru="Только сохранить">Saved only</div>
                 </div>
               </div>
 
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <div style="flex:1;background:#c084fc;color:#000;font-size:14px;font-weight:800;border-radius:10px;padding:12px;text-align:center;">Save recipe</div>
+                <div style="flex:1;background:#c084fc;color:#000;font-size:14px;font-weight:800;border-radius:10px;padding:12px;text-align:center;" data-en="Save recipe" data-ru="Сохранить рецепт">Save recipe</div>
                 <div style="background:#1e1e20;border:1px solid #2e2e30;color:#666;font-size:14px;border-radius:10px;padding:12px 16px;text-align:center;">★</div>
               </div>
             </div>
@@ -1388,21 +1416,21 @@
 
       <!-- Phone mockup: My Recipes library screen -->
       <div class="phone-card" style="flex-shrink:0;">
-        <div class="phone-label">07 — My Recipe Library</div>
+        <div class="phone-label">07 — <span data-en="My Recipe Library" data-ru="Мои рецепты">My Recipe Library</span></div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="pantry-header" style="background:#0f0a1a;">
-              <div class="pantry-title">My Recipes</div>
-              <div class="pantry-sub">8 saved · 5 in family plan</div>
+              <div class="pantry-title" data-en="My Recipes" data-ru="Мои рецепты">My Recipes</div>
+              <div class="pantry-sub" data-en="8 saved · 5 in family plan" data-ru="8 сохранено · 5 в плане семьи">8 saved · 5 in family plan</div>
             </div>
 
             <div style="padding:12px 16px 4px;">
               <div class="chip-row" style="margin-bottom:12px;">
-                <div class="chip active" style="border-color:#c084fc;color:#c084fc;background:#c084fc15;">All</div>
-                <div class="chip">Family plan</div>
-                <div class="chip">Favorites ★</div>
-                <div class="chip">Saved</div>
+                <div class="chip active" style="border-color:#c084fc;color:#c084fc;background:#c084fc15;" data-en="All" data-ru="Все">All</div>
+                <div class="chip" data-en="Family plan" data-ru="В плане семьи">Family plan</div>
+                <div class="chip" data-en="Favorites ★" data-ru="Любимые ★">Favorites ★</div>
+                <div class="chip" data-en="Saved" data-ru="Сохранённые">Saved</div>
               </div>
             </div>
 
@@ -1413,12 +1441,12 @@
                   <div style="flex:1;padding:10px 12px;">
                     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
                       <div>
-                        <div style="font-size:11px;color:#c084fc;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">FAMILY PLAN ★</div>
-                        <div class="meal-name">Grandma's Manti</div>
+                        <div style="font-size:11px;color:#c084fc;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;" data-en="FAMILY PLAN ★" data-ru="В ПЛАНЕ СЕМЬИ ★">FAMILY PLAN ★</div>
+                        <div class="meal-name" data-en="Grandma's Manti" data-ru="Бабушкины манты">Grandma's Manti</div>
                         <div class="meal-meta" style="margin-top:6px;">
-                          <div class="meal-badge" style="background:#c084fc15;color:#c084fc;">Your recipe</div>
-                          <div class="meal-badge">50 min</div>
-                          <div class="meal-badge">Halal ✓</div>
+                          <div class="meal-badge" style="background:#c084fc15;color:#c084fc;" data-en="Your recipe" data-ru="Ваш рецепт">Your recipe</div>
+                          <div class="meal-badge" data-en="50 min" data-ru="50 мин">50 min</div>
+                          <div class="meal-badge" data-en="Halal ✓" data-ru="Халяль ✓">Halal ✓</div>
                         </div>
                       </div>
                       <div style="font-size:20px;">⋯</div>
@@ -1435,11 +1463,11 @@
                   <div style="flex:1;padding:10px 12px;">
                     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
                       <div>
-                        <div style="font-size:11px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">FAMILY PLAN</div>
-                        <div class="meal-name">Spiced Lentil Soup</div>
+                        <div style="font-size:11px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;" data-en="FAMILY PLAN" data-ru="В ПЛАНЕ СЕМЬИ">FAMILY PLAN</div>
+                        <div class="meal-name" data-en="Spiced Lentil Soup" data-ru="Суп из чечевицы со специями">Spiced Lentil Soup</div>
                         <div class="meal-meta" style="margin-top:6px;">
-                          <div class="meal-badge" style="background:#c084fc15;color:#c084fc;">Your recipe</div>
-                          <div class="meal-badge green">20 min</div>
+                          <div class="meal-badge" style="background:#c084fc15;color:#c084fc;" data-en="Your recipe" data-ru="Ваш рецепт">Your recipe</div>
+                          <div class="meal-badge green" data-en="20 min" data-ru="20 мин">20 min</div>
                         </div>
                       </div>
                       <div style="font-size:20px;">⋯</div>
@@ -1456,11 +1484,11 @@
                   <div style="flex:1;padding:10px 12px;">
                     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
                       <div>
-                        <div style="font-size:11px;color:#555;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">SAVED ONLY</div>
-                        <div class="meal-name" style="color:#666;">Beef Wellington</div>
+                        <div style="font-size:11px;color:#555;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;" data-en="SAVED ONLY" data-ru="ТОЛЬКО СОХРАНЁН">SAVED ONLY</div>
+                        <div class="meal-name" style="color:#666;" data-en="Beef Wellington" data-ru="Говядина Веллингтон">Beef Wellington</div>
                         <div class="meal-meta" style="margin-top:6px;">
-                          <div class="meal-badge">Your recipe</div>
-                          <div class="meal-badge" style="background:#ef444415;color:#ef4444;border-color:#ef444430;">⚠ 2hr+ · Excluded</div>
+                          <div class="meal-badge" data-en="Your recipe" data-ru="Ваш рецепт">Your recipe</div>
+                          <div class="meal-badge" style="background:#ef444415;color:#ef4444;border-color:#ef444430;" data-en="⚠ 2hr+ · Excluded" data-ru="⚠ 2ч+ · Исключён">⚠ 2hr+ · Excluded</div>
                         </div>
                       </div>
                       <div style="font-size:20px;color:#444;">⋯</div>
@@ -1515,7 +1543,7 @@
 
         <!-- Phone mockup: Recipe Detail -->
         <div class="phone-card" style="flex-shrink:0;">
-          <div class="phone-label">07b — Recipe Detail Page</div>
+          <div class="phone-label" data-en="07b — Recipe Detail Page" data-ru="07b — Карточка рецепта">07b — Recipe Detail Page</div>
           <div class="phone">
             <div class="phone-notch"></div>
             <div class="phone-screen" style="padding:0;overflow:hidden;">
@@ -1532,7 +1560,7 @@
                   <div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:14px solid #fff;margin-left:3px;"></div>
                 </div>
                 <!-- Back button -->
-                <div style="position:absolute;top:10px;right:12px;background:#000000aa;border-radius:6px;padding:4px 10px;font-size:11px;color:#aaa;">← Back</div>
+                <div style="position:absolute;top:10px;right:12px;background:#000000aa;border-radius:6px;padding:4px 10px;font-size:11px;color:#aaa;" data-en="← Back" data-ru="← Назад">← Back</div>
                 <!-- AI Enhanced badge -->
                 <div style="position:absolute;bottom:8px;left:12px;background:#a78bfa22;border:1px solid #a78bfa60;border-radius:6px;padding:3px 8px;display:flex;align-items:center;gap:4px;">
                   <span style="font-size:10px;">✨</span>
@@ -1590,7 +1618,6 @@
                     <div style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;">Ingredients</div>
                     <div style="display:flex;gap:0;background:#1e1626;border:1px solid #c084fc30;border-radius:6px;overflow:hidden;font-size:10px;">
                       <div style="padding:3px 8px;background:#c084fc;color:#000;font-weight:700;">g / ml</div>
-                      <div style="padding:3px 8px;color:#777;">cups</div>
                     </div>
                   </div>
                   <div style="display:flex;flex-direction:column;gap:5px;">
@@ -1665,8 +1692,8 @@
               <div style="font-size:12px;color:#777;line-height:1.6;">When a recipe was imported from a video, the top area shows a tappable thumbnail that opens the original video. Great for recipes where watching matters more than reading.</div>
             </div>
             <div style="background:#1a1226;border:1px solid #c084fc30;border-radius:12px;padding:16px;">
-              <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">⚖️ Unit toggle per recipe</div>
-              <div style="font-size:12px;color:#777;line-height:1.6;">Ingredients display in the user's preferred unit system (metric or cups). Toggle is visible on the recipe page itself — useful when following a recipe from a different country.</div>
+              <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">⚖️ Metric units (g / ml)</div>
+              <div style="font-size:12px;color:#777;line-height:1.6;">MVP: all ingredients shown in metric (g, ml, pcs, pack, can). Imperial / cups unit toggle is Phase 2. <span style="background:#7c3aed22;color:#a78bfa;padding:1px 5px;border-radius:4px;font-size:10px;font-weight:700;">Phase 2</span></div>
             </div>
             <div style="background:#1a1226;border:1px solid #c084fc30;border-radius:12px;padding:16px;">
               <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">▶ Start cooking → Cook Mode</div>
@@ -1787,7 +1814,6 @@
                     <div style="font-size:13px;font-weight:800;color:#1A1A18;text-transform:uppercase;letter-spacing:1px;">Ingredients</div>
                     <div style="display:flex;gap:0;background:#F5F0E8;border:1px solid #EDE8E0;border-radius:8px;overflow:hidden;font-size:11px;font-weight:700;">
                       <div style="padding:4px 10px;background:#4A7C59;color:#fff;">g / ml</div>
-                      <div style="padding:4px 10px;color:#9ca3af;">cups</div>
                     </div>
                   </div>
                   <div style="display:flex;flex-direction:column;gap:0;">
@@ -2133,7 +2159,7 @@
 
       <!-- Screen: Made It + Rating -->
       <div class="phone-card">
-        <div class="phone-label">10 — "Made It" + Rating</div>
+        <div class="phone-label" data-en="10 — &quot;Made It&quot; + Rating" data-ru="10 — «Приготовлено» + оценка">10 — "Made It" + Rating</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
@@ -2271,23 +2297,23 @@
 
       <!-- SCREEN 11: Leftovers -->
       <div class="phone-card">
-        <div class="phone-label">11 — Leftover Tracker</div>
+        <div class="phone-label" data-en="11 — Leftover Tracker" data-ru="11 — Остатки еды">11 — Leftover Tracker</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="scr-header">
-              <div class="scr-step">NICE, YOU COOKED!</div>
-              <div class="scr-title">Any leftovers?</div>
-              <div class="scr-sub">We'll use them so nothing goes to waste</div>
+              <div class="scr-step" data-en="NICE, YOU COOKED!" data-ru="ОТЛИЧНО, ВЫ ГОТОВИЛИ!">NICE, YOU COOKED!</div>
+              <div class="scr-title" data-en="Any leftovers?" data-ru="Остались излишки?">Any leftovers?</div>
+              <div class="scr-sub" data-en="We'll use them so nothing goes to waste" data-ru="Используем их — ничего не пропадёт">We'll use them so nothing goes to waste</div>
             </div>
             <div class="scr-body">
               <!-- Recipe reference -->
               <div style="background:#1a1f1a;border-radius:12px;padding:12px;margin-bottom:12px;">
-                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">Tonight's dinner</div>
+                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;" data-en="Tonight's dinner" data-ru="Сегодняшний ужин">Tonight's dinner</div>
                 <div style="font-size:14px;font-weight:800;color:#fff;margin-top:2px;">Chicken Tagine</div>
               </div>
               <!-- Portion counter -->
-              <div style="font-size:12px;color:#888;margin-bottom:8px;">Leftover portions:</div>
+              <div style="font-size:12px;color:#888;margin-bottom:8px;" data-en="Leftover portions:" data-ru="Порции остатков:">Leftover portions:</div>
               <div style="display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:16px;">
                 <div class="counter-btn" style="width:36px;height:36px;font-size:20px;">−</div>
                 <div style="font-size:32px;font-weight:900;color:#fff;">2</div>
@@ -2295,16 +2321,16 @@
               </div>
               <!-- Expiry indicator -->
               <div style="background:#111115;border-radius:10px;padding:10px 12px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
-                <div style="font-size:12px;color:#888;">Good until:</div>
-                <div style="font-size:12px;font-weight:700;color:#fbbf24;">Wednesday evening</div>
+                <div style="font-size:12px;color:#888;" data-en="Good until:" data-ru="Хранить до:">Good until:</div>
+                <div style="font-size:12px;font-weight:700;color:#fbbf24;" data-en="Wednesday evening" data-ru="Вечера среды">Wednesday evening</div>
               </div>
               <!-- Transformation suggestion -->
               <div style="background:#1a1f10;border:1px solid #2a3a20;border-radius:10px;padding:10px 12px;margin-bottom:16px;">
-                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">💡 Leftover idea</div>
-                <div style="font-size:12px;color:#ccc;line-height:1.5;">Tomorrow's lunch: Tagine flatbread wrap — 5 min, no cooking</div>
+                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;" data-en="💡 Leftover idea" data-ru="💡 Идея для остатков">💡 Leftover idea</div>
+                <div style="font-size:12px;color:#ccc;line-height:1.5;" data-en="Tomorrow's lunch: Tagine flatbread wrap — 5 min, no cooking" data-ru="Обед завтра: лепёшка с тажином — 5 мин, без готовки">Tomorrow's lunch: Tagine flatbread wrap — 5 min, no cooking</div>
               </div>
-              <div style="background:#4ade80;color:#000;font-size:13px;font-weight:800;border-radius:10px;padding:11px;text-align:center;">Save leftovers →</div>
-              <div style="text-align:center;margin-top:8px;font-size:11px;color:#555;">No leftovers — tap to skip</div>
+              <div style="background:#4ade80;color:#000;font-size:13px;font-weight:800;border-radius:10px;padding:11px;text-align:center;" data-en="Save leftovers →" data-ru="Сохранить остатки →">Save leftovers →</div>
+              <div style="text-align:center;margin-top:8px;font-size:11px;color:#555;" data-en="No leftovers — tap to skip" data-ru="Нет остатков — нажмите, чтобы пропустить">No leftovers — tap to skip</div>
             </div>
           </div>
         </div>
@@ -2312,33 +2338,33 @@
 
       <!-- SCREEN 12: Ordering Out -->
       <div class="phone-card">
-        <div class="phone-label">12 — Skip / Order Out</div>
+        <div class="phone-label" data-en="12 — Skip / Order Out" data-ru="12 — Пропустить / Заказать">12 — Skip / Order Out</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="scr-header">
-              <div class="scr-step">FRIDAY · DINNER</div>
-              <div class="scr-title">Not cooking tonight?</div>
-              <div class="scr-sub">No problem — your grocery list updates instantly</div>
+              <div class="scr-step" data-en="FRIDAY · DINNER" data-ru="ПЯТНИЦА · УЖИН">FRIDAY · DINNER</div>
+              <div class="scr-title" data-en="Not cooking tonight?" data-ru="Не готовите сегодня?">Not cooking tonight?</div>
+              <div class="scr-sub" data-en="No problem — your grocery list updates instantly" data-ru="Без проблем — список покупок обновится мгновенно">No problem — your grocery list updates instantly</div>
             </div>
             <div class="scr-body">
               <!-- Meal card being overridden -->
               <div style="background:#111115;border-radius:12px;padding:12px;margin-bottom:12px;opacity:0.5;">
                 <div style="font-size:10px;color:#888;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">Planned</div>
-                <div style="font-size:14px;font-weight:800;color:#fff;margin-top:2px;">Lemon Herb Salmon</div>
-                <div style="font-size:11px;color:#555;margin-top:2px;">35 min · 4 servings</div>
+                <div style="font-size:14px;font-weight:800;color:#fff;margin-top:2px;" data-en="Lemon Herb Salmon" data-ru="Лосось с лимоном и травами">Lemon Herb Salmon</div>
+                <div style="font-size:11px;color:#555;margin-top:2px;" data-en="35 min · 4 servings" data-ru="35 мин · 4 порции">35 min · 4 servings</div>
               </div>
               <!-- Override options -->
               <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
-                <div style="background:#1a1a2a;border:1.5px solid #E8553D;border-radius:10px;padding:11px;font-size:13px;font-weight:700;color:#E8553D;text-align:center;">🛵  We're ordering out</div>
-                <div style="background:#111115;border-radius:10px;padding:11px;font-size:13px;font-weight:700;color:#888;text-align:center;">📅  Busy day — skip all meals</div>
-                <div style="background:#111115;border-radius:10px;padding:11px;font-size:13px;font-weight:700;color:#888;text-align:center;">🔄  Show a different recipe</div>
+                <div style="background:#1a1a2a;border:1.5px solid #E8553D;border-radius:10px;padding:11px;font-size:13px;font-weight:700;color:#E8553D;text-align:center;" data-en="🛵  We're ordering out" data-ru="🛵  Заказываем еду">🛵  We're ordering out</div>
+                <div style="background:#111115;border-radius:10px;padding:11px;font-size:13px;font-weight:700;color:#888;text-align:center;" data-en="📅  Busy day — skip all meals" data-ru="📅  Занятой день — пропустить всё">📅  Busy day — skip all meals</div>
+                <div style="background:#111115;border-radius:10px;padding:11px;font-size:13px;font-weight:700;color:#888;text-align:center;" data-en="🔄  Show a different recipe" data-ru="🔄  Показать другой рецепт">🔄  Show a different recipe</div>
               </div>
               <!-- Pattern learned banner -->
               <div style="background:#1f1a10;border:1px solid #3a2a10;border-radius:10px;padding:10px 12px;">
-                <div style="font-size:10px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">📊 Pattern noticed</div>
+                <div style="font-size:10px;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;" data-en="📊 Pattern noticed" data-ru="📊 Замечена закономерность">📊 Pattern noticed</div>
                 <div style="font-size:11px;color:#aaa;line-height:1.5;">You skip Friday dinners 3 weeks in a row. Next Friday we'll leave dinner open automatically.</div>
-                <div style="font-size:11px;color:#fbbf24;margin-top:6px;font-weight:700;">Confirm pattern · Not this time</div>
+                <div style="font-size:11px;color:#fbbf24;margin-top:6px;font-weight:700;" data-en="Confirm pattern · Not this time" data-ru="Подтвердить · В этот раз нет">Confirm pattern · Not this time</div>
               </div>
             </div>
           </div>
@@ -2347,25 +2373,25 @@
 
       <!-- SCREEN 13: Guest Mode -->
       <div class="phone-card">
-        <div class="phone-label">13 — Guest Mode</div>
+        <div class="phone-label" data-en="13 — Guest Mode" data-ru="13 — Режим гостей">13 — Guest Mode</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="scr-header">
-              <div class="scr-step">SATURDAY · DINNER</div>
-              <div class="scr-title">We have guests 🎉</div>
-              <div class="scr-sub">Temporary — won't change your family settings</div>
+              <div class="scr-step" data-en="SATURDAY · DINNER" data-ru="СУББОТА · УЖИН">SATURDAY · DINNER</div>
+              <div class="scr-title" data-en="We have guests 🎉" data-ru="У нас гости 🎉">We have guests 🎉</div>
+              <div class="scr-sub" data-en="Temporary — won't change your family settings" data-ru="Временно — настройки семьи не изменятся">Temporary — won't change your family settings</div>
             </div>
             <div class="scr-body">
               <!-- Guest count -->
-              <div style="font-size:12px;color:#888;margin-bottom:6px;">How many guests?</div>
+              <div style="font-size:12px;color:#888;margin-bottom:6px;" data-en="How many guests?" data-ru="Сколько гостей?">How many guests?</div>
               <div style="display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:14px;">
                 <div class="counter-btn" style="width:36px;height:36px;font-size:20px;">−</div>
                 <div style="font-size:32px;font-weight:900;color:#fff;">4</div>
                 <div class="counter-btn" style="width:36px;height:36px;font-size:20px;">+</div>
               </div>
               <!-- Guest restrictions chips -->
-              <div style="font-size:12px;color:#888;margin-bottom:8px;">Any dietary needs among guests?</div>
+              <div style="font-size:12px;color:#888;margin-bottom:8px;" data-en="Any dietary needs among guests?" data-ru="Есть ли у гостей ограничения?">Any dietary needs among guests?</div>
               <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
                 <div style="background:#1a3a1a;border:1.5px solid #4ade80;color:#4ade80;font-size:11px;font-weight:700;padding:5px 10px;border-radius:100px;">✓ Vegetarian ×1</div>
                 <div style="background:#111115;color:#555;font-size:11px;font-weight:700;padding:5px 10px;border-radius:100px;border:1px solid #222;">Halal</div>
@@ -2374,11 +2400,11 @@
               </div>
               <!-- Result preview -->
               <div style="background:#1a1f1a;border-radius:10px;padding:10px 12px;margin-bottom:14px;">
-                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Scaled for 8 people</div>
-                <div style="font-size:13px;font-weight:800;color:#fff;">Vegetable Tagine ✓ Vegetarian</div>
-                <div style="font-size:11px;color:#555;margin-top:2px;">Works for all restrictions · Scales well to 8</div>
+                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;" data-en="Scaled for 8 people" data-ru="Масштаб на 8 человек">Scaled for 8 people</div>
+                <div style="font-size:13px;font-weight:800;color:#fff;" data-en="Vegetable Tagine ✓ Vegetarian" data-ru="Овощной тажин ✓ Вегетарианский">Vegetable Tagine ✓ Vegetarian</div>
+                <div style="font-size:11px;color:#555;margin-top:2px;" data-en="Works for all restrictions · Scales well to 8" data-ru="Подходит всем · Масштаб на 8">Works for all restrictions · Scales well to 8</div>
               </div>
-              <div style="background:#E8553D;color:#fff;font-size:13px;font-weight:800;border-radius:10px;padding:11px;text-align:center;">Plan for 8 guests →</div>
+              <div style="background:#E8553D;color:#fff;font-size:13px;font-weight:800;border-radius:10px;padding:11px;text-align:center;" data-en="Plan for 8 guests →" data-ru="Планировать на 8 гостей →">Plan for 8 guests →</div>
             </div>
           </div>
         </div>
@@ -2386,19 +2412,19 @@
 
       <!-- SCREEN 14: Occasions Calendar -->
       <div class="phone-card">
-        <div class="phone-label">14 — Occasions Calendar</div>
+        <div class="phone-label" data-en="14 — Occasions Calendar" data-ru="14 — Календарь праздников">14 — Occasions Calendar</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="scr-header">
-              <div class="scr-step">UPCOMING OCCASION</div>
-              <div class="scr-title">Maslenitsa in 4 days 🥞</div>
-              <div class="scr-sub">Traditional blini week — would you like a special plan?</div>
+              <div class="scr-step" data-en="UPCOMING OCCASION" data-ru="ПРЕДСТОЯЩИЙ ПРАЗДНИК">UPCOMING OCCASION</div>
+              <div class="scr-title" data-en="Maslenitsa in 4 days 🥞" data-ru="Масленица через 4 дня 🥞">Maslenitsa in 4 days 🥞</div>
+              <div class="scr-sub" data-en="Traditional blini week — would you like a special plan?" data-ru="Блинная неделя — хотите особый план?">Traditional blini week — would you like a special plan?</div>
             </div>
             <div class="scr-body">
               <!-- Occasion description -->
               <div style="background:#1a1510;border:1px solid #3a2a10;border-radius:12px;padding:12px;margin-bottom:12px;">
-                <div style="font-size:12px;color:#F4A261;font-weight:700;margin-bottom:4px;">🇷🇺 Russian tradition</div>
+                <div style="font-size:12px;color:#F4A261;font-weight:700;margin-bottom:4px;" data-en="🇷🇺 Russian tradition" data-ru="🇷🇺 Русская традиция">🇷🇺 Russian tradition</div>
                 <div style="font-size:12px;color:#aaa;line-height:1.6;">Maslenitsa (Pancake Week) is a week-long celebration before Lent. Blini in all forms — with butter, jam, sour cream, smoked salmon, caviar — are the centrepiece.</div>
               </div>
               <!-- Quick recipe preview -->
@@ -2418,9 +2444,9 @@
               </div>
               <!-- Action buttons -->
               <div style="display:flex;flex-direction:column;gap:7px;">
-                <div style="background:#F4A261;color:#000;font-size:12px;font-weight:800;border-radius:10px;padding:11px;text-align:center;">🥞  Plan the whole week</div>
-                <div style="background:#111115;color:#ccc;font-size:12px;font-weight:700;border-radius:10px;padding:11px;text-align:center;">Just one blini dinner</div>
-                <div style="font-size:10px;color:#555;text-align:center;margin-top:2px;">Skip this year</div>
+                <div style="background:#F4A261;color:#000;font-size:12px;font-weight:800;border-radius:10px;padding:11px;text-align:center;" data-en="🥞  Plan the whole week" data-ru="🥞  Спланировать всю неделю">🥞  Plan the whole week</div>
+                <div style="background:#111115;color:#ccc;font-size:12px;font-weight:700;border-radius:10px;padding:11px;text-align:center;" data-en="Just one blini dinner" data-ru="Только один блинный ужин">Just one blini dinner</div>
+                <div style="font-size:10px;color:#555;text-align:center;margin-top:2px;" data-en="Skip this year" data-ru="Пропустить в этом году">Skip this year</div>
               </div>
             </div>
           </div>
@@ -2517,14 +2543,14 @@
 
       <!-- SCREEN 15: Cooking Mode + Reminder -->
       <div class="phone-card">
-        <div class="phone-label">15 — Cooking Mode</div>
+        <div class="phone-label" data-en="15 — Cooking Mode" data-ru="15 — Режим готовки">15 — Cooking Mode</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="scr-header">
-              <div class="scr-step">STEP 2 OF 6 · 14 MIN LEFT</div>
+              <div class="scr-step" data-en="STEP 2 OF 6 · 14 MIN LEFT" data-ru="ШАГ 2 ИЗ 6 · ОСТАЛОСЬ 14 МИН">STEP 2 OF 6 · 14 MIN LEFT</div>
               <div class="scr-title">Chicken Tagine</div>
-              <div class="scr-sub">Cooking mode — tap to go back</div>
+              <div class="scr-sub" data-en="Cooking mode — tap to go back" data-ru="Режим готовки — нажмите, чтобы вернуться">Cooking mode — tap to go back</div>
             </div>
             <div class="scr-body">
               <!-- Timer ring -->
@@ -2538,7 +2564,7 @@
               </div>
               <!-- Current step -->
               <div style="background:#1a1a2a;border-left:3px solid #E8553D;border-radius:0 12px 12px 0;padding:12px;margin-bottom:10px;">
-                <div style="font-size:10px;color:#E8553D;font-weight:700;letter-spacing:1px;margin-bottom:4px;">NOW DOING</div>
+                <div style="font-size:10px;color:#E8553D;font-weight:700;letter-spacing:1px;margin-bottom:4px;" data-en="NOW DOING" data-ru="ТЕКУЩИЙ ШАГ">NOW DOING</div>
                 <div style="font-size:13px;color:#fff;line-height:1.6;">Add the spiced chicken pieces to the pan. Cook on medium-high heat for 5–6 min until golden on all sides. Do not stir — let it sear.</div>
               </div>
               <!-- Quantity quick-ref -->
@@ -2578,26 +2604,26 @@
 
       <!-- SCREEN 16: Grocery List + Export -->
       <div class="phone-card">
-        <div class="phone-label">16 — Grocery List + Export</div>
+        <div class="phone-label" data-en="16 — Grocery List + Export" data-ru="16 — Список покупок + Экспорт">16 — Grocery List + Export</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div class="scr-header">
-              <div class="scr-step">THIS WEEK · 14 ITEMS</div>
+              <div class="scr-step" data-en="THIS WEEK · 14 ITEMS" data-ru="ЭТА НЕДЕЛЯ · 14 ПОЗИЦИЙ">THIS WEEK · 14 ITEMS</div>
               <div class="scr-title">Grocery List</div>
-              <div class="scr-sub">Protein covered by Sunday's leftover</div>
+              <div class="scr-sub" data-en="Protein covered by Sunday's leftover" data-ru="Белок — из остатков воскресенья">Protein covered by Sunday's leftover</div>
             </div>
             <div class="scr-body">
               <!-- Category: Produce -->
               <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">🥦 Produce</div>
               <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:10px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1a1a1a;">
-                  <div style="font-size:12px;color:#ccc;">Spinach</div>
+                  <div style="font-size:12px;color:#ccc;" data-en="Spinach" data-ru="Шпинат">Spinach</div>
                   <div style="font-size:11px;color:#888;">200g</div>
                 </div>
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1a1a1a;">
-                  <div style="font-size:12px;color:#555;text-decoration:line-through;">Carrots</div>
-                  <div style="font-size:10px;color:#4ade80;font-weight:700;">✓ You have this</div>
+                  <div style="font-size:12px;color:#555;text-decoration:line-through;" data-en="Carrots" data-ru="Морковь">Carrots</div>
+                  <div style="font-size:10px;color:#4ade80;font-weight:700;" data-en="✓ You have this" data-ru="✓ Уже есть">✓ You have this</div>
                 </div>
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;">
                   <div style="font-size:12px;color:#ccc;">Lemon</div>
@@ -2612,18 +2638,18 @@
                   <div style="font-size:11px;color:#888;">250ml</div>
                 </div>
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;">
-                  <div style="font-size:12px;color:#555;text-decoration:line-through;">Cumin</div>
+                  <div style="font-size:12px;color:#555;text-decoration:line-through;" data-en="Cumin" data-ru="Зира">Cumin</div>
                   <div style="font-size:10px;color:#4ade80;font-weight:700;">✓ You have this</div>
                 </div>
               </div>
               <!-- Export row -->
               <div style="border-top:1px solid #1e1e20;padding-top:10px;">
-                <div style="font-size:11px;color:#888;margin-bottom:6px;">Send or export:</div>
+                <div style="font-size:11px;color:#888;margin-bottom:6px;" data-en="Send or export:" data-ru="Отправить или экспортировать:">Send or export:</div>
                 <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                  <div style="background:#1a1a2a;color:#60a5fa;font-size:10px;font-weight:700;padding:6px 10px;border-radius:100px;">📋 Copy</div>
-                  <div style="background:#1a2a1a;color:#4ade80;font-size:10px;font-weight:700;padding:6px 10px;border-radius:100px;">💬 WhatsApp</div>
-                  <div style="background:#2a1a10;color:#F4A261;font-size:10px;font-weight:700;padding:6px 10px;border-radius:100px;">🛵 Order</div>
-                  <div style="background:#111115;color:#666;font-size:10px;font-weight:700;padding:6px 10px;border-radius:100px;">🖨️ Print</div>
+                  <div style="background:#1a1a2a;color:#60a5fa;font-size:10px;font-weight:700;padding:6px 10px;border-radius:100px;" data-en="📋 Copy" data-ru="📋 Копировать">📋 Copy</div>
+                  <div style="background:#1a2a1a;color:#4ade80;font-size:10px;font-weight:700;padding:6px 10px;border-radius:100px;" data-en="💬 WhatsApp" data-ru="💬 WhatsApp">💬 WhatsApp</div>
+                  <div style="background:#2a1a10;color:#F4A261;font-size:10px;font-weight:700;padding:6px 10px;border-radius:100px;" data-en="🛵 Order" data-ru="🛵 Заказать">🛵 Order</div>
+                  <div style="background:#111115;color:#666;font-size:10px;font-weight:700;padding:6px 10px;border-radius:100px;" data-en="🖨️ Print" data-ru="🖨️ Печать">🖨️ Print</div>
                 </div>
               </div>
             </div>
@@ -2641,28 +2667,28 @@
 
               <!-- Units card -->
               <div style="background:#111115;border-radius:12px;padding:12px;">
-                <div style="font-size:10px;color:#F4A261;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">📏 Measurement Units</div>
-                <div style="font-size:12px;color:#ccc;line-height:1.6;margin-bottom:8px;">Detected from device locale — change any time in settings</div>
+                <div style="font-size:10px;color:#F4A261;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;" data-en="📏 Measurement Units" data-ru="📏 Единицы измерения">📏 Measurement Units</div>
+                <div style="font-size:12px;color:#ccc;line-height:1.6;margin-bottom:8px;" data-en="Detected from device locale — change any time in settings" data-ru="Определено по устройству — можно изменить в настройках">Detected from device locale — change any time in settings</div>
                 <div style="display:flex;flex-direction:column;gap:4px;">
                   <div style="display:flex;justify-content:space-between;">
-                    <div style="font-size:11px;color:#888;">Metric (default)</div>
+                    <div style="font-size:11px;color:#888;" data-en="Metric (default)" data-ru="Метрические (по умолчанию)">Metric (default)</div>
                     <div style="font-size:11px;color:#ccc;">600g · 250ml · 180°C</div>
                   </div>
-                  <div style="display:flex;justify-content:space-between;">
-                    <div style="font-size:11px;color:#888;">US Imperial</div>
-                    <div style="font-size:11px;color:#ccc;">1.3 lbs · 1 cup · 350°F</div>
+                  <div style="display:flex;justify-content:space-between;opacity:0.45;">
+                    <div style="font-size:11px;color:#888;">US Imperial <span style="background:#7c3aed;color:#fff;padding:0 4px;border-radius:3px;font-size:9px;font-weight:700;">Phase 2</span></div>
+                    <div style="font-size:11px;color:#555;">1.3 lbs · 1 cup · 350°F</div>
                   </div>
-                  <div style="display:flex;justify-content:space-between;">
-                    <div style="font-size:11px;color:#888;">UK / AU</div>
-                    <div style="font-size:11px;color:#ccc;">600g · 250ml · 180°C</div>
+                  <div style="display:flex;justify-content:space-between;opacity:0.45;">
+                    <div style="font-size:11px;color:#888;">UK / AU <span style="background:#7c3aed;color:#fff;padding:0 4px;border-radius:3px;font-size:9px;font-weight:700;">Phase 2</span></div>
+                    <div style="font-size:11px;color:#555;">600g · 250ml · 180°C</div>
                   </div>
                 </div>
-                <div style="font-size:10px;color:#555;margin-top:6px;line-height:1.5;">Stored as metric internally. Converted at display time. Baking conversions are exact. Cooking uses practical approximations.</div>
+                <div style="font-size:10px;color:#555;margin-top:6px;line-height:1.5;" data-en="Stored as metric internally. Converted at display time. Baking conversions are exact. Cooking uses practical approximations." data-ru="Хранится в метрических единицах. Конвертируется при отображении. Точное пересчитывание для выпечки.">Stored as metric internally. Converted at display time. Baking conversions are exact. Cooking uses practical approximations.</div>
               </div>
 
               <!-- Offline card -->
               <div style="background:#111115;border-radius:12px;padding:12px;">
-                <div style="font-size:10px;color:#60a5fa;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">📶 Offline Access</div>
+                <div style="font-size:10px;color:#60a5fa;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;" data-en="📶 Offline Access" data-ru="📶 Офлайн-доступ">📶 Offline Access</div>
                 <div style="font-size:11px;color:#888;line-height:1.8;">
                   ✅ Today's plan<br>
                   ✅ Active recipe steps<br>
@@ -2676,14 +2702,14 @@
 
               <!-- Delivery services -->
               <div style="background:#111115;border-radius:12px;padding:12px;">
-                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">🛒 Delivery (Phase 2)</div>
+                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;" data-en="🛒 Delivery (Phase 2)" data-ru="🛒 Доставка (Этап 2)">🛒 Delivery (Phase 2)</div>
                 <div style="font-size:11px;color:#888;line-height:1.8;">
                   🇷🇺 Samokat · Yandex Lavka · VkusVill<br>
                   🇺🇸 Instacart · Walmart · Amazon Fresh<br>
                   🇬🇧 Ocado · Tesco · Sainsbury's<br>
                   🇩🇪 Rewe · Picnic
                 </div>
-                <div style="font-size:10px;color:#555;margin-top:6px;">App never places orders automatically. User always confirms in the delivery app.</div>
+                <div style="font-size:10px;color:#555;margin-top:6px;" data-en="App never places orders automatically. User always confirms in the delivery app." data-ru="Приложение никогда не делает заказы автоматически. Пользователь всегда подтверждает в приложении доставки.">App never places orders automatically. User always confirms in the delivery app.</div>
               </div>
 
             </div>
@@ -2705,14 +2731,14 @@
 
       <!-- SCREEN 33: Grocery List → Ready to Shop -->
       <div class="phone-card">
-        <div class="phone-label">33 — Grocery List (ready to shop)</div>
+        <div class="phone-label" data-en="33 — Grocery List (ready to shop)" data-ru="33 — Список: готов к покупке">33 — Grocery List (ready to shop)</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;">
             <div class="scr-header" style="background:#0d1a0d;">
               <div class="scr-step" style="color:#4ade80;">THIS WEEK · 14 ITEMS</div>
               <div class="scr-title">Grocery List</div>
-              <div class="scr-sub">Grouped by store section</div>
+              <div class="scr-sub" data-en="Grouped by store section" data-ru="Сгруппировано по отделам магазина">Grouped by store section</div>
             </div>
             <div class="scr-body" style="padding:10px 14px;display:flex;flex-direction:column;gap:4px;">
 
@@ -2730,26 +2756,26 @@
                 <span style="font-size:11px;color:#555;">2 pcs</span>
               </div>
 
-              <div style="font-size:10px;color:#F4A261;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;margin-bottom:4px;">🥩 Meat &amp; fish</div>
+              <div style="font-size:10px;color:#F4A261;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;margin-bottom:4px;" data-en="🥩 Meat &amp; fish" data-ru="🥩 Мясо и рыба">🥩 Meat &amp; fish</div>
               <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #1a1a1a;">
                 <span style="font-size:12px;color:#ccc;">Chicken breast (Halal)</span>
                 <span style="font-size:11px;color:#555;">800g</span>
               </div>
 
-              <div style="font-size:10px;color:#60a5fa;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;margin-bottom:4px;">🧀 Dairy &amp; eggs</div>
+              <div style="font-size:10px;color:#60a5fa;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;margin-bottom:4px;" data-en="🧀 Dairy &amp; eggs" data-ru="🧀 Молочные и яйца">🧀 Dairy &amp; eggs</div>
               <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #1a1a1a;">
                 <span style="font-size:12px;color:#ccc;">Eggs, free range</span>
                 <span style="font-size:11px;color:#555;">12 pcs</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;">
                 <span style="font-size:12px;color:#555;text-decoration:line-through;">Basmati rice</span>
-                <span style="font-size:10px;color:#4ade80;font-weight:700;">You have this</span>
+                <span style="font-size:10px;color:#4ade80;font-weight:700;" data-en="You have this" data-ru="Уже есть">You have this</span>
               </div>
 
               <!-- Start Shopping CTA -->
               <div style="margin-top:14px;background:#14532d;border-radius:12px;padding:14px;text-align:center;border:1px solid #166534;">
-                <div style="font-size:15px;font-weight:800;color:#4ade80;">🛒 Start Shopping</div>
-                <div style="font-size:11px;color:#86efac;margin-top:3px;">Switches to in-store mode</div>
+                <div style="font-size:15px;font-weight:800;color:#4ade80;" data-en="🛒 Start Shopping" data-ru="🛒 Начать покупки">🛒 Start Shopping</div>
+                <div style="font-size:11px;color:#86efac;margin-top:3px;" data-en="Switches to in-store mode" data-ru="Переключает в режим магазина">Switches to in-store mode</div>
               </div>
 
             </div>
@@ -2759,7 +2785,7 @@
 
       <!-- SCREEN 34: Shop Mode — Active -->
       <div class="phone-card">
-        <div class="phone-label">34 — Shop Mode (active)</div>
+        <div class="phone-label" data-en="34 — Shop Mode (active)" data-ru="34 — Режим покупок">34 — Shop Mode (active)</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#080d08;">
@@ -2767,8 +2793,8 @@
             <!-- Shop Mode header -->
             <div style="background:#0a1a0a;padding:12px 14px 10px;border-bottom:1px solid #1a2a1a;">
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1.5px;">🛒 SHOP MODE</div>
-                <div style="font-size:11px;color:#555;">Tap to finish</div>
+                <div style="font-size:10px;color:#4ade80;font-weight:700;letter-spacing:1.5px;" data-en="🛒 SHOP MODE" data-ru="🛒 РЕЖИМ ПОКУПОК">🛒 SHOP MODE</div>
+                <div style="font-size:11px;color:#555;" data-en="Tap to finish" data-ru="Нажмите для завершения">Tap to finish</div>
               </div>
               <!-- Progress bar -->
               <div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">8 <span style="color:#555;font-weight:400;">of 13 items left</span></div>
@@ -2825,7 +2851,7 @@
               <!-- Screen stays on notice -->
               <div style="margin-top:10px;background:#111115;border-radius:8px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
                 <div style="font-size:14px;">☀️</div>
-                <div style="font-size:10px;color:#555;line-height:1.4;">Screen stays on while you shop</div>
+                <div style="font-size:10px;color:#555;line-height:1.4;" data-en="Screen stays on while you shop" data-ru="Экран не гаснет во время покупок">Screen stays on while you shop</div>
               </div>
 
             </div>
@@ -2835,7 +2861,7 @@
 
       <!-- SCREEN 35: Shop Mode — Done -->
       <div class="phone-card">
-        <div class="phone-label">35 — Shop Mode (all done)</div>
+        <div class="phone-label" data-en="35 — Shop Mode (all done)" data-ru="35 — Покупки завершены">35 — Shop Mode (all done)</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#080d08;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;">
@@ -2845,23 +2871,23 @@
               <div style="font-size:34px;color:#4ade80;">✓</div>
             </div>
 
-            <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;text-align:center;">All done!</div>
-            <div style="font-size:13px;color:#555;margin-bottom:24px;text-align:center;">13 of 13 items picked up</div>
+            <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;text-align:center;" data-en="All done!" data-ru="Всё готово!">All done!</div>
+            <div style="font-size:13px;color:#555;margin-bottom:24px;text-align:center;" data-en="13 of 13 items picked up" data-ru="13 из 13 позиций собрано">13 of 13 items picked up</div>
 
             <!-- Summary chips -->
             <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:28px;">
-              <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:100px;padding:6px 12px;font-size:11px;color:#4ade80;">🥦 Produce ✓</div>
-              <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:100px;padding:6px 12px;font-size:11px;color:#4ade80;">🥩 Meat ✓</div>
-              <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:100px;padding:6px 12px;font-size:11px;color:#4ade80;">🧀 Dairy ✓</div>
-              <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:100px;padding:6px 12px;font-size:11px;color:#4ade80;">🫙 Pantry ✓</div>
+              <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:100px;padding:6px 12px;font-size:11px;color:#4ade80;" data-en="🥦 Produce ✓" data-ru="🥦 Овощи ✓">🥦 Produce ✓</div>
+              <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:100px;padding:6px 12px;font-size:11px;color:#4ade80;" data-en="🥩 Meat ✓" data-ru="🥩 Мясо ✓">🥩 Meat ✓</div>
+              <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:100px;padding:6px 12px;font-size:11px;color:#4ade80;" data-en="🧀 Dairy ✓" data-ru="🧀 Молочные ✓">🧀 Dairy ✓</div>
+              <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:100px;padding:6px 12px;font-size:11px;color:#4ade80;" data-en="🫙 Pantry ✓" data-ru="🫙 Запасы ✓">🫙 Pantry ✓</div>
             </div>
 
             <!-- CTA -->
             <div style="width:100%;background:#4ade80;border-radius:12px;padding:14px;text-align:center;">
-              <div style="font-size:14px;font-weight:800;color:#000;">Back to my plan →</div>
+              <div style="font-size:14px;font-weight:800;color:#000;" data-en="Back to my plan →" data-ru="Вернуться к плану →">Back to my plan →</div>
             </div>
 
-            <div style="font-size:11px;color:#2a3a2a;margin-top:14px;text-align:center;">Forgot something? Tap an item to uncheck it.</div>
+            <div style="font-size:11px;color:#2a3a2a;margin-top:14px;text-align:center;" data-en="Forgot something? Tap an item to uncheck it." data-ru="Забыли что-то? Нажмите на позицию, чтобы снять отметку.">Forgot something? Tap an item to uncheck it.</div>
 
           </div>
         </div>
@@ -2904,17 +2930,17 @@
 
       <!-- SCREEN 17: Full Week Plan -->
       <div class="phone-card">
-        <div class="phone-label">17 — Week Plan View</div>
+        <div class="phone-label" data-en="17 — Week Plan View" data-ru="17 — Недельный план">17 — Week Plan View</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <!-- Header -->
             <div style="padding:12px 12px 6px;border-bottom:1px solid #1a1a1a;">
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                <div style="font-size:13px;font-weight:800;color:#fff;">Week Plan</div>
+                <div style="font-size:13px;font-weight:800;color:#fff;" data-en="Week Plan" data-ru="Недельный план">Week Plan</div>
                 <div style="font-size:10px;color:#4ade80;font-weight:700;background:#0f2a1a;padding:3px 8px;border-radius:100px;">🛒 ₽3,400–3,900</div>
               </div>
-              <div style="font-size:10px;color:#666;">March 1 – 7, 2026</div>
+              <div style="font-size:10px;color:#666;" data-en="March 1 – 7, 2026" data-ru="1–7 марта 2026">March 1 – 7, 2026</div>
             </div>
             <!-- Day rows -->
             <div style="padding:6px 10px;display:flex;flex-direction:column;gap:3px;">
@@ -3010,7 +3036,7 @@
 
               <!-- Regenerate button -->
               <div style="background:#1a1a2a;border:1px dashed #444;border-radius:10px;padding:9px;text-align:center;margin-top:3px;">
-                <div style="font-size:11px;color:#888;font-weight:700;">🔄 Regenerate unlocked meals</div>
+                <div style="font-size:11px;color:#888;font-weight:700;" data-en="🔄 Regenerate unlocked meals" data-ru="🔄 Обновить незафиксированные блюда">🔄 Regenerate unlocked meals</div>
               </div>
             </div>
 
@@ -3020,7 +3046,7 @@
 
       <!-- SCREEN 18: Meal Swap Bottom Sheet -->
       <div class="phone-card">
-        <div class="phone-label">18 — Meal Swap</div>
+        <div class="phone-label" data-en="18 — Meal Swap" data-ru="18 — Замена блюда">18 — Meal Swap</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="position:relative;overflow:hidden;">
@@ -3036,7 +3062,7 @@
             <div style="position:absolute;bottom:0;left:0;right:0;background:#1a1226;border-radius:16px 16px 0 0;border-top:1px solid #c084fc30;padding:12px;">
               <!-- Handle -->
               <div style="width:32px;height:3px;background:#333;border-radius:2px;margin:0 auto 10px;"></div>
-              <div style="font-size:11px;color:#c084fc;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">SWAP DINNER — 3 OPTIONS</div>
+              <div style="font-size:11px;color:#c084fc;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;" data-en="SWAP DINNER — 3 OPTIONS" data-ru="ЗАМЕНА УЖИНА — 3 ВАРИАНТА">SWAP DINNER — 3 OPTIONS</div>
 
               <!-- Option 1 (highlighted) -->
               <div style="background:#0f1f0f;border:1px solid #4ade8040;border-radius:10px;padding:8px 10px;margin-bottom:6px;display:flex;align-items:center;gap:8px;">
@@ -3051,7 +3077,7 @@
                     <div style="font-size:9px;color:#666;">Halal ✓</div>
                   </div>
                 </div>
-                <div style="font-size:11px;color:#4ade80;font-weight:800;">Pick →</div>
+                <div style="font-size:11px;color:#4ade80;font-weight:800;" data-en="Pick →" data-ru="Выбрать →">Pick →</div>
               </div>
 
               <!-- Option 2 -->
@@ -3081,8 +3107,8 @@
               </div>
 
               <div style="display:flex;gap:6px;">
-                <div style="flex:1;background:#111115;border-radius:8px;padding:8px;text-align:center;font-size:10px;color:#666;">Show more</div>
-                <div style="flex:1;background:#111115;border-radius:8px;padding:8px;text-align:center;font-size:10px;color:#888;">Keep original</div>
+                <div style="flex:1;background:#111115;border-radius:8px;padding:8px;text-align:center;font-size:10px;color:#666;" data-en="Show more" data-ru="Ещё варианты">Show more</div>
+                <div style="flex:1;background:#111115;border-radius:8px;padding:8px;text-align:center;font-size:10px;color:#888;" data-en="Keep original" data-ru="Оставить блюдо">Keep original</div>
               </div>
             </div>
           </div>
@@ -3091,13 +3117,13 @@
 
       <!-- SCREEN 19: Profile Management -->
       <div class="phone-card">
-        <div class="phone-label">19 — Household Profiles</div>
+        <div class="phone-label" data-en="19 — Household Profiles" data-ru="19 — Профили семьи">19 — Household Profiles</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div style="padding:12px 12px 6px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a1a1a;">
-              <div style="font-size:13px;font-weight:800;color:#fff;">My Household</div>
-              <div style="font-size:11px;color:#c084fc;font-weight:700;">+ Add person</div>
+              <div style="font-size:13px;font-weight:800;color:#fff;" data-en="My Household" data-ru="Моя семья">My Household</div>
+              <div style="font-size:11px;color:#c084fc;font-weight:700;" data-en="+ Add person" data-ru="+ Добавить">+ Add person</div>
             </div>
             <div style="padding:8px 10px;display:flex;flex-direction:column;gap:6px;">
 
@@ -3106,14 +3132,14 @@
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
                   <div>
                     <div style="font-size:12px;font-weight:800;color:#fff;">Sarah</div>
-                    <div style="font-size:10px;color:#888;">Adult · 34 · Profile owner</div>
+                    <div style="font-size:10px;color:#888;" data-en="Adult · 34 · Profile owner" data-ru="Взрослый · 34 · Владелец профиля">Adult · 34 · Profile owner</div>
                   </div>
-                  <div style="font-size:10px;color:#c084fc;">Edit ›</div>
+                  <div style="font-size:10px;color:#c084fc;" data-en="Edit ›" data-ru="Изменить ›">Edit ›</div>
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:4px;">
-                  <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;">🚫 Halal only</div>
-                  <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;">🚫 No shellfish</div>
-                  <div style="font-size:9px;background:#c084fc15;color:#c084fc;padding:2px 6px;border-radius:4px;">⚖️ Typical appetite</div>
+                  <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;" data-en="🚫 Halal only" data-ru="🚫 Только халяль">🚫 Halal only</div>
+                  <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;" data-en="🚫 No shellfish" data-ru="🚫 Без морепродуктов">🚫 No shellfish</div>
+                  <div style="font-size:9px;background:#c084fc15;color:#c084fc;padding:2px 6px;border-radius:4px;" data-en="⚖️ Typical appetite" data-ru="⚖️ Обычный аппетит">⚖️ Typical appetite</div>
                 </div>
               </div>
 
@@ -3122,13 +3148,13 @@
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
                   <div>
                     <div style="font-size:12px;font-weight:800;color:#fff;">Ahmed</div>
-                    <div style="font-size:10px;color:#888;">Adult · 37</div>
+                    <div style="font-size:10px;color:#888;" data-en="Adult · 37" data-ru="Взрослый · 37">Adult · 37</div>
                   </div>
                   <div style="font-size:10px;color:#666;">Edit ›</div>
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:4px;">
                   <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;">🚫 Halal only</div>
-                  <div style="font-size:9px;background:#0f2a1a;color:#4ade80;padding:2px 6px;border-radius:4px;">⚡ Larger appetite</div>
+                  <div style="font-size:9px;background:#0f2a1a;color:#4ade80;padding:2px 6px;border-radius:4px;" data-en="⚡ Larger appetite" data-ru="⚡ Повышенный аппетит">⚡ Larger appetite</div>
                 </div>
               </div>
 
@@ -3137,14 +3163,14 @@
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
                   <div>
                     <div style="font-size:12px;font-weight:800;color:#fff;">Leila</div>
-                    <div style="font-size:10px;color:#888;">Child · 8 years</div>
+                    <div style="font-size:10px;color:#888;" data-en="Child · 8 years" data-ru="Ребёнок · 8 лет">Child · 8 years</div>
                   </div>
                   <div style="font-size:10px;color:#666;">Edit ›</div>
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:4px;">
-                  <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;">🚫 Nut allergy</div>
-                  <div style="font-size:9px;background:#1a1a10;color:#fbbf24;padding:2px 6px;border-radius:4px;">🌶 Mild spice only</div>
-                  <div style="font-size:9px;background:#c084fc15;color:#c084fc;padding:2px 6px;border-radius:4px;">🏫 School lunchbox</div>
+                  <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;" data-en="🚫 Nut allergy" data-ru="🚫 Аллергия на орехи">🚫 Nut allergy</div>
+                  <div style="font-size:9px;background:#1a1a10;color:#fbbf24;padding:2px 6px;border-radius:4px;" data-en="🌶 Mild spice only" data-ru="🌶 Только мягкие специи">🌶 Mild spice only</div>
+                  <div style="font-size:9px;background:#c084fc15;color:#c084fc;padding:2px 6px;border-radius:4px;" data-en="🏫 School lunchbox" data-ru="🏫 Школьный ланч">🏫 School lunchbox</div>
                 </div>
               </div>
 
@@ -3153,19 +3179,19 @@
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
                   <div>
                     <div style="font-size:12px;font-weight:800;color:#fff;">Yusuf</div>
-                    <div style="font-size:10px;color:#888;">Toddler · 2 years</div>
+                    <div style="font-size:10px;color:#888;" data-en="Toddler · 2 years" data-ru="Малыш · 2 года">Toddler · 2 years</div>
                   </div>
                   <div style="font-size:10px;color:#666;">Edit ›</div>
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:4px;">
-                  <div style="font-size:9px;background:#1a1a10;color:#fbbf24;padding:2px 6px;border-radius:4px;">🍼 Soft textures</div>
-                  <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;">🚫 No honey, no nuts</div>
+                  <div style="font-size:9px;background:#1a1a10;color:#fbbf24;padding:2px 6px;border-radius:4px;" data-en="🍼 Soft textures" data-ru="🍼 Мягкая текстура">🍼 Soft textures</div>
+                  <div style="font-size:9px;background:#3a1a1a;color:#f87171;padding:2px 6px;border-radius:4px;" data-en="🚫 No honey, no nuts" data-ru="🚫 Без мёда, без орехов">🚫 No honey, no nuts</div>
                 </div>
               </div>
 
               <!-- Household summary -->
               <div style="background:#0f0a1a;border:1px solid #c084fc15;border-radius:10px;padding:8px 10px;margin-top:2px;">
-                <div style="font-size:10px;color:#888;">Household adult-equivalent: <span style="color:#c084fc;font-weight:700;">2.85 AE</span> · Plan adapts automatically.</div>
+                <div style="font-size:10px;color:#888;" data-en="Household adult-equivalent: 2.85 AE" data-ru="Взрослый эквивалент: <span style="color:#c084fc;font-weight:700;">2.85</span> · План адаптируется автоматически.">Household adult-equivalent: <span style="color:#c084fc;font-weight:700;">2.85 AE</span> · Plan adapts automatically.</div>
               </div>
 
             </div>
@@ -3175,20 +3201,20 @@
 
       <!-- SCREEN 20: Settings -->
       <div class="phone-card">
-        <div class="phone-label">20 — Settings</div>
+        <div class="phone-label">20 — <span data-en="Settings" data-ru="Настройки">Settings</span></div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <div style="padding:12px 12px 6px;border-bottom:1px solid #1a1a1a;">
-              <div style="font-size:13px;font-weight:800;color:#fff;">Settings</div>
+              <div style="font-size:13px;font-weight:800;color:#fff;" data-en="Settings" data-ru="Настройки">Settings</div>
             </div>
             <div style="padding:8px 10px;display:flex;flex-direction:column;gap:3px;">
 
               <!-- My Household -->
               <div style="background:#1a1226;border:1px solid #c084fc30;border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
                 <div>
-                  <div style="font-size:12px;font-weight:800;color:#fff;">👨‍👩‍👧‍👦 My Household</div>
-                  <div style="font-size:10px;color:#888;margin-top:1px;">4 people · Halal · Nut-free</div>
+                  <div style="font-size:12px;font-weight:800;color:#fff;" data-en="👨‍👩‍👧‍👦 My Household" data-ru="👨‍👩‍👧‍👦 Моя семья">👨‍👩‍👧‍👦 My Household</div>
+                  <div style="font-size:10px;color:#888;margin-top:1px;" data-en="4 people · Halal · Nut-free" data-ru="4 чел. · Халяль · Без орехов">4 people · Halal · Nut-free</div>
                 </div>
                 <div style="font-size:14px;color:#c084fc;">›</div>
               </div>
@@ -3196,8 +3222,8 @@
               <!-- Meal Planning -->
               <div style="background:#111115;border:1px solid #1e1e20;border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
                 <div>
-                  <div style="font-size:12px;font-weight:700;color:#ccc;">📅 Meal Planning</div>
-                  <div style="font-size:10px;color:#555;margin-top:1px;">Auto-plan Sunday · Everyday cooking</div>
+                  <div style="font-size:12px;font-weight:700;color:#ccc;" data-en="📅 Meal Planning" data-ru="📅 Настройки плана">📅 Meal Planning</div>
+                  <div style="font-size:10px;color:#555;margin-top:1px;" data-en="Auto-plan Sunday · Everyday cooking" data-ru="Авто-план воскресенье · Готовим каждый день">Auto-plan Sunday · Everyday cooking</div>
                 </div>
                 <div style="font-size:14px;color:#555;">›</div>
               </div>
@@ -3205,8 +3231,8 @@
               <!-- Budget -->
               <div style="background:#111115;border:1px solid #1e1e20;border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
                 <div>
-                  <div style="font-size:12px;font-weight:700;color:#ccc;">💰 Budget</div>
-                  <div style="font-size:10px;color:#4ade80;margin-top:1px;">Weekly target: ₽4,000 · On track</div>
+                  <div style="font-size:12px;font-weight:700;color:#ccc;" data-en="💰 Budget" data-ru="💰 Бюджет">💰 Budget</div>
+                  <div style="font-size:10px;color:#4ade80;margin-top:1px;" data-en="Weekly target: ₽4,000 · On track" data-ru="Цель на неделю: ₽4 000 · В рамках бюджета">Weekly target: ₽4,000 · On track</div>
                 </div>
                 <div style="font-size:14px;color:#555;">›</div>
               </div>
@@ -3214,49 +3240,49 @@
               <!-- Notifications -->
               <div style="background:#111115;border:1px solid #1e1e20;border-radius:10px;padding:10px 12px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-                  <div style="font-size:12px;font-weight:700;color:#ccc;">🔔 Notifications</div>
+                  <div style="font-size:12px;font-weight:700;color:#ccc;" data-en="🔔 Notifications" data-ru="🔔 Уведомления">🔔 Notifications</div>
                   <div style="font-size:14px;color:#555;">›</div>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:5px;">
                   <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <div style="font-size:10px;color:#888;">Morning plan digest</div>
+                    <div style="font-size:10px;color:#888;" data-en="Morning plan digest" data-ru="Утренний дайджест плана">Morning plan digest</div>
                     <div style="width:28px;height:15px;background:#4ade80;border-radius:8px;position:relative;"><div style="position:absolute;right:2px;top:2px;width:11px;height:11px;background:#fff;border-radius:50%;"></div></div>
                   </div>
                   <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <div style="font-size:10px;color:#888;">Start cooking reminders</div>
+                    <div style="font-size:10px;color:#888;" data-en="Start cooking reminders" data-ru="Напоминания начать готовить">Start cooking reminders</div>
                     <div style="width:28px;height:15px;background:#4ade80;border-radius:8px;position:relative;"><div style="position:absolute;right:2px;top:2px;width:11px;height:11px;background:#fff;border-radius:50%;"></div></div>
                   </div>
                   <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <div style="font-size:10px;color:#888;">Frozen defrost alert</div>
+                    <div style="font-size:10px;color:#888;" data-en="Frozen defrost alert" data-ru="Уведомление о разморозке">Frozen defrost alert</div>
                     <div style="width:28px;height:15px;background:#333;border-radius:8px;position:relative;"><div style="position:absolute;left:2px;top:2px;width:11px;height:11px;background:#666;border-radius:50%;"></div></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Appearance -->
+              <!-- Language & Units -->
               <div style="background:#111115;border:1px solid #1e1e20;border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
                 <div>
-                  <div style="font-size:12px;font-weight:700;color:#ccc;">🌐 Language &amp; Units</div>
-                  <div style="font-size:10px;color:#555;margin-top:1px;">Russian · Metric · Standard text</div>
+                  <div style="font-size:12px;font-weight:700;color:#ccc;" data-en="🌐 Language &amp; Units" data-ru="🌐 Язык и единицы">🌐 Language &amp; Units</div>
+                  <div style="font-size:10px;color:#555;margin-top:1px;" data-en="Russian · Metric · Standard text" data-ru="Русский · Метрические · Стандартный текст">Russian · Metric · Standard text</div>
                 </div>
                 <div style="font-size:14px;color:#555;">›</div>
               </div>
 
               <!-- Data & Privacy -->
               <div style="background:#111115;border:1px solid #1e1e20;border-radius:10px;padding:10px 12px;">
-                <div style="font-size:12px;font-weight:700;color:#ccc;margin-bottom:6px;">🔐 Data &amp; Privacy</div>
+                <div style="font-size:12px;font-weight:700;color:#ccc;margin-bottom:6px;" data-en="🔐 Data &amp; Privacy" data-ru="🔐 Данные и приватность">🔐 Data &amp; Privacy</div>
                 <div style="display:flex;flex-direction:column;gap:5px;">
-                  <div style="font-size:11px;color:#60a5fa;">📤 Export my data</div>
-                  <div style="font-size:11px;color:#888;">👁 See what we store</div>
-                  <div style="font-size:11px;color:#f87171;">🗑 Delete all my data</div>
+                  <div style="font-size:11px;color:#60a5fa;" data-en="📤 Export my data" data-ru="📤 Скачать данные">📤 Export my data</div>
+                  <div style="font-size:11px;color:#888;" data-en="👁 See what we store" data-ru="👁 Что мы храним">👁 See what we store</div>
+                  <div style="font-size:11px;color:#f87171;" data-en="🗑 Delete all my data" data-ru="🗑 Удалить все данные">🗑 Delete all my data</div>
                 </div>
               </div>
 
-              <!-- Sync -->
+              <!-- Save & Restore (was Sync) -->
               <div style="background:#111115;border:1px solid #1e1e20;border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
                 <div>
-                  <div style="font-size:12px;font-weight:700;color:#ccc;">☁️ Sync</div>
-                  <div style="font-size:10px;color:#4ade80;margin-top:1px;">● Last synced: just now · 3 devices</div>
+                  <div style="font-size:12px;font-weight:700;color:#ccc;" data-en="☁️ Save &amp; Restore" data-ru="☁️ Сохранить / Восстановить">☁️ Save &amp; Restore</div>
+                  <div style="font-size:10px;color:#4ade80;margin-top:1px;" data-en="● Saved: just now" data-ru="● Сохранено: только что">● Saved: just now</div>
                 </div>
                 <div style="font-size:14px;color:#555;">›</div>
               </div>
@@ -3278,7 +3304,7 @@
 
       <!-- SCREEN 36: Remove member — decision sheet -->
       <div class="phone-card">
-        <div class="phone-label">36 — Remove member (decision)</div>
+        <div class="phone-label" data-en="36 — Remove member (decision)" data-ru="36 — Удалить участника">36 — Remove member (decision)</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;display:flex;flex-direction:column;justify-content:flex-end;padding:0;">
@@ -3300,28 +3326,28 @@
               <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
                 <div style="width:36px;height:36px;border-radius:50%;background:#2a1a1a;border:1px solid #4a1a1a;display:flex;align-items:center;justify-content:center;font-size:16px;">👧</div>
                 <div>
-                  <div style="font-size:13px;font-weight:800;color:#fff;">Remove Lena?</div>
-                  <div style="font-size:10px;color:#888;">Age 7 · Nut-free · No raw fish</div>
+                  <div style="font-size:13px;font-weight:800;color:#fff;" data-en="Remove Lena?" data-ru="Удалить Лену?">Remove Lena?</div>
+                  <div style="font-size:10px;color:#888;" data-en="Age 7 · Nut-free · No raw fish" data-ru="7 лет · Без орехов · Без сырой рыбы">Age 7 · Nut-free · No raw fish</div>
                 </div>
               </div>
 
               <!-- Warning -->
               <div style="background:#1a1208;border:1px solid #3a2a08;border-radius:10px;padding:10px 12px;margin-bottom:14px;">
-                <div style="font-size:11px;color:#F4A261;line-height:1.6;">⚠️ You've already checked off 5 grocery items this week. Regenerating now may make your existing shopping less accurate.</div>
+                <div style="font-size:11px;color:#F4A261;line-height:1.6;" data-en="⚠️ You've already checked off 5 grocery items this week. Regenerating now may make your existing shopping less accurate." data-ru="⚠️ Вы уже отметили 5 позиций в списке. Перегенерация сейчас может сделать покупки менее точными.">⚠️ You've already checked off 5 grocery items this week. Regenerating now may make your existing shopping less accurate.</div>
               </div>
 
               <!-- Choices -->
               <div style="display:flex;flex-direction:column;gap:8px;">
                 <div style="background:#0d1a0d;border:1px solid #1a3a1a;border-radius:12px;padding:12px 14px;">
-                  <div style="font-size:13px;font-weight:700;color:#4ade80;">Keep this week's plan</div>
-                  <div style="font-size:11px;color:#555;margin-top:2px;">Lena is removed. Plan stays as-is until next Sunday.</div>
+                  <div style="font-size:13px;font-weight:700;color:#4ade80;" data-en="Keep this week's plan" data-ru="Оставить план этой недели">Keep this week's plan</div>
+                  <div style="font-size:11px;color:#555;margin-top:2px;" data-en="Lena is removed. Plan stays as-is until next Sunday." data-ru="Лена удалена. План остаётся до следующего воскресенья.">Lena is removed. Plan stays as-is until next Sunday.</div>
                 </div>
                 <div style="background:#111115;border:1px solid #1e1e20;border-radius:12px;padding:12px 14px;">
-                  <div style="font-size:13px;font-weight:700;color:#ccc;">Regenerate now</div>
-                  <div style="font-size:11px;color:#555;margin-top:2px;">New plan for 3 people. Your checked-off groceries may no longer match.</div>
+                  <div style="font-size:13px;font-weight:700;color:#ccc;" data-en="Regenerate now" data-ru="Обновить план сейчас">Regenerate now</div>
+                  <div style="font-size:11px;color:#555;margin-top:2px;" data-en="New plan for 3 people. Your checked-off groceries may no longer match." data-ru="Новый план для 3 человек. Отмеченные продукты могут не совпасть.">New plan for 3 people. Your checked-off groceries may no longer match.</div>
                 </div>
                 <div style="background:#1a0d0d;border:1px solid #3a1a1a;border-radius:12px;padding:10px 14px;text-align:center;">
-                  <div style="font-size:12px;color:#f87171;">Cancel</div>
+                  <div style="font-size:12px;color:#f87171;" data-en="Cancel" data-ru="Отмена">Cancel</div>
                 </div>
               </div>
 
@@ -3332,20 +3358,20 @@
 
       <!-- SCREEN 37: Skip person this week -->
       <div class="phone-card">
-        <div class="phone-label">37 — Skip person this week</div>
+        <div class="phone-label" data-en="37 — Skip person this week" data-ru="37 — Пропустить на неделю">37 — Skip person this week</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;">
             <div class="scr-header" style="background:#1a1226;">
-              <div class="scr-step" style="color:#c084fc;">HOUSEHOLD · LENA</div>
-              <div class="scr-title" style="color:#fff;">Lena, age 7</div>
-              <div class="scr-sub">Nut-free · No raw fish</div>
+              <div class="scr-step" style="color:#c084fc;" data-en="HOUSEHOLD · LENA" data-ru="СЕМЬЯ · ЛЕНА">HOUSEHOLD · LENA</div>
+              <div class="scr-title" style="color:#fff;" data-en="Lena, age 7" data-ru="Лена, 7 лет">Lena, age 7</div>
+              <div class="scr-sub" data-en="Nut-free · No raw fish" data-ru="Без орехов · Без сырой рыбы">Nut-free · No raw fish</div>
             </div>
             <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;">
 
               <!-- Edit rules -->
               <div style="background:#111115;border:1px solid #1e1e20;border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
-                <div style="font-size:12px;color:#ccc;">Edit dietary rules</div>
+                <div style="font-size:12px;color:#ccc;" data-en="Edit dietary rules" data-ru="Изменить правила питания">Edit dietary rules</div>
                 <div style="font-size:13px;color:#555;">›</div>
               </div>
 
@@ -3353,8 +3379,8 @@
               <div style="background:#1a1226;border:1px solid #c084fc40;border-radius:10px;padding:12px 14px;">
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;">
                   <div>
-                    <div style="font-size:12px;font-weight:700;color:#c084fc;">Skip Lena this week</div>
-                    <div style="font-size:10px;color:#888;margin-top:3px;line-height:1.5;">She won't be included in this week's meals or serving sizes. Her profile and rules are kept — she'll be back next week automatically.</div>
+                    <div style="font-size:12px;font-weight:700;color:#c084fc;" data-en="Skip Lena this week" data-ru="Пропустить Лену на неделю">Skip Lena this week</div>
+                    <div style="font-size:10px;color:#888;margin-top:3px;line-height:1.5;" data-en="She won't be included in this week's meals or serving sizes. Her profile and rules are kept — she'll be back next week automatically." data-ru="Лена не будет включена в блюда и порции этой недели. Профиль и правила сохраняются — она вернётся на следующей неделе.">She won't be included in this week's meals or serving sizes. Her profile and rules are kept — she'll be back next week automatically.</div>
                   </div>
                   <!-- Toggle off -->
                   <div style="width:28px;height:15px;background:#333;border-radius:8px;flex-shrink:0;margin-left:10px;position:relative;margin-top:2px;">
@@ -3368,8 +3394,8 @@
 
               <!-- Remove permanently -->
               <div style="background:#1a0d0d;border:1px solid #3a1a1a;border-radius:10px;padding:10px 14px;">
-                <div style="font-size:12px;color:#f87171;">Remove from household permanently</div>
-                <div style="font-size:10px;color:#555;margin-top:2px;">This will ask you about your current week's plan before removing.</div>
+                <div style="font-size:12px;color:#f87171;" data-en="Remove from household permanently" data-ru="Удалить из семьи навсегда">Remove from household permanently</div>
+                <div style="font-size:10px;color:#555;margin-top:2px;" data-en="This will ask you about your current week's plan before removing." data-ru="Перед удалением мы уточним, что делать с планом текущей недели.">This will ask you about your current week's plan before removing.</div>
               </div>
 
             </div>
@@ -3427,14 +3453,14 @@
 
       <!-- SCREEN 21: Thinking / Plan Generation -->
       <div class="phone-card">
-        <div class="phone-label">21 — "Thinking..." Screen</div>
+        <div class="phone-label" data-en="21 — “Thinking...” Screen" data-ru="21 — Экран загрузки плана">21 — "Thinking..." Screen</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;">
 
             <!-- Sofra wordmark -->
             <div style="font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:4px;">🌿 Sofra</div>
-            <div style="font-size:10px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:40px;">Family Meal Planner</div>
+            <div style="font-size:10px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:40px;" data-en="Family Meal Planner" data-ru="Семейный планировщик питания">Family Meal Planner</div>
 
             <!-- Animated spinner ring -->
             <div style="width:64px;height:64px;border-radius:50%;border:3px solid #1a1a1a;border-top:3px solid #4ade80;margin-bottom:28px;position:relative;">
@@ -3442,26 +3468,26 @@
             </div>
 
             <!-- Cycling phrase — shown as current active phrase -->
-            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:8px;text-align:center;">Building your first plan…</div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:8px;text-align:center;" data-en="Building your first plan…" data-ru="Строим ваш первый план…">Building your first plan…</div>
 
             <!-- Three cycling phrases stacked, current highlighted -->
             <div style="display:flex;flex-direction:column;gap:6px;width:100%;margin-bottom:32px;">
               <div style="display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:10px;background:#0f2a1a;border:1px solid #4ade8040;">
                 <div style="width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
-                <div style="font-size:11px;color:#4ade80;font-weight:600;">Checking everyone's restrictions…</div>
+                <div style="font-size:11px;color:#4ade80;font-weight:600;" data-en="Checking everyone's restrictions…" data-ru="Проверяем ограничения каждого…">Checking everyone's restrictions…</div>
               </div>
               <div style="display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:10px;background:#111;border:1px solid #2a2a2a;">
                 <div style="width:6px;height:6px;border-radius:50%;background:#333;flex-shrink:0;"></div>
-                <div style="font-size:11px;color:#444;">Finding variety across the week…</div>
+                <div style="font-size:11px;color:#444;" data-en="Finding variety across the week…" data-ru="Подбираем разнообразие на неделю…">Finding variety across the week…</div>
               </div>
               <div style="display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:10px;background:#111;border:1px solid #2a2a2a;">
                 <div style="width:6px;height:6px;border-radius:50%;background:#333;flex-shrink:0;"></div>
-                <div style="font-size:11px;color:#444;">Matching your budget &amp; schedule…</div>
+                <div style="font-size:11px;color:#444;" data-en="Matching your schedule &amp; cooking time…" data-ru="Учитываем расписание и время готовки…">Matching your schedule &amp; cooking time…</div>
               </div>
             </div>
 
             <!-- Calm reassurance -->
-            <div style="font-size:10px;color:#444;text-align:center;line-height:1.5;">This only takes a moment.<br>We do this every week so you don't have to.</div>
+            <div style="font-size:10px;color:#444;text-align:center;line-height:1.5;" data-en="This only takes a moment. We do this every week so you don't have to." data-ru="Это займёт секунду. Мы делаем это каждую неделю вместо вас.">This only takes a moment.<br>We do this every week so you don't have to.</div>
 
           </div>
         </div>
@@ -3469,7 +3495,7 @@
 
       <!-- SCREEN 22: Onboarding Step 1 — Who's at the table -->
       <div class="phone-card">
-        <div class="phone-label">22 — Onboarding: Who's at the table?</div>
+        <div class="phone-label" data-en="22 — Onboarding: Who's at the table?" data-ru="22 — Знакомство: Кто в семье?">22 — Onboarding: Who's at the table?</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;">
@@ -3481,9 +3507,9 @@
                 <div style="flex:1;height:3px;background:#1a1a1a;border-radius:2px;"></div>
                 <div style="flex:1;height:3px;background:#1a1a1a;border-radius:2px;"></div>
               </div>
-              <div style="font-size:9px;color:#555;margin-bottom:16px;">Step 1 of 3</div>
-              <div style="font-size:17px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:4px;">Who's at the table?</div>
-              <div style="font-size:11px;color:#666;margin-bottom:16px;">Add everyone you cook for. You can always add more later.</div>
+              <div style="font-size:9px;color:#555;margin-bottom:16px;" data-en="Step 1 of 3" data-ru="Шаг 1 из 3">Step 1 of 3</div>
+              <div style="font-size:17px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:4px;" data-en="Who's at the table?" data-ru="Кто за столом?">Who's at the table?</div>
+              <div style="font-size:11px;color:#666;margin-bottom:16px;" data-en="Add everyone you cook for. You can always add more later." data-ru="Добавьте всех, для кого готовите. Позже можно добавить ещё.">Add everyone you cook for. You can always add more later.</div>
             </div>
 
             <!-- Family members added so far -->
@@ -3494,7 +3520,7 @@
                 <div style="width:32px;height:32px;border-radius:50%;background:#1a2a1a;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">👩</div>
                 <div style="flex:1;">
                   <div style="font-size:12px;font-weight:700;color:#fff;">Sarah <span style="font-size:9px;color:#4ade80;font-weight:600;background:#0f2a1a;padding:1px 5px;border-radius:4px;margin-left:4px;">You</span></div>
-                  <div style="font-size:10px;color:#555;margin-top:1px;">Adult · No restrictions yet</div>
+                  <div style="font-size:10px;color:#555;margin-top:1px;" data-en="Adult · No restrictions yet" data-ru="Взрослый · Без ограничений">Adult · No restrictions yet</div>
                 </div>
                 <div style="font-size:14px;color:#333;">✏️</div>
               </div>
@@ -3514,7 +3540,7 @@
                 <div style="width:32px;height:32px;border-radius:50%;background:#2a1a1a;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">👧</div>
                 <div style="flex:1;">
                   <div style="font-size:12px;font-weight:700;color:#fff;">Leila</div>
-                  <div style="font-size:10px;color:#555;margin-top:1px;">Child, 8 · No restrictions yet</div>
+                  <div style="font-size:10px;color:#555;margin-top:1px;" data-en="Child, 8 · No restrictions yet" data-ru="Ребёнок, 8 · Без ограничений">Child, 8 · No restrictions yet</div>
                 </div>
                 <div style="font-size:14px;color:#333;">✏️</div>
               </div>
@@ -3525,14 +3551,14 @@
             <div style="padding:0 14px;margin-bottom:14px;">
               <div style="border:1.5px dashed #2a2a2a;border-radius:12px;padding:11px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;">
                 <div style="width:32px;height:32px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:#444;">+</div>
-                <div style="font-size:12px;color:#555;">Add another person</div>
+                <div style="font-size:12px;color:#555;" data-en="Add another person" data-ru="Добавить ещё человека">Add another person</div>
               </div>
             </div>
 
             <!-- Next button -->
             <div style="padding:0 14px;">
               <div style="background:#4ade80;border-radius:14px;padding:13px;text-align:center;">
-                <div style="font-size:13px;font-weight:800;color:#000;">Next — Set dietary rules →</div>
+                <div style="font-size:13px;font-weight:800;color:#000;" data-en="Next — Set dietary rules →" data-ru="Далее — Правила питания →">Next — Set dietary rules →</div>
               </div>
             </div>
 
@@ -3542,7 +3568,7 @@
 
       <!-- SCREEN 23: Notification Permission (contextual) -->
       <div class="phone-card">
-        <div class="phone-label">23 — Notification Permission (contextual)</div>
+        <div class="phone-label" data-en="23 — Notification Permission (contextual)" data-ru="23 — Разрешение уведомлений">23 — Notification Permission (contextual)</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;position:relative;overflow:hidden;">
@@ -3570,37 +3596,37 @@
               <div style="font-size:28px;text-align:center;margin-bottom:10px;">🔔</div>
 
               <!-- Title -->
-              <div style="font-size:15px;font-weight:900;color:#fff;text-align:center;margin-bottom:6px;">Never miss the right moment</div>
+              <div style="font-size:15px;font-weight:900;color:#fff;text-align:center;margin-bottom:6px;" data-en="Never miss the right moment" data-ru="Не пропустите нужный момент">Never miss the right moment</div>
 
               <!-- Description -->
-              <div style="font-size:11px;color:#888;text-align:center;line-height:1.6;margin-bottom:18px;">Get a gentle nudge when it's time to start cooking, and a heads-up when frozen ingredients need defrosting. Nothing else.</div>
+              <div style="font-size:11px;color:#888;text-align:center;line-height:1.6;margin-bottom:18px;" data-en="Get a gentle nudge when it's time to start cooking, and a heads-up when frozen ingredients need defrosting. Nothing else." data-ru="Мягкое напоминание, когда пора готовить, и предупреждение о разморозке. Больше ничего.">Get a gentle nudge when it's time to start cooking, and a heads-up when frozen ingredients need defrosting. Nothing else.</div>
 
               <!-- What you'll get — 2 examples -->
               <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:18px;">
                 <div style="background:#111;border-radius:10px;padding:9px 12px;display:flex;align-items:flex-start;gap:8px;">
                   <div style="font-size:13px;flex-shrink:0;">⏱️</div>
                   <div>
-                    <div style="font-size:10px;font-weight:700;color:#fff;">"Start cooking in 20 min"</div>
-                    <div style="font-size:9px;color:#555;margin-top:1px;">So dinner lands on time, every time</div>
+                    <div style="font-size:10px;font-weight:700;color:#fff;" data-en="Start cooking in 20 min" data-ru="Начните готовить через 20 мин">"Start cooking in 20 min"</div>
+                    <div style="font-size:9px;color:#555;margin-top:1px;" data-en="So dinner lands on time, every time" data-ru="Ужин будет готов вовремя">So dinner lands on time, every time</div>
                   </div>
                 </div>
                 <div style="background:#111;border-radius:10px;padding:9px 12px;display:flex;align-items:flex-start;gap:8px;">
                   <div style="font-size:13px;flex-shrink:0;">❄️</div>
                   <div>
-                    <div style="font-size:10px;font-weight:700;color:#fff;">"Move chicken to the fridge tonight"</div>
-                    <div style="font-size:9px;color:#555;margin-top:1px;">For tomorrow's dinner — never forgotten again</div>
+                    <div style="font-size:10px;font-weight:700;color:#fff;" data-en="Move chicken to the fridge tonight" data-ru="Переложите курицу в холодильник сегодня вечером">"Move chicken to the fridge tonight"</div>
+                    <div style="font-size:9px;color:#555;margin-top:1px;" data-en="For tomorrow's dinner — never forgotten again" data-ru="Для ужина завтра — больше не забудете">For tomorrow's dinner — never forgotten again</div>
                   </div>
                 </div>
               </div>
 
               <!-- Allow button -->
               <div style="background:#4ade80;border-radius:14px;padding:13px;text-align:center;margin-bottom:10px;">
-                <div style="font-size:13px;font-weight:800;color:#000;">Allow notifications</div>
+                <div style="font-size:13px;font-weight:800;color:#000;" data-en="Allow notifications" data-ru="Разрешить уведомления">Allow notifications</div>
               </div>
 
               <!-- Not now -->
               <div style="text-align:center;">
-                <div style="font-size:11px;color:#555;">Not now</div>
+                <div style="font-size:11px;color:#555;" data-en="Not now" data-ru="Не сейчас">Not now</div>
               </div>
 
             </div>
@@ -3612,7 +3638,7 @@
 
       <!-- SCREEN 24: Onboarding Step 2 — Set dietary rules -->
       <div class="phone-card">
-        <div class="phone-label">24 — Onboarding: Set dietary rules</div>
+        <div class="phone-label" data-en="24 — Onboarding: Set dietary rules" data-ru="24 — Правила питания">24 — Onboarding: Set dietary rules</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;">
@@ -3624,9 +3650,9 @@
                 <div style="flex:1;height:3px;background:#4ade80;border-radius:2px;"></div>
                 <div style="flex:1;height:3px;background:#1a1a1a;border-radius:2px;"></div>
               </div>
-              <div style="font-size:9px;color:#555;margin-bottom:16px;">Step 2 of 3</div>
-              <div style="font-size:17px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:4px;">Any dietary rules?</div>
-              <div style="font-size:11px;color:#666;margin-bottom:14px;">Tap what applies. We'll never suggest something that doesn't work.</div>
+              <div style="font-size:9px;color:#555;margin-bottom:16px;" data-en="Step 2 of 3" data-ru="Шаг 2 из 3">Step 2 of 3</div>
+              <div style="font-size:17px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:4px;" data-en="Any dietary rules?" data-ru="Есть особые требования?">Any dietary rules?</div>
+              <div style="font-size:11px;color:#666;margin-bottom:14px;" data-en="Tap what applies. We'll never suggest something that doesn't work." data-ru="Отметьте нужное. Мы никогда не предложим неподходящее.">Tap what applies. We'll never suggest something that doesn't work.</div>
             </div>
 
             <!-- Per-person dietary rules -->
@@ -3679,7 +3705,7 @@
             <!-- Next button -->
             <div style="padding:0 14px;">
               <div style="background:#4ade80;border-radius:14px;padding:13px;text-align:center;">
-                <div style="font-size:13px;font-weight:800;color:#000;">Next — Cooking style →</div>
+                <div style="font-size:13px;font-weight:800;color:#000;" data-en="Next — Cooking style →" data-ru="Далее — Стиль готовки →">Next — Cooking style →</div>
               </div>
             </div>
 
@@ -3689,7 +3715,7 @@
 
       <!-- SCREEN 25: Onboarding Step 3 — Cooking style & schedule -->
       <div class="phone-card">
-        <div class="phone-label">25 — Onboarding: Cooking style</div>
+        <div class="phone-label" data-en="25 — Onboarding: Cooking style" data-ru="25 — Стиль готовки">25 — Onboarding: Cooking style</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;">
@@ -3701,9 +3727,9 @@
                 <div style="flex:1;height:3px;background:#2a2a2a;border-radius:2px;"></div>
                 <div style="flex:1;height:3px;background:#4ade80;border-radius:2px;"></div>
               </div>
-              <div style="font-size:9px;color:#555;margin-bottom:16px;">Step 3 of 3</div>
-              <div style="font-size:17px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:4px;">How do you like to cook?</div>
-              <div style="font-size:11px;color:#666;margin-bottom:14px;">We'll match recipes to your comfort level.</div>
+              <div style="font-size:9px;color:#555;margin-bottom:16px;" data-en="Step 3 of 3" data-ru="Шаг 3 из 3">Step 3 of 3</div>
+              <div style="font-size:17px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:4px;" data-en="How do you like to cook?" data-ru="Как вы любите готовить?">How do you like to cook?</div>
+              <div style="font-size:11px;color:#666;margin-bottom:14px;" data-en="We'll match recipes to your comfort level." data-ru="Подберём рецепты под ваш уровень.">We'll match recipes to your comfort level.</div>
             </div>
 
             <!-- Cooking level options -->
@@ -3712,16 +3738,16 @@
               <div style="background:#111;border:1.5px solid #2a2a2a;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;">
                 <div style="font-size:18px;">🥄</div>
                 <div>
-                  <div style="font-size:12px;font-weight:700;color:#fff;">Simple recipes</div>
-                  <div style="font-size:10px;color:#555;margin-top:1px;">Quick, few ingredients, hard to mess up</div>
+                  <div style="font-size:12px;font-weight:700;color:#fff;" data-en="Simple recipes" data-ru="Простые рецепты">Simple recipes</div>
+                  <div style="font-size:10px;color:#555;margin-top:1px;" data-en="Quick, few ingredients, hard to mess up" data-ru="Быстро, мало ингредиентов, сложно испортить">Quick, few ingredients, hard to mess up</div>
                 </div>
               </div>
 
               <div style="background:#0f2a1a;border:1.5px solid #4ade80;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;">
                 <div style="font-size:18px;">🍳</div>
                 <div style="flex:1;">
-                  <div style="font-size:12px;font-weight:700;color:#fff;">Everyday cooking</div>
-                  <div style="font-size:10px;color:#4ade80;margin-top:1px;">Balanced variety, home-cook level</div>
+                  <div style="font-size:12px;font-weight:700;color:#fff;" data-en="Everyday cooking" data-ru="Обычная готовка">Everyday cooking</div>
+                  <div style="font-size:10px;color:#4ade80;margin-top:1px;" data-en="Balanced variety, home-cook level" data-ru="Сбалансированное разнообразие, домашний уровень">Balanced variety, home-cook level</div>
                 </div>
                 <div style="font-size:12px;color:#4ade80;">✓</div>
               </div>
@@ -3729,8 +3755,8 @@
               <div style="background:#111;border:1.5px solid #2a2a2a;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;">
                 <div style="font-size:18px;">👨‍🍳</div>
                 <div>
-                  <div style="font-size:12px;font-weight:700;color:#fff;">I love a challenge</div>
-                  <div style="font-size:10px;color:#555;margin-top:1px;">Complex techniques, restaurant-style meals</div>
+                  <div style="font-size:12px;font-weight:700;color:#fff;" data-en="I love a challenge" data-ru="Люблю сложные рецепты">I love a challenge</div>
+                  <div style="font-size:10px;color:#555;margin-top:1px;" data-en="Complex techniques, restaurant-style meals" data-ru="Сложные техники, блюда как в ресторане">Complex techniques, restaurant-style meals</div>
                 </div>
               </div>
 
@@ -3738,18 +3764,18 @@
 
             <!-- When do you cook -->
             <div style="padding:0 14px;margin-bottom:14px;">
-              <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:8px;">When do you usually cook dinner?</div>
+              <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:8px;" data-en="When do you usually cook dinner?" data-ru="Когда обычно готовите ужин?">When do you usually cook dinner?</div>
               <div style="display:flex;gap:5px;flex-wrap:wrap;">
-                <div style="background:#0f2a1a;border:1px solid #4ade80;border-radius:20px;padding:5px 10px;font-size:9px;color:#4ade80;font-weight:600;">Weekdays</div>
-                <div style="background:#0f2a1a;border:1px solid #4ade80;border-radius:20px;padding:5px 10px;font-size:9px;color:#4ade80;font-weight:600;">Weekends</div>
-                <div style="background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:5px 10px;font-size:9px;color:#555;">Varies a lot</div>
+                <div style="background:#0f2a1a;border:1px solid #4ade80;border-radius:20px;padding:5px 10px;font-size:9px;color:#4ade80;font-weight:600;" data-en="Weekdays" data-ru="Будни">Weekdays</div>
+                <div style="background:#0f2a1a;border:1px solid #4ade80;border-radius:20px;padding:5px 10px;font-size:9px;color:#4ade80;font-weight:600;" data-en="Weekends" data-ru="Выходные">Weekends</div>
+                <div style="background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:5px 10px;font-size:9px;color:#555;" data-en="Varies a lot" data-ru="По-разному">Varies a lot</div>
               </div>
             </div>
 
             <!-- Final CTA -->
             <div style="padding:0 14px;">
               <div style="background:#4ade80;border-radius:14px;padding:13px;text-align:center;">
-                <div style="font-size:13px;font-weight:800;color:#000;">Build my first week →</div>
+                <div style="font-size:13px;font-weight:800;color:#000;" data-en="Build my first week →" data-ru="Составить первую неделю →">Build my first week →</div>
               </div>
             </div>
 
@@ -3759,7 +3785,7 @@
 
       <!-- SCREEN 26: Account setup — save your plan -->
       <div class="phone-card">
-        <div class="phone-label">26 — Save your plan (optional sign-in)</div>
+        <div class="phone-label" data-en="26 — Save your plan (optional sign-in)" data-ru="26 — Сохраните план">26 — Save your plan (optional sign-in)</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;display:flex;flex-direction:column;">
@@ -3767,13 +3793,13 @@
             <!-- Celebration top -->
             <div style="padding:20px 14px 12px;text-align:center;">
               <div style="font-size:30px;margin-bottom:8px;">🎉</div>
-              <div style="font-size:17px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:6px;">Your first week is ready!</div>
-              <div style="font-size:11px;color:#666;line-height:1.6;">Save it so you can access your plan from any device — and never lose your family's settings.</div>
+              <div style="font-size:17px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:6px;" data-en="Your first week is ready!" data-ru="Ваша первая неделя готова!">Your first week is ready!</div>
+              <div style="font-size:11px;color:#666;line-height:1.6;" data-en="Save it so you can access your plan from any device — and never lose your family's settings." data-ru="Сохраните, чтобы получать доступ с любого устройства и не потерять настройки.">Save it so you can access your plan from any device — and never lose your family's settings.</div>
             </div>
 
             <!-- Week preview teaser (blurred) -->
             <div style="margin:0 14px 14px;background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:10px 12px;position:relative;overflow:hidden;">
-              <div style="font-size:9px;color:#555;margin-bottom:6px;font-weight:600;">THIS WEEK</div>
+              <div style="font-size:9px;color:#555;margin-bottom:6px;font-weight:600;" data-en="THIS WEEK" data-ru="ЭТА НЕДЕЛЯ">THIS WEEK</div>
               <div style="display:flex;flex-direction:column;gap:5px;filter:blur(3px);">
                 <div style="display:flex;justify-content:space-between;">
                   <div style="font-size:10px;color:#777;">Mon</div>
@@ -3789,7 +3815,7 @@
                 </div>
               </div>
               <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-                <div style="background:rgba(0,0,0,0.7);border-radius:8px;padding:6px 12px;font-size:10px;color:#4ade80;font-weight:700;">Sign in to reveal →</div>
+                <div style="background:rgba(0,0,0,0.7);border-radius:8px;padding:6px 12px;font-size:10px;color:#4ade80;font-weight:700;" data-en="Sign in to reveal →" data-ru="Войдите чтобы увидеть →">Sign in to reveal →</div>
               </div>
             </div>
 
@@ -3797,17 +3823,17 @@
             <div style="padding:0 14px;display:flex;flex-direction:column;gap:8px;margin-bottom:10px;">
               <div style="background:#fff;border-radius:12px;padding:11px;display:flex;align-items:center;justify-content:center;gap:8px;">
                 <div style="font-size:14px;">🍎</div>
-                <div style="font-size:12px;font-weight:700;color:#000;">Continue with Apple</div>
+                <div style="font-size:12px;font-weight:700;color:#000;" data-en="Continue with Apple" data-ru="Войти через Apple">Continue with Apple</div>
               </div>
               <div style="background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:11px;display:flex;align-items:center;justify-content:center;gap:8px;">
                 <div style="font-size:14px;">📧</div>
-                <div style="font-size:12px;font-weight:700;color:#fff;">Continue with Google</div>
+                <div style="font-size:12px;font-weight:700;color:#fff;" data-en="Continue with Google" data-ru="Войти через Google">Continue with Google</div>
               </div>
             </div>
 
             <!-- Skip -->
             <div style="text-align:center;">
-              <div style="font-size:10px;color:#444;">Skip for now — plan won't be saved</div>
+              <div style="font-size:10px;color:#444;" data-en="Skip for now — plan won't be saved" data-ru="Пропустить — план не будет сохранён">Skip for now — plan won't be saved</div>
             </div>
 
           </div>
@@ -3816,15 +3842,15 @@
 
       <!-- SCREEN 27: What Sofra knows about you (data transparency) -->
       <div class="phone-card">
-        <div class="phone-label">27 — What Sofra knows about you</div>
+        <div class="phone-label" data-en="27 — What Sofra knows about you" data-ru="27 — Что знает Sofra">27 — What Sofra knows about you</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;">
 
             <!-- Header -->
             <div style="padding:14px 14px 10px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1a1a1a;">
-              <div style="font-size:13px;font-weight:800;color:#fff;">About your household</div>
-              <div style="font-size:10px;color:#4ade80;">Edit</div>
+              <div style="font-size:13px;font-weight:800;color:#fff;" data-en="About your household" data-ru="О вашей семье">About your household</div>
+              <div style="font-size:10px;color:#4ade80;" data-en="Edit" data-ru="Изменить">Edit</div>
             </div>
 
             <!-- Scrollable content -->
@@ -3832,7 +3858,7 @@
 
               <!-- Household summary -->
               <div style="background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:10px 12px;">
-                <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">Household</div>
+                <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;" data-en="Household" data-ru="Состав семьи">Household</div>
                 <div style="display:flex;gap:6px;">
                   <div style="text-align:center;">
                     <div style="font-size:16px;">👩</div>
@@ -3851,34 +3877,34 @@
 
               <!-- Dietary rules learned -->
               <div style="background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:10px 12px;">
-                <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">Dietary rules</div>
+                <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;" data-en="Dietary rules" data-ru="Правила питания">Dietary rules</div>
                 <div style="display:flex;flex-direction:column;gap:4px;">
                   <div style="display:flex;align-items:center;gap:6px;">
                     <div style="width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
-                    <div style="font-size:10px;color:#ccc;">Halal — applies to everyone</div>
+                    <div style="font-size:10px;color:#ccc;" data-en="Halal — applies to everyone" data-ru="Халяль — для всех">Halal — applies to everyone</div>
                   </div>
                   <div style="display:flex;align-items:center;gap:6px;">
                     <div style="width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
-                    <div style="font-size:10px;color:#ccc;">Gluten-free — Ahmed only</div>
+                    <div style="font-size:10px;color:#ccc;" data-en="Gluten-free — Ahmed only" data-ru="Без глютена — только Ахмед">Gluten-free — Ahmed only</div>
                   </div>
                   <div style="display:flex;align-items:center;gap:6px;">
                     <div style="width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
-                    <div style="font-size:10px;color:#ccc;">No nuts — Leila (allergy)</div>
+                    <div style="font-size:10px;color:#ccc;" data-en="No nuts — Leila (allergy)" data-ru="Без орехов — Лейла (аллергия)">No nuts — Leila (allergy)</div>
                   </div>
                 </div>
               </div>
 
               <!-- Cooking preferences learned -->
               <div style="background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:10px 12px;">
-                <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">Cooking preferences</div>
+                <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;" data-en="Cooking preferences" data-ru="Предпочтения в готовке">Cooking preferences</div>
                 <div style="display:flex;flex-direction:column;gap:4px;">
                   <div style="display:flex;justify-content:space-between;">
-                    <div style="font-size:10px;color:#888;">Skill level</div>
+                    <div style="font-size:10px;color:#888;" data-en="Skill level" data-ru="Уровень готовки">Skill level</div>
                     <div style="font-size:10px;color:#fff;">Everyday cooking</div>
                   </div>
                   <div style="display:flex;justify-content:space-between;">
-                    <div style="font-size:10px;color:#888;">Cooks on</div>
-                    <div style="font-size:10px;color:#fff;">Weekdays & weekends</div>
+                    <div style="font-size:10px;color:#888;" data-en="Cooks on" data-ru="Готовит:">Cooks on</div>
+                    <div style="font-size:10px;color:#fff;" data-en="Weekdays & weekends" data-ru="Будни и выходные">Weekdays & weekends</div>
                   </div>
                 </div>
               </div>
@@ -3886,7 +3912,7 @@
               <!-- Improving notice -->
               <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:10px;padding:9px 12px;display:flex;align-items:flex-start;gap:7px;">
                 <div style="font-size:12px;flex-shrink:0;margin-top:1px;">🧠</div>
-                <div style="font-size:9px;color:#4a8a5a;line-height:1.5;">This improves every week. The more you use Sofra, the better it understands what your family loves.</div>
+                <div style="font-size:9px;color:#4a8a5a;line-height:1.5;" data-en="This improves every week. The more you use Sofra, the better it understands what your family loves." data-ru="Это улучшается каждую неделю. Чем больше вы используете Sofra, тем лучше она понимает вашу семью.">This improves every week. The more you use Sofra, the better it understands what your family loves.</div>
               </div>
 
             </div>
@@ -3897,7 +3923,7 @@
 
       <!-- SCREEN 28: Recipe Complaint — Report a problem -->
       <div class="phone-card">
-        <div class="phone-label">28 — Report a recipe problem</div>
+        <div class="phone-label" data-en="28 — Report a recipe problem" data-ru="28 — Сообщить о проблеме">28 — Report a recipe problem</div>
         <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen" style="background:#0d0d0d;position:relative;overflow:hidden;">
@@ -3920,41 +3946,41 @@
 
               <!-- Step being reported -->
               <div style="background:#1a1010;border:1px solid #3a1515;border-radius:10px;padding:9px 11px;margin-bottom:12px;">
-                <div style="font-size:8px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px;">Reporting step 2</div>
-                <div style="font-size:10px;color:#ccc;line-height:1.5;">"Cook rice over medium heat for 30 minutes until tender."</div>
+                <div style="font-size:8px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px;" data-en="Reporting step 2" data-ru="Жалоба на шаг 2">Reporting step 2</div>
+                <div style="font-size:10px;color:#ccc;line-height:1.5;" data-en="Cook rice over medium heat for 30 minutes until tender." data-ru="Варить рис на среднем огне 30 минут до готовности.">"Cook rice over medium heat for 30 minutes until tender."</div>
               </div>
 
               <!-- Issue types -->
-              <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:8px;">What's wrong with this step?</div>
+              <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:8px;" data-en="What's wrong with this step?" data-ru="Что не так с этим шагом?">What's wrong with this step?</div>
               <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;">
 
                 <div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
                   <div style="width:16px;height:16px;border-radius:50%;background:#0f2a1a;border:1.5px solid #4ade80;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                     <div style="width:7px;height:7px;border-radius:50%;background:#4ade80;"></div>
                   </div>
-                  <div style="font-size:11px;color:#fff;">Timing is wrong</div>
+                  <div style="font-size:11px;color:#fff;" data-en="Timing is wrong" data-ru="Время приготовления неверное">Timing is wrong</div>
                 </div>
 
                 <div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
                   <div style="width:16px;height:16px;border-radius:50%;background:#1a1a1a;border:1.5px solid #2a2a2a;flex-shrink:0;"></div>
-                  <div style="font-size:11px;color:#666;">Instructions are unclear</div>
+                  <div style="font-size:11px;color:#666;" data-en="Instructions are unclear" data-ru="Инструкции непонятны">Instructions are unclear</div>
                 </div>
 
                 <div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
                   <div style="width:16px;height:16px;border-radius:50%;background:#1a1a1a;border:1.5px solid #2a2a2a;flex-shrink:0;"></div>
-                  <div style="font-size:11px;color:#666;">Quantities seem off</div>
+                  <div style="font-size:11px;color:#666;" data-en="Quantities seem off" data-ru="Количества кажутся неправильными">Quantities seem off</div>
                 </div>
 
                 <div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
                   <div style="width:16px;height:16px;border-radius:50%;background:#1a1a1a;border:1.5px solid #2a2a2a;flex-shrink:0;"></div>
-                  <div style="font-size:11px;color:#666;">Something else</div>
+                  <div style="font-size:11px;color:#666;" data-en="Something else" data-ru="Что-то другое">Something else</div>
                 </div>
 
               </div>
 
               <!-- Submit button -->
               <div style="background:#4ade80;border-radius:14px;padding:11px;text-align:center;">
-                <div style="font-size:12px;font-weight:800;color:#000;">Send report</div>
+                <div style="font-size:12px;font-weight:800;color:#000;" data-en="Send report" data-ru="Отправить">Send report</div>
               </div>
 
             </div>
@@ -4049,8 +4075,8 @@
 
               <!-- Title row -->
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-                <div style="font-size:14px;font-weight:900;color:#fff;">How can we help?</div>
-                <div style="font-size:10px;color:#555;">× Close</div>
+                <div style="font-size:14px;font-weight:900;color:#fff;" data-en="How can we help?" data-ru="Чем можем помочь?">How can we help?</div>
+                <div style="font-size:10px;color:#555;" data-en="× Close" data-ru="× Закрыть">× Close</div>
               </div>
 
               <!-- Options -->
@@ -4060,8 +4086,8 @@
                 <div style="background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:12px;">
                   <div style="width:32px;height:32px;border-radius:10px;background:#1a1a2a;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">⚠️</div>
                   <div style="flex:1;">
-                    <div style="font-size:12px;font-weight:700;color:#fff;">Something looks wrong</div>
-                    <div style="font-size:10px;color:#555;margin-top:1px;">Report a bug or unexpected behaviour</div>
+                    <div style="font-size:12px;font-weight:700;color:#fff;" data-en="Something looks wrong" data-ru="Что-то не так">Something looks wrong</div>
+                    <div style="font-size:10px;color:#555;margin-top:1px;" data-en="Report a bug or unexpected behaviour" data-ru="Сообщить об ошибке или неожиданном поведении">Report a bug or unexpected behaviour</div>
                   </div>
                   <div style="font-size:12px;color:#333;">›</div>
                 </div>
@@ -4070,8 +4096,8 @@
                 <div style="background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:12px;">
                   <div style="width:32px;height:32px;border-radius:10px;background:#2a1a0a;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🍳</div>
                   <div style="flex:1;">
-                    <div style="font-size:12px;font-weight:700;color:#fff;">Recipe has a problem</div>
-                    <div style="font-size:10px;color:#555;margin-top:1px;">Wrong timing, bad quantities, unclear steps</div>
+                    <div style="font-size:12px;font-weight:700;color:#fff;" data-en="Recipe has a problem" data-ru="Проблема с рецептом">Recipe has a problem</div>
+                    <div style="font-size:10px;color:#555;margin-top:1px;" data-en="Wrong timing, bad quantities, unclear steps" data-ru="Неверное время, количества или непонятные шаги">Wrong timing, bad quantities, unclear steps</div>
                   </div>
                   <div style="font-size:12px;color:#333;">›</div>
                 </div>
@@ -4080,8 +4106,8 @@
                 <div style="background:#0f2a1a;border:1px solid #1a4a2a;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:12px;">
                   <div style="width:32px;height:32px;border-radius:10px;background:#1a3a2a;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">💬</div>
                   <div style="flex:1;">
-                    <div style="font-size:12px;font-weight:700;color:#fff;">Chat with us</div>
-                    <div style="font-size:10px;color:#4ade80;margin-top:1px;">Usually replies within 1–2 business days</div>
+                    <div style="font-size:12px;font-weight:700;color:#fff;" data-en="Chat with us" data-ru="Написать нам">Chat with us</div>
+                    <div style="font-size:10px;color:#4ade80;margin-top:1px;" data-en="Usually replies within 1–2 business days" data-ru="Обычно отвечаем в течение 1–2 рабочих дней">Usually replies within 1–2 business days</div>
                   </div>
                   <div style="font-size:12px;color:#4ade80;">›</div>
                 </div>
@@ -4090,8 +4116,8 @@
                 <div style="background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:12px;">
                   <div style="width:32px;height:32px;border-radius:10px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">📖</div>
                   <div style="flex:1;">
-                    <div style="font-size:12px;font-weight:700;color:#fff;">Browse help articles</div>
-                    <div style="font-size:10px;color:#555;margin-top:1px;">FAQs, how-tos, and guides</div>
+                    <div style="font-size:12px;font-weight:700;color:#fff;" data-en="Browse help articles" data-ru="Справочные статьи">Browse help articles</div>
+                    <div style="font-size:10px;color:#555;margin-top:1px;" data-en="FAQs, how-tos, and guides" data-ru="Вопросы и ответы, инструкции, руководства">FAQs, how-tos, and guides</div>
                   </div>
                   <div style="font-size:12px;color:#333;">›</div>
                 </div>
@@ -4100,7 +4126,7 @@
 
               <!-- Version / context footer -->
               <div style="text-align:center;">
-                <div style="font-size:9px;color:#333;">Sofra v1.0 · Your issue will include your current screen for context</div>
+                <div style="font-size:9px;color:#333;" data-en="Sofra v1.0 · Your issue will include your current screen for context" data-ru="Sofra v1.0 · К обращению прикрепится текущий экран для контекста">Sofra v1.0 · Your issue will include your current screen for context</div>
               </div>
 
             </div>
@@ -4126,18 +4152,18 @@
 
               <!-- Auto-captured context -->
               <div style="background:#0a1a0a;border:1px solid #1a3a1a;border-radius:10px;padding:9px 12px;">
-                <div style="font-size:8px;color:#555;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Auto-captured for you</div>
+                <div style="font-size:8px;color:#555;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;" data-en="Auto-captured for you" data-ru="Захвачено автоматически">Auto-captured for you</div>
                 <div style="display:flex;flex-direction:column;gap:3px;">
                   <div style="display:flex;justify-content:space-between;">
-                    <div style="font-size:9px;color:#666;">Screen</div>
+                    <div style="font-size:9px;color:#666;" data-en="Screen" data-ru="Экран">Screen</div>
                     <div style="font-size:9px;color:#4ade80;">Today's Plan</div>
                   </div>
                   <div style="display:flex;justify-content:space-between;">
-                    <div style="font-size:9px;color:#666;">App version</div>
+                    <div style="font-size:9px;color:#666;" data-en="App version" data-ru="Версия приложения">App version</div>
                     <div style="font-size:9px;color:#4ade80;">v1.0.0</div>
                   </div>
                   <div style="display:flex;justify-content:space-between;">
-                    <div style="font-size:9px;color:#666;">Account</div>
+                    <div style="font-size:9px;color:#666;" data-en="Account" data-ru="Аккаунт">Account</div>
                     <div style="font-size:9px;color:#4ade80;">sarah@example.com</div>
                   </div>
                 </div>
@@ -4145,18 +4171,18 @@
 
               <!-- What happened -->
               <div>
-                <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:6px;">What happened?</div>
+                <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:6px;" data-en="What happened?" data-ru="Что произошло?">What happened?</div>
                 <div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:10px 12px;min-height:70px;">
-                  <div style="font-size:11px;color:#555;line-height:1.5;">The plan didn't update after I swapped Tuesday's meal...</div>
+                  <div style="font-size:11px;color:#555;line-height:1.5;" data-en="The plan didn't update after I swapped Tuesday's meal..." data-ru="План не обновился после замены блюда во вторник...">The plan didn't update after I swapped Tuesday's meal...</div>
                 </div>
               </div>
 
               <!-- Severity -->
               <div>
-                <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:6px;">How bad is it?</div>
+                <div style="font-size:10px;font-weight:700;color:#888;margin-bottom:6px;" data-en="How bad is it?" data-ru="Насколько серьёзно?">How bad is it?</div>
                 <div style="display:flex;gap:6px;">
-                  <div style="background:#0f2a1a;border:1px solid #4ade80;border-radius:20px;padding:5px 10px;font-size:9px;color:#4ade80;font-weight:600;">I can work around it</div>
-                  <div style="background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:5px 10px;font-size:9px;color:#555;">App is broken for me</div>
+                  <div style="background:#0f2a1a;border:1px solid #4ade80;border-radius:20px;padding:5px 10px;font-size:9px;color:#4ade80;font-weight:600;" data-en="I can work around it" data-ru="Могу обойти проблему">I can work around it</div>
+                  <div style="background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:5px 10px;font-size:9px;color:#555;" data-en="App is broken for me" data-ru="Приложение не работает">App is broken for me</div>
                 </div>
               </div>
 
@@ -4184,31 +4210,31 @@
             </div>
 
             <!-- Message -->
-            <div style="font-size:16px;font-weight:900;color:#fff;text-align:center;margin-bottom:8px;">Got it — thanks!</div>
-            <div style="font-size:11px;color:#666;text-align:center;line-height:1.6;margin-bottom:20px;">We'll look into this and reply within 24 hours. We'll notify you here when it's fixed.</div>
+            <div style="font-size:16px;font-weight:900;color:#fff;text-align:center;margin-bottom:8px;" data-en="Got it — thanks!" data-ru="Получили — спасибо!">Got it — thanks!</div>
+            <div style="font-size:11px;color:#666;text-align:center;line-height:1.6;margin-bottom:20px;" data-en="We'll look into this and reply within 24 hours. We'll notify you here when it's fixed." data-ru="Разберёмся и ответим в течение 24 часов. Уведомим вас, когда исправим.">We'll look into this and reply within 24 hours. We'll notify you here when it's fixed.</div>
 
             <!-- What happens next -->
             <div style="width:100%;background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:12px 14px;margin-bottom:20px;">
-              <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;">What happens next</div>
+              <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;" data-en="What happens next" data-ru="Что будет дальше">What happens next</div>
               <div style="display:flex;flex-direction:column;gap:7px;">
                 <div style="display:flex;align-items:flex-start;gap:8px;">
                   <div style="width:18px;height:18px;border-radius:50%;background:#0f2a1a;border:1.5px solid #4ade80;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;color:#4ade80;font-weight:700;">1</div>
-                  <div style="font-size:10px;color:#888;line-height:1.4;">Our team reviews your report</div>
+                  <div style="font-size:10px;color:#888;line-height:1.4;" data-en="Our team reviews your report" data-ru="Наша команда изучает обращение">Our team reviews your report</div>
                 </div>
                 <div style="display:flex;align-items:flex-start;gap:8px;">
                   <div style="width:18px;height:18px;border-radius:50%;background:#1a1a1a;border:1.5px solid #2a2a2a;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;color:#555;font-weight:700;">2</div>
-                  <div style="font-size:10px;color:#555;line-height:1.4;">You get a notification when it's resolved</div>
+                  <div style="font-size:10px;color:#555;line-height:1.4;" data-en="You get a notification when it's resolved" data-ru="Вы получите уведомление после решения">You get a notification when it's resolved</div>
                 </div>
                 <div style="display:flex;align-items:flex-start;gap:8px;">
                   <div style="width:18px;height:18px;border-radius:50%;background:#1a1a1a;border:1.5px solid #2a2a2a;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;color:#555;font-weight:700;">3</div>
-                  <div style="font-size:10px;color:#555;line-height:1.4;">Fix ships in the next app update</div>
+                  <div style="font-size:10px;color:#555;line-height:1.4;" data-en="Fix ships in the next app update" data-ru="Исправление войдёт в следующее обновление">Fix ships in the next app update</div>
                 </div>
               </div>
             </div>
 
             <!-- Back to app -->
             <div style="width:100%;background:#4ade80;border-radius:14px;padding:12px;text-align:center;">
-              <div style="font-size:12px;font-weight:800;color:#000;">Back to my plan</div>
+              <div style="font-size:12px;font-weight:800;color:#000;" data-en="Back to my plan" data-ru="Вернуться к плану">Back to my plan</div>
             </div>
 
           </div>
@@ -4226,7 +4252,7 @@
             <!-- Header -->
             <div style="background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;">
               <div style="font-size:10px;color:#555;">← Back</div>
-              <div style="font-size:12px;font-weight:800;color:#fff;">Help Centre</div>
+              <div style="font-size:12px;font-weight:800;color:#fff;" data-en="Help Centre" data-ru="Центр помощи">Help Centre</div>
               <div style="width:30px;"></div>
             </div>
 
@@ -4234,45 +4260,45 @@
             <div style="padding:10px 14px 8px;">
               <div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:7px;">
                 <div style="font-size:12px;">🔍</div>
-                <div style="font-size:10px;color:#555;">Search help articles…</div>
+                <div style="font-size:10px;color:#555;" data-en="Search help articles…" data-ru="Поиск статей…">Search help articles…</div>
               </div>
             </div>
 
             <!-- Section pills -->
             <div style="padding:0 14px 8px;display:flex;gap:6px;overflow:hidden;">
-              <div style="background:#0f2a1a;border:1px solid #4ade80;border-radius:20px;padding:4px 10px;font-size:9px;color:#4ade80;white-space:nowrap;">🚀 Getting started</div>
-              <div style="background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:4px 10px;font-size:9px;color:#555;white-space:nowrap;">📅 Weekly plan</div>
-              <div style="background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:4px 10px;font-size:9px;color:#555;white-space:nowrap;">🍳 Recipes</div>
+              <div style="background:#0f2a1a;border:1px solid #4ade80;border-radius:20px;padding:4px 10px;font-size:9px;color:#4ade80;white-space:nowrap;" data-en="🚀 Getting started" data-ru="🚀 Начало работы">🚀 Getting started</div>
+              <div style="background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:4px 10px;font-size:9px;color:#555;white-space:nowrap;" data-en="📅 Weekly plan" data-ru="📅 Недельный план">📅 Weekly plan</div>
+              <div style="background:#111;border:1px solid #2a2a2a;border-radius:20px;padding:4px 10px;font-size:9px;color:#555;white-space:nowrap;" data-en="🍳 Recipes" data-ru="🍳 Рецепты">🍳 Recipes</div>
             </div>
 
             <!-- Article list preview -->
             <div style="padding:0 14px;display:flex;flex-direction:column;gap:4px;">
 
-              <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">Getting started</div>
+              <div style="font-size:9px;color:#555;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;" data-en="Getting started" data-ru="Начало работы">Getting started</div>
 
               <div style="background:#0d0d0d;border:1px solid #1a1a1a;border-radius:10px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;">
-                <div style="font-size:10px;color:#ccc;">What is Sofra and how does it work?</div>
+                <div style="font-size:10px;color:#ccc;" data-en="What is Sofra and how does it work?" data-ru="Что такое Sofra и как она работает?">What is Sofra and how does it work?</div>
                 <div style="font-size:11px;color:#4ade80;">+</div>
               </div>
 
               <div style="background:#0d0d0d;border:1px solid #1a1a1a;border-radius:10px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;">
-                <div style="font-size:10px;color:#ccc;">How do I set up my household?</div>
+                <div style="font-size:10px;color:#ccc;" data-en="How do I set up my household?" data-ru="Как настроить состав семьи?">How do I set up my household?</div>
                 <div style="font-size:11px;color:#4ade80;">+</div>
               </div>
 
               <!-- Expanded article -->
               <div style="background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;overflow:hidden;">
                 <div style="padding:9px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a1a1a;">
-                  <div style="font-size:10px;color:#fff;font-weight:700;">Do I need to create an account?</div>
+                  <div style="font-size:10px;color:#fff;font-weight:700;" data-en="Do I need to create an account?" data-ru="Нужно ли создавать аккаунт?">Do I need to create an account?</div>
                   <div style="font-size:11px;color:#4ade80;">−</div>
                 </div>
                 <div style="padding:9px 12px;">
-                  <div style="font-size:9px;color:#666;line-height:1.6;">No — you can start immediately without an account. Creating one lets you sync across devices and recover your data if you reinstall the app.</div>
+                  <div style="font-size:9px;color:#666;line-height:1.6;" data-en="No — you can start immediately without an account. Creating one lets you save your data and restore it if you reinstall the app." data-ru="Нет — можно начать сразу без аккаунта. Аккаунт позволяет сохранить данные и восстановить их при переустановке.">No — you can start immediately without an account. Creating one lets you save your data and restore it if you reinstall the app.</div>
                 </div>
               </div>
 
               <div style="background:#0d0d0d;border:1px solid #1a1a1a;border-radius:10px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;">
-                <div style="font-size:10px;color:#ccc;">Can I use Sofra just for myself?</div>
+                <div style="font-size:10px;color:#ccc;" data-en="Can I use Sofra just for myself?" data-ru="Можно ли использовать Sofra только для себя?">Can I use Sofra just for myself?</div>
                 <div style="font-size:11px;color:#4ade80;">+</div>
               </div>
 
@@ -4281,11 +4307,11 @@
             <!-- Still need help -->
             <div style="margin:10px 14px 0;background:#0f2a1a;border:1px solid #1a4a2a;border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;">
               <div>
-                <div style="font-size:10px;font-weight:700;color:#fff;">Still need help?</div>
-                <div style="font-size:9px;color:#4a8a5a;margin-top:1px;">Chat with us — replies in 1–2 business days</div>
+                <div style="font-size:10px;font-weight:700;color:#fff;" data-en="Still need help?" data-ru="Нужна дополнительная помощь?">Still need help?</div>
+                <div style="font-size:9px;color:#4a8a5a;margin-top:1px;" data-en="Chat with us — replies in 1–2 business days" data-ru="Написать нам — ответим за 1–2 рабочих дня">Chat with us — replies in 1–2 business days</div>
               </div>
               <div style="background:#4ade80;border-radius:8px;padding:5px 10px;">
-                <div style="font-size:9px;font-weight:800;color:#000;">Chat →</div>
+                <div style="font-size:9px;font-weight:800;color:#000;" data-en="Chat →" data-ru="Написать →">Chat →</div>
               </div>
             </div>
 
@@ -4297,10 +4323,10 @@
 
   </div><!-- end first-time section -->
 
-  <!-- FAMILY SYNC -->
-  <div class="section" id="family-sync">
+  <!-- FAMILY RULES ENGINE -->
+  <div class="section" id="family-rules">
     <div class="section-label">Core Algorithm</div>
-    <div class="section-title">Family Synchronization Engine</div>
+    <div class="section-title">Family Meal Rules Engine</div>
     <div class="section-sub">How the app finds one meal that works for everyone simultaneously</div>
 
     <div class="family-grid">
@@ -5204,6 +5230,37 @@
   <strong>Sofra</strong> — Intelligent Family Meal Planner · Visual Overview · March 2026<br>
   Based on full competitive research and AI prompt analysis
 </footer>
+
+<script>
+// ===== SOFRA LANGUAGE SWITCHER =====
+function setLang(lang) {
+  // Update toggle button appearance
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  // Switch all translatable elements
+  document.querySelectorAll('[data-en]').forEach(function(el) {
+    var val = el.dataset[lang];
+    if (val !== undefined && val !== '') {
+      el.textContent = val;
+    } else {
+      el.textContent = el.dataset.en;
+    }
+  });
+  // Mark html lang attribute
+  document.documentElement.lang = (lang === 'ru') ? 'ru' : 'en';
+  // Persist preference in session
+  try { sessionStorage.setItem('sofra_lang', lang); } catch(e) {}
+}
+
+// Restore preference on load
+(function() {
+  try {
+    var saved = sessionStorage.getItem('sofra_lang');
+    if (saved === 'ru') { setLang('ru'); }
+  } catch(e) {}
+})();
+</script>
 
 </body>
 </html>
